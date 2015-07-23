@@ -1718,6 +1718,7 @@ a.post-thumbnail:focus {
 	margin-top: 0;
 }
 
+/*
 .entry-content a,
 .entry-summary a,
 .page-content a,
@@ -1725,6 +1726,7 @@ a.post-thumbnail:focus {
 .pingback .comment-body > a {
 	border-bottom: 1px solid #333;
 }
+*/
 
 .entry-content a:hover,
 .entry-content a:focus,
@@ -1844,6 +1846,8 @@ a.post-thumbnail:focus {
 	color: rgba(51, 51, 51, 0.7);
 }
 
+
+/*
 .entry-footer a:hover {
 	border-bottom: 1px solid #333;
 }
@@ -1852,6 +1856,7 @@ a.post-thumbnail:focus {
 .entry-footer a:focus {
 	color: #333;
 }
+*/
 
 .sticky-post {
 	background-color: #333;
@@ -4461,7 +4466,7 @@ p > video {
 
 	.entry-content,
 	.entry-summary {
-		padding: 0 10% 10%;
+		padding: 0 10% 5%;
 	}
 
 	.entry-content h1,
