@@ -13,7 +13,7 @@ class Gitblog extends CI_Controller {
 		
 		$this->load->helper('file');
 		$this->load->helper('url');
-		
+		$this->load->driver('cache');
 		$this->load->library('configload');
 		$this->load->library('markdown');
 		$this->load->library('twig');
@@ -26,10 +26,8 @@ class Gitblog extends CI_Controller {
  		$this->page(1);
  	}
  	
- 	//初始化博客数据
-	public function init() {
-		
-		//加载配置文件
+ 	private function init() {
+ 		//加载配置文件
 		$this->confObj = $this->configload->loadConfig();
 		
 		if (!$this->confObj) {
@@ -54,10 +52,28 @@ class Gitblog extends CI_Controller {
 		//最近博客
 		$recentSize = $this->confObj['blog']['recentSize'];
 		$this->data['recentBlogList'] = $this->markdown->getBlogsRecent($recentSize);
+ 	}
+ 	
+ 	//加载缓存文件
+	private function loadOutCache() {
+		$fag = false;
+		$cacheKey = $this->getCacheKey();
+		$html = $this->cache->file->get($this->getCacheKey());
+		if (!$html) { //没有缓存
+			$this->init();
+		} else {
+			$this->output->set_output($html);
+			$cacheHeaderVal = strtoupper(substr($cacheKey, 0, 32));
+			$this->output->set_header("Cache-Key: " . $cacheHeaderVal);
+			$fag = true;
+		}
+		return $fag;
 	}
 	
 	//分类下的博客列表
 	public function category($categoryId, $pageNo=1) {
+		if ($this->loadOutCache()) return;
+		
 		$categoryId = (int)$categoryId;
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
@@ -88,6 +104,8 @@ class Gitblog extends CI_Controller {
 	
 	//按月归档下的博客列表
 	public function archive($yearMonth, $pageNo=1) {
+		if ($this->loadOutCache()) return;
+		
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
 		
@@ -114,6 +132,8 @@ class Gitblog extends CI_Controller {
 	
 	//标签下的博客列表
 	public function tags($tagId, $pageNo=1) {
+		if ($this->loadOutCache()) return;
+		
 		$this->pageName = "tags";
 		
 		$tagId = (int)$tagId;
@@ -146,6 +166,8 @@ class Gitblog extends CI_Controller {
 	
 	//首页，博客列表
 	public function page($pageNo=1) {
+		if ($this->loadOutCache()) return;
+		
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
 		
@@ -171,6 +193,8 @@ class Gitblog extends CI_Controller {
 	
 	//博客详情页
 	public function blog() {
+		if ($this->loadOutCache()) return;
+		
 		$openPage = uri_string();
 		$blogId = md5($openPage);
 		
@@ -191,6 +215,13 @@ class Gitblog extends CI_Controller {
  	
  	//渲染页面
  	private function render($tpl) {
- 		$this->twig->render($tpl, $this->data, TRUE);
+ 		$cacheKey = $this->getCacheKey();
+ 		$htmlPage = $this->twig->render($tpl, $this->data, TRUE);
+ 		$this->cache->file->save($cacheKey, $htmlPage, GB_CACHE_TIME);
+ 	}
+ 	
+ 	//计算缓存Key
+ 	private function getCacheKey() {
+ 		return md5(uri_string()) . ".html"; //category/1460001917
  	}
 }

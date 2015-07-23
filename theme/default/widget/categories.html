@@ -2,8 +2,8 @@
 <aside id="categories" class="widget widget_categories">
     <h2 class="widget-title">分类目录</h2>
     <ul>
-        {% for category in categoryList %}  
-           <li class="cat-item"><a href="{{ category.url }}" >{{ category.name }}</a></li>
+        {% for category in categoryList %}
+        <li class="cat-item"><a href="{{ category.url }}" >{{ category.name }}</a></li>
         {% endfor %}
     </ul>
 </aside>

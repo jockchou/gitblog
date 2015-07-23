@@ -4,8 +4,8 @@
 {% block head %}
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-    <meta name="keywords" content="{% block keywords %}{{ confObj.blog.keywords }},{{ confObj.blog.title }}{% endblock %}">
-    <meta name="description" content="{% block description %}{{ confObj.blog.description }}{% endblock %}">
+	<meta name="keywords" content="{% block keywords %}{{ confObj.blog.keywords }},{{ confObj.blog.title }}{% endblock %}">
+	<meta name="description" content="{% block description %}{{ confObj.blog.description }}{% endblock %}">
 
 	<!--[if lt IE 9]>
 	<script src="/theme/default/js/html5.js"></script>
@@ -45,9 +45,11 @@
 <body>
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	
 	{% block sidebar %}{% endblock %}
-    {% block content %}{% endblock %}
+	{% block content %}{% endblock %}
 	{% block footer %}{% endblock %}
+	
 </div><!-- .site -->
 {% include "block/script.html" %}
 </body>
