@@ -1,6 +1,6 @@
 {% extends "block/base.html" %}
 
-{% block title %} {{ confObj.title }} {% endblock %}
+{% block keywords %}{% if tag %}{{ tag.name }},{% endif %}{% if category %}{{ category.name }},{% endif %}{{ parent() }}{% endblock %}
 
 {% block sidebar %}
     {% include "block/sidebar.html" %}  

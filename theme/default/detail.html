@@ -2,6 +2,10 @@
 
 {% block title %}{{ blog.title }}{% endblock %}
 
+{% block keywords %}{{ blog.keywords }},{{ confObj.blog.title }}{% endblock %}
+
+{% block description %}{{ blog.summary }}{% endblock %}
+
 {% block sidebar %}
     {% include "block/sidebar.html" %}  
 {% endblock %}

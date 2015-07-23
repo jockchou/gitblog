@@ -74,8 +74,11 @@ class Gitblog extends CI_Controller {
 		
 		$pageData = $this->markdown->getBlogsPageByCategory($categoryId, $pageNo, $pageSize);
 		
+		$category = $this->markdown->getCategoryById($categoryId);
+		
 		$this->setData("pageName", "category");
 		$this->setData("categoryId", $categoryId);
+		$this->setData("category", $category);
 		$this->setData("pageNo", $pageNo);
 		$this->setData("pages", $pageData['pages']);
 		$this->setData("blogList", $pageData['blogList']);
@@ -129,8 +132,11 @@ class Gitblog extends CI_Controller {
 		
 		$pageData = $this->markdown->getBlogsPageByTag($tagId, $pageNo, $pageSize);
 		
+		$tag = $this->markdown->getTagById($tagId);
+		
 		$this->setData("pageName", "tags");
 		$this->setData("tagId", $tagId);
+		$this->setData("tag", $tag);
 		$this->setData("pageNo", $pageNo);
 		$this->setData("pages", $pageData['pages']);
 		$this->setData("blogList", $pageData['blogList']);

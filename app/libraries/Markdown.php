@@ -146,6 +146,26 @@ class Markdown {
 		return NULL;
 	}
 	
+	//根据Id获取分类
+	public function getCategoryById($categoryId) {
+		foreach ($this->categorys as $idx => $category) {
+			if ($category['id'] == $categoryId) {
+				return $category;
+			}
+		}
+		return NULL;
+	}
+	
+	//根据Id获取标签
+	public function getTagById($tagId) {
+		foreach ($this->tags as $idx => $tag) {
+			if ($tag['id'] == $tagId) {
+				return $tag;
+			}
+		}
+		return NULL;
+	}
+	
 	//获取总页数
 	public function getTotalPages($pageSize) {
 		$total = count($this->blogs);
@@ -313,11 +333,16 @@ class Markdown {
 	//读取博客的基本信息
 	private function readPostBaseInfo($serverPath) {
 		$noteBlockArr = $this->getCleanNoteBlockArr($serverPath);
+		$keywrodsArr = array();
+		$tagsArr = array();
+		$cateArr = array();
+		
 		$blogProp = array(
 			"author" => "",
 			"date" => "",
 			"title" => "",
 			"summary" => "",
+			"keywords" => "",
 			"tags" => array(),
 			"category" => array(),
 			"status" => "publish"
@@ -342,9 +367,11 @@ class Markdown {
 					break;
 				case "tags":
 					$blogProp['tags'] = $this->converStrArr($propVal, "tags");
+					$tagsArr = $this->cleanKeywords2Arr($propVal);
 					break;
 				case "category":
 					$blogProp['category'] = $this->converStrArr($propVal, "category");
+					$cateArr = $this->cleanKeywords2Arr($propVal);
 					break;
 				case "status":
 					$blogProp['status'] = $propVal == "draft" ? $propVal : "publish";
@@ -352,7 +379,24 @@ class Markdown {
 			}
 		}
 		
+		$keywrodsArr = array_merge($tagsArr, $cateArr);
+		$blogProp['keywords'] = implode(",", $keywrodsArr);
+		
 		return $blogProp;
+	}
+	
+	private function cleanKeywords2Arr($keywordsStr) {
+		$tagsArr = array();
+		
+		$tagArrTmp1 = explode(",", $keywordsStr);
+		
+		foreach ($tagArrTmp1 as $tag) {
+			$tag = trim($tag);
+			if (!in_array($tag, $tagsArr)) {
+				array_push($tagsArr, $tag);
+			}
+		}
+		return $tagsArr;
 	}
 	
 	//读取所有博客的信息
