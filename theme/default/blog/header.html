@@ -1,0 +1,9 @@
+{% if pageName != "blog" %}
+<header class="entry-header">
+	<h2 class="entry-title"><a href="{{ blog.siteURL}}" rel="bookmark">{{ blog.title}}</a></h2>
+</header><!-- .entry-header -->
+{% else %}
+<header class="entry-header">
+    <h1 class="entry-title">{{ blog.title}}</h1>
+</header><!-- .entry-header -->
+{% endif %}

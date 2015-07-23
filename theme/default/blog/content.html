@@ -1,0 +1,7 @@
+<div class="entry-content">
+{% if pageName == "blog" %}
+{{ blog.content | raw }}
+{% else %}
+{{ blog.summary | raw }}
+{% endif %}
+</div><!-- .entry-content -->

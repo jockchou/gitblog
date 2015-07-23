@@ -1,0 +1,31 @@
+{
+    "author": {
+        "avatar": "http://jockchou.com/img/head_small.png",
+        "name": "jockchou",
+        "email": "164068300@qq.com",
+        "address": "深圳，南山",
+        "github": "jockchou",
+        "weibo": "2558456121"
+    },
+    "blog": {
+        "url": "http://demo.gitblog.cn",
+        "title": "jockchou的博客",
+        "subtitle": "自豪地使用Gitblog",
+        "theme": "default",
+        "recentSize": 3,
+        "pageSize": 3,
+        "feedSize": 10,
+        "visibility": true,
+        "duoshuo": "jockchou",
+        "keywords": "jockchou,markdown",
+        "description": "jockchou的第一个markdown博客"
+    },
+    "text": {
+    	"title": "简介",
+    	"intro": "这是我的博客，欢迎!"
+    },
+    "pages": {
+        "about": "关于"
+    },
+    "params": {}
+}

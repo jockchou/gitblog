@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+<head>
+    {% block head %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+    <meta name="keywords" content="{% block keywords %}{{ confObj.blog.keywords }}{% endblock %}">
+    <meta name="description" content="{% block description %}{{ confObj.blog.description }}{% endblock %}">
+
+	<!--[if lt IE 9]>
+	<script src="/theme/default/js/html5.js"></script>
+	<![endif]-->
+	
+	<title>{% block title %} {{ confObj.blog.title }} {% endblock %}</title>
+	
+	<link rel="stylesheet" href="/theme/default/css/genericons.css?ver=3.2" type="text/css" media="all" />
+	<link rel="stylesheet" href="/theme/default/css/style.css?ver=4.2.2" type="text/css" media="all" />
+	
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="/theme/default/css/ie.css?ver=20141010" type="text/css" media="all" />
+	<![endif]-->
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" href="/theme/default/css/ie7.css?ver=20141010" type="text/css" media="all" />
+	<![endif]-->
+	
+	<script type='text/javascript' src='/theme/default/js/jquery/jquery.js?ver=1.11.2'></script>
+	<script type='text/javascript' src='/theme/default/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+
+    {% endblock %}
+</head>
+
+<body>
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	
+	{% block sidebar %}{% endblock %}
+    
+    {% block content %}{% endblock %}
+    
+	{% block footer %}{% endblock %}
+</div><!-- .site -->
+
+{% include "block/script.html" %}
+</body>
+</html>

@@ -1,0 +1,10 @@
+<div id="content" class="site-content">
+    <div id="primary" class="content-area">
+        <div id="main" class="site-main" role="main">
+        	{% for blog in blogList %}
+            {% include "blog/blog.html" %}
+            {% endfor %}
+            {% include "block/nav.html" %}
+        </div>
+    </div><!-- .content-area -->
+</div><!-- .site-content -->

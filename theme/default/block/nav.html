@@ -1,0 +1,46 @@
+{% if pageName == "category"%}
+{% set path = "/" ~ pageName ~"/" ~ categoryId  %}
+{% elseif pageName == "tags" %}
+{% set path = "/" ~ pageName ~"/" ~ tagId  %}
+{% endif %}
+
+{% if pages > 1 %}
+<nav class="navigation pagination" role="navigation">
+	<h2 class="screen-reader-text">文章导航</h2>
+	<div class="nav-links">
+		{% if pageNo > 1%}
+		<a class="prev page-numbers" href="{{ path }}/page/{{ pageNo - 1}}">Previous page</a>
+		{% endif %}
+		
+		{% if pageNo > 3%}
+		<a class='page-numbers' href='{{ path }}/page/{{ pageNo - 3}}'><span class="meta-nav screen-reader-text">Page </span>{{ pageNo - 3}}</a>
+		{% endif %}
+		
+		{% if pageNo > 2%}
+		<a class='page-numbers' href='{{ path }}/page/{{ pageNo - 2}}'><span class="meta-nav screen-reader-text">Page </span>{{ pageNo - 2}}</a>
+		{% endif %}
+		
+		{% if pageNo > 1%}
+		<a class='page-numbers' href='{{ path }}/page/{{ pageNo - 1}}'><span class="meta-nav screen-reader-text">Page </span>{{ pageNo - 1}}</a>
+		{% endif %}
+		
+		<span class='page-numbers current'><span class="meta-nav screen-reader-text">Page </span>{{ pageNo }}</span>
+		
+		{% if pageNo < pages %}
+		<a class='page-numbers' href='{{ path }}/page/{{ pageNo + 1}}'><span class="meta-nav screen-reader-text">Page </span>{{ pageNo + 1}}</a>
+		{% endif %}
+		
+		{% if pageNo + 1 < pages %}
+		<a class='page-numbers' href='{{ path }}/page/{{ pageNo + 2}}'><span class="meta-nav screen-reader-text">Page </span>{{ pageNo + 2}}</a>
+		{% endif %}
+		
+		{% if pageNo + 2 < pages %}
+		<a class='page-numbers' href='{{ path }}/page/{{ pageNo + 3}}'><span class="meta-nav screen-reader-text">Page </span>{{ pageNo + 3}}</a>
+		{% endif %}
+		
+		{% if pageNo < pages %}
+		<a class="next page-numbers" href="{{ path }}/page/{{ pageNo + 1}}">Next page</a>
+		{% endif %}
+	</div>
+</nav>
+{% endif %}

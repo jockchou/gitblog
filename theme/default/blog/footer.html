@@ -1,0 +1,37 @@
+<footer class="entry-footer">
+	{% if blog.date %}
+    <span class="posted-on">
+        <span class="screen-reader-text">Posted on </span>
+        <time class="entry-date published">{{ blog.date}}</time>
+    </span>
+	{% endif %}
+	
+	{% if blog.author %}
+    <span class="byline">
+        <span class="author vcard">
+            <span class="screen-reader-text">Author </span>
+            {{ blog.author }}
+        </span>
+    </span>
+    {% endif %}
+    
+    {% if attribute(blog.category, 0) %}
+    <span class="cat-links">
+        <span class="screen-reader-text">Categories </span>
+        {% for category in blog.category %}  
+           <a href="{{ category.url }}" rel="category">{{ category.name }}</a>
+        {% endfor %}
+    </span>
+    {% endif %}
+    
+    
+    {% if attribute(blog.tags, 0) %}
+    <span class="tags-links">
+    	
+        <span class="screen-reader-text">Tags </span>
+        {% for tag in blog.tags %}  
+           <a href="{{ tag.url }}" rel="tag">{{ tag.name }}</a>
+        {% endfor %}
+    </span>
+    {% endif %}
+</footer><!-- .entry-footer -->

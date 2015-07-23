@@ -1,0 +1,18 @@
+<div id="sidebar" class="sidebar">
+    <div id="secondary" class="secondary">
+        <div id="widget-area" class="widget-area" role="complementary">
+            <header id="masthead" class="site-header" role="banner">
+                <div class="site-branding">
+                    <p class="site-title"><a href="{{ confObj.blog.url }}" rel="home">{{ confObj.blog.title }}</a></p>
+                    <p class="site-description">{{ confObj.blog.subtitle }}</p>
+                    <button class="secondary-toggle">Menu and widgets</button>
+                </div><!-- .site-branding -->
+            </header><!-- .site-header -->
+            {% include "widget/categories.html" %}
+            {% include "widget/archive.html" %}
+            {% include "widget/recent.html" %}
+            {% include "widget/tagcloud.html" %}
+            {% include "widget/text.html" %}
+        </div><!-- .widget-area -->
+    </div><!-- .secondary -->
+</div><!-- .sidebar -->
