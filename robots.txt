@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: 
+Disallow: /app/
+Disallow: /sys/
+Disallow: /posts/
