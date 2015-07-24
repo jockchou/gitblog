@@ -2,7 +2,7 @@
 author: jockchou
 date: 2015-07-23
 title: 用redis实现微博关注关系
-tags: redis，微博，关注
+tags: redis,微博,关注
 category: NoSQL开发
 status: publish
 summary:由于产品需求的需要，我们做的产品里要实现类似微博里的关注关系。在过去的一篇博客《用MySQL实现微博关注关系的方案分析》分析了MySQL实现方式以及优缺点，这篇博客介绍Redis的实现思路。
