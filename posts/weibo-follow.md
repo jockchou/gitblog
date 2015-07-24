@@ -2,7 +2,7 @@
 author: jockchou
 date: 2015-07-23
 title: 用MySQL实现微博关注关系的方案分析
-tags: MySQL, 微博，关注关系
+tags: MySQL, 微博,关注关系
 category: MySQL数据库
 status: publish
 summary: 由于产品需求的需要，我们做的产品里要实现类似微博里的关注关系。本文是以MySQL为基础，分析用MySQL如何实现微博的关注关系，对理解关注关系有一定的意义。
