@@ -389,7 +389,7 @@ class Markdown {
 		$tagsArr = array();
 		
 		//$tagArrTmp1 = explode(",", $keywordsStr);
-		$tagArrTmp1 = preg_split("/[\s,，]+/", $keywordsStr);
+		$tagArrTmp1 = preg_split("/[\s,，|、；;]+/", $keywordsStr);
 		
 		foreach ($tagArrTmp1 as $tag) {
 			$tag = trim($tag);
