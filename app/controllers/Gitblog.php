@@ -10,15 +10,9 @@ class Gitblog extends CI_Controller {
 	
 	function __construct() {
 		parent::__construct();
-		
 		$this->load->helper('file');
 		$this->load->helper('url');
 		$this->load->driver('cache');
-		$this->load->library('ConfigLoad');
-		$this->load->library('Markdown');
-		$this->load->library('Twig');
-		
-		$this->init();
  	}
  	
  	//首页
@@ -27,6 +21,12 @@ class Gitblog extends CI_Controller {
  	}
  	
  	private function init() {
+ 		
+ 		//加载必要的类库
+		$this->load->library('ConfigLoad');
+		$this->load->library('Markdown');
+		$this->load->library('Twig');
+		
  		//加载配置文件
 		$this->confObj = $this->configload->loadConfig();
 		

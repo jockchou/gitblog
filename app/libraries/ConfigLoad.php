@@ -11,7 +11,7 @@ class ConfigLoad {
 		if (!isset($this->CI)) {
 			$this->CI =& get_instance();
 		}
-    	$this->configPath = APPPATH . "../conf.json";
+    	$this->configPath = str_replace("\\", "/", dirname(APPPATH)) . '/conf.json';
 	}
 	
 	//读取配置文件
