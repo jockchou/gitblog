@@ -10,10 +10,15 @@ class Twig {
     function __construct() {
     	
 		$this->CI = & get_instance();
+		$cachePath = APPPATH . 'cache';
 		
 		Twig_Autoloader::register();
 		$this->loader = new Twig_Loader_Filesystem(dirname(APPPATH) . '/theme/default');
-		$this->twig = new Twig_Environment($this->loader, array('cache' => APPPATH . 'cache', 'auto_reload' => true));
+		if(!is_writable($cachePath)) {
+			$this->twig = new Twig_Environment($this->loader, array('auto_reload' => true));          
+        } else {
+        	$this->twig = new Twig_Environment($this->loader, array('cache' => $cachePath, 'auto_reload' => true));                      
+        }
 	}
 	
 	public function render($tpl, $data, $return = FALSE) {

@@ -47,7 +47,7 @@ class Markdown {
 		$this->CI->load->helper('file');
 		$this->CI->load->helper('url');
 		
-    	$this->postPath = dirname(APPPATH) . '\\posts\\';
+    	$this->postPath = str_replace("\\", "/", dirname(APPPATH)) . '/posts/';
 	}
 	
 	//按分类查找博客
@@ -409,11 +409,11 @@ class Markdown {
 			$fileName = $fileProp['name'];
 			$mtime = date("Y-m-d H:i:s", $fileProp['date']);
 			$ctime = date("Y-m-d H:i:s", $fileProp['cdate']);
-			$serverPath = $fileProp['server_path'];
+			$serverPath = str_replace("\\", "/", $fileProp['server_path']);
 			$relativePath = str_replace($this->postPath, "", $serverPath);
 			
 			$sitePath = $this->changeFileExt($relativePath);
-			$sitePath = "blog/" . str_replace('\\', '/', $sitePath);
+			$sitePath = "blog/" . $this->changeFileExt($relativePath);
 			
 			$siteURL = base_url($sitePath);
 			$blogId = md5($sitePath);

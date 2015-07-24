@@ -14,9 +14,9 @@ class Gitblog extends CI_Controller {
 		$this->load->helper('file');
 		$this->load->helper('url');
 		$this->load->driver('cache');
-		$this->load->library('configload');
-		$this->load->library('markdown');
-		$this->load->library('twig');
+		$this->load->library('ConfigLoad');
+		$this->load->library('Markdown');
+		$this->load->library('Twig');
 		
 		$this->init();
  	}
