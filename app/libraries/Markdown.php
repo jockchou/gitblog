@@ -388,11 +388,12 @@ class Markdown {
 	private function cleanKeywords2Arr($keywordsStr) {
 		$tagsArr = array();
 		
-		$tagArrTmp1 = explode(",", $keywordsStr);
+		//$tagArrTmp1 = explode(",", $keywordsStr);
+		$tagArrTmp1 = preg_split("/[\s,，]+/", $keywordsStr);
 		
 		foreach ($tagArrTmp1 as $tag) {
 			$tag = trim($tag);
-			if (!in_array($tag, $tagsArr)) {
+			if ($tag != "" && !in_array($tag, $tagsArr)) {
 				array_push($tagsArr, $tag);
 			}
 		}
@@ -471,7 +472,7 @@ class Markdown {
 		return true;
 	}
 	
-	//获取文件扩展名
+	//修改后缀名
 	private function changeFileExt($fileName, $ext="html") {
 		$pics = explode('.' , $fileName);
 		if (count($pics) > 1) {
