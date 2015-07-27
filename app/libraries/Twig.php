@@ -22,7 +22,6 @@ class Twig {
 	
 	public function render($tpl, $data, $return = FALSE) {
 		$output = $this->twig->render($tpl, $data);
-		$this->CI->output->append_output($output);
         if ($return) return $output;
     }
     

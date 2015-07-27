@@ -284,7 +284,7 @@ class Markdown {
 	}
 	
 	//获取所有博客
-	public function getAllPosts() {
+	public function getAllBlogs() {
 		return $this->blogs;
 	}
 	
@@ -497,7 +497,7 @@ class Markdown {
 	}
 	
 	//修改后缀名
-	private function changeFileExt($fileName, $ext="html") {
+	public function changeFileExt($fileName, $ext="html") {
 		$pics = explode('.' , $fileName);
 		if (count($pics) > 1) {
 			$pics[count($pics) -1] = $ext;

@@ -8,11 +8,128 @@ class Gitblog extends CI_Controller {
 	//渲染时的数据绑定
 	private $data;
 	
+	//是否导出操作
+	private $export = false;
+	
 	function __construct() {
 		parent::__construct();
 		$this->load->helper('file');
 		$this->load->helper('url');
 		$this->load->driver('cache');
+ 	}
+ 	
+ 	//导出网站
+ 	public function exportSite() {
+ 		
+ 		$this->export = true;
+ 		$this->init();
+ 		
+ 		$pageNo = 0;
+ 		
+ 		//首页所有页面
+		$pageSize = $this->confObj['blog']['pageSize'];
+ 		$pages = $this->markdown->getTotalPages($pageSize);
+ 		for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
+ 			$fileContent = $this->page($pageNo);
+ 			$filePath = GB_SITE_DIR . "/page/";
+ 			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+ 			write_file($filePath . $pageNo . ".html", $fileContent);
+ 			
+ 			if ($pageNo == 1) {
+ 				if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+ 				write_file(GB_SITE_DIR  . "/index.html", $fileContent);
+ 			}
+ 		}
+ 		
+ 		//分类下所有页面
+ 		$categoryList = $this->markdown->getAllCategorys();
+ 		foreach ($categoryList as $idx => $category) {
+ 			$categoryId = $category['id'];
+ 			$pages = $this->markdown->getCategoryTotalPages($categoryId, $pageSize);
+ 			
+ 			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
+	 			$fileContent = $this->category($categoryId, $pageNo);
+	 			$filePath = GB_SITE_DIR . "/category/$categoryId/page/";
+	 			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+	 			write_file($filePath . $pageNo . ".html", $fileContent);
+	 			if ($pageNo == 1) {
+	 				$filePath = GB_SITE_DIR . "/category/$categoryId";
+	 				if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+	 				write_file($filePath  . ".html", $fileContent);
+	 			}
+	 		}
+		}
+		
+		//标签下所有页面
+		$tagsList = $this->markdown->getAllTags();
+ 		foreach ($tagsList as $idx => $tag) {
+ 			$tagId = $tag['id'];
+ 			$pages = $this->markdown->getTagTotalPages($tagId, $pageSize);
+ 			
+ 			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
+	 			$fileContent = $this->tags($tagId, $pageNo);
+	 			$filePath = GB_SITE_DIR . "/tags/$tagId/page/";
+	 			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+	 			write_file($filePath . $pageNo . ".html", $fileContent);
+	 			if ($pageNo == 1) {
+	 				$filePath = GB_SITE_DIR . "/tags/$tagId";
+	 				if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+	 				write_file($filePath  . ".html", $fileContent);
+	 			}
+	 		}
+		}
+		
+		//归档下所有页面
+		$yearMonthList = $this->markdown->getAllYearMonths();
+ 		foreach ($yearMonthList as $idx => $yearMonth) {
+ 			$yearMonthId = $yearMonth['id'];
+ 			$pages = $this->markdown->getYearMonthTotalPages($yearMonthId, $pageSize);
+ 			
+ 			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
+	 			$fileContent = $this->archive($yearMonthId, $pageNo);
+	 			$filePath = GB_SITE_DIR . "/archive/$yearMonthId/page/";
+	 			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+	 			write_file($filePath . $pageNo . ".html", $fileContent);
+	 			if ($pageNo == 1) {
+	 				$filePath = GB_SITE_DIR . "/archive/$yearMonthId";
+	 				if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+	 				write_file($filePath  . ".html", $fileContent);
+	 			}
+	 		}
+		}
+		
+		//博客详情页
+		$blogList = $this->markdown->getAllBlogs();
+		foreach ($blogList as $idx => $blog) {
+			$siteURL = $blog['siteURL'];
+			$fileName = $blog['fileName'];
+			$fileName = $this->markdown->changeFileExt($fileName);
+			$filePath = str_replace($fileName, "", $siteURL);
+			$filePath = GB_SITE_DIR . $filePath;
+			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+			write_file(GB_SITE_DIR  . $siteURL, $fileContent);
+		}
+		
+		//复制主题到目录下
+		$theme = $this->confObj['blog']['theme'];
+		$thfiles = get_dir_file_info("./theme/" . $theme, FALSE);
+		
+		foreach ($thfiles as $fileName => $file) {
+			$pics = explode('.' , $fileName);
+			$fileExt = strtolower(end($pics));
+			
+			if ($fileExt != "html") {
+				$serverPath = $file['server_path'];
+				$serverPath = str_replace("\\", "/", $serverPath);
+				
+				$targetFile = GB_SITE_DIR . substr($serverPath, strpos($serverPath, "/theme/" . $theme));
+				$targetPath = str_replace($fileName, "", $targetFile);
+				
+				if (!file_exists($targetPath)) mkdir($targetPath, 0755, true);
+				
+				copy($serverPath, $targetFile);
+			}
+		}
  	}
  	
  	//首页
@@ -101,7 +218,7 @@ class Gitblog extends CI_Controller {
 		$this->setData("pages", $pageData['pages']);
 		$this->setData("blogList", $pageData['blogList']);
 		
-		$this->render('index.html');
+		return $this->render('index.html');
 	}
 	
 	//按月归档下的博客列表
@@ -133,7 +250,7 @@ class Gitblog extends CI_Controller {
 		$this->setData("pages", $pageData['pages']);
 		$this->setData("blogList", $pageData['blogList']);
 		
-		$this->render('index.html');
+		return $this->render('index.html');
 	}
 	
 	//标签下的博客列表
@@ -168,7 +285,7 @@ class Gitblog extends CI_Controller {
 		$this->setData("pages", $pageData['pages']);
 		$this->setData("blogList", $pageData['blogList']);
 		
-		$this->render('index.html');
+		return $this->render('index.html');
 	}
 	
 	//首页，博客列表
@@ -197,7 +314,7 @@ class Gitblog extends CI_Controller {
 		$this->setData("pages", $pageData['pages']);
 		$this->setData("blogList", $pageData['blogList']);
 		
-		$this->render('index.html');
+		return $this->render('index.html');
 	}
 	
 	//博客详情页
@@ -225,10 +342,16 @@ class Gitblog extends CI_Controller {
  	//渲染页面
  	private function render($tpl) {
  		$htmlPage = $this->twig->render($tpl, $this->data, TRUE);
- 		if (GB_CACHE) {
- 			$cacheKey = $this->getCacheKey();
- 			$this->cache->file->save($cacheKey, $htmlPage, GB_CACHE_TIME);
+ 		
+ 		if (!$this->export) {
+	 		if (GB_CACHE) {
+	 			$cacheKey = $this->getCacheKey();
+	 			$this->cache->file->save($cacheKey, $htmlPage, GB_CACHE_TIME);
+	 		}
+	 		
+	 		$this->output->set_output($htmlPage);
  		}
+ 		return $htmlPage;
  	}
  	
  	//计算缓存Key

@@ -61,6 +61,9 @@ $route['archive/(:any)/page/(:num).html'] 	= 'gitblog/archive/$1/$2';
 $route['archive/(:num).html']				= 'gitblog/archive/$1';
 
 $route['blog/(.+).html'] 					= 'gitblog/blog';
+
+$route['export'] 							= 'gitblog/exportSite';
+
 $route['default_controller'] 				= 'gitblog';
 
 $route['404_override'] = '';

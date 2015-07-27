@@ -14,8 +14,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | always be used to set the mode correctly.
 |
 */
-define('GB_CACHE', TRUE);
+define('GB_CACHE', FALSE);
 define('GB_CACHE_TIME', 60 * 60);
+define('GB_SITE_DIR', "./_site");
 
 define('FILE_READ_MODE', 0644);
 define('FILE_WRITE_MODE', 0666);
