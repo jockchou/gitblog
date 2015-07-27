@@ -130,6 +130,9 @@ class Gitblog extends CI_Controller {
 				copy($serverPath, $targetFile);
 			}
 		}
+		
+		copy("robots.txt", GB_SITE_DIR . "/robots.txt");
+		copy("favicon.ico", GB_SITE_DIR . "/favicon.ico");
  	}
  	
  	//首页
