@@ -56,21 +56,21 @@ class Markdown {
 			return $this->_cacheCategoryBlogs[$categoryId];
 		}
 		
-		$blogsTmpArr = array();
+		$blogList = array();
 		foreach ($this->blogs as $idx => $blog) {
 			$categoryArr = $blog['category'];
 			
 			if (count($categoryArr) > 0) {
 				foreach ($categoryArr as $idx => $cateObj) {
 					if ($cateObj['id'] == $categoryId) {
-						array_push($blogsTmpArr, $blog);
+						array_push($blogList, $blog);
 						continue;
 					}
 				}
 			}
 		}
-		$this->_cacheCategoryBlogs[$categoryId] = $blogsTmpArr;
-		return $blogsTmpArr;
+		$this->_cacheCategoryBlogs[$categoryId] = $blogList;
+		return $blogList;
 	}
 	
 	//按标签查找博客
@@ -79,42 +79,42 @@ class Markdown {
 			return $this->_cacheTagBlogs[$tagId];
 		}
 		
-		$blogsTmpArr = array();
+		$blogList = array();
 		foreach ($this->blogs as $idx => $blog) {
 			$tagArr = $blog['tags'];
 			
 			if (count($tagArr) > 0) {
 				foreach ($tagArr as $idx => $tagObj) {
 					if ($tagObj['id'] == $tagId) {
-						array_push($blogsTmpArr, $blog);
+						array_push($blogList, $blog);
 						continue;
 					}
 				}
 			}
 		}
 		
-		$this->_cacheTagBlogs[$tagId] = $blogsTmpArr;
+		$this->_cacheTagBlogs[$tagId] = $blogList;
 		
-		return $blogsTmpArr;
+		return $blogList;
 	}
 	
 	//按月份查找博客
-	public function getBlogByYearMonth($yearMonth) {
-		if (isset($this->_cacheYearMonthBlogs[$yearMonth])) {
-			return $this->_cacheYearMonthBlogs[$yearMonth];
+	public function getBlogByYearMonthId($yearMonthId) {
+		if (isset($this->_cacheYearMonthBlogs[$yearMonthId])) {
+			return $this->_cacheYearMonthBlogs[$yearMonthId];
 		}
 		
-		$blogsTmpArr = array();
+		$blogList = array();
 		foreach ($this->blogs as $idx => $blog) {
-			$blogMonth = date("Y-m", strtotime($blog['ctime']));
-			if ($yearMonth == $blogMonth) {
-				array_push($blogsTmpArr, $blog);
+			$_yearMonthId = date("Ym", strtotime($blog['ctime']));
+			if ($yearMonthId == $_yearMonthId) {
+				array_push($blogList, $blog);
 			}
 		}
 		
-		$this->_cacheYearMonthBlogs[$yearMonth] = $blogsTmpArr;
+		$this->_cacheYearMonthBlogs[$yearMonthId] = $blogList;
 		
-		return $blogsTmpArr;
+		return $blogList;
 	}
 	
 	//按标题关键字查找博客
@@ -123,17 +123,17 @@ class Markdown {
 			return $this->_cacheTitleBlogs[$title];
 		}
 		
-		$blogsTmpArr = array();
+		$blogList = array();
 		foreach ($this->blogs as $idx => $blog) {
 			$blogTitle = $blog['title'];
 			
 			if (strpos($blogTitle, $title) >= 0) {
-				array_push($blogsTmpArr, $blog);
+				array_push($blogList, $blog);
 			}
 		}
 		
-		$this->_cacheTagBlogs[$title] = $blogsTmpArr;
-		return $blogsTmpArr;
+		$this->_cacheTagBlogs[$title] = $blogList;
+		return $blogList;
 	}
 	
 	//根据Id获取博客
@@ -174,32 +174,32 @@ class Markdown {
 	
 	//获取某个分类的总页数
 	public function getCategoryTotalPages($categoryId, $pageSize) {
-		$categoryBlogList = $this->getBlogByCategory($categoryId);
-		$total = count($categoryBlogList);
+		$blogList = $this->getBlogByCategory($categoryId);
+		$total = count($blogList);
 		return ceil($total / $pageSize);
 	}
 	
 	//获取某个标签的总页数
 	public function getTagTotalPages($tagId, $pageSize) {
-		$tagBlogList = $this->getBlogByTag($tagId);
-		$total = count($tagBlogList);
+		$blogList = $this->getBlogByTag($tagId);
+		$total = count($blogList);
 		return ceil($total / $pageSize);
 	}
 	
 	//获取某个月的总页数
-	public function getYearMonthTotalPages($yearMonth, $pageSize) {
-		$tagBlogList = $this->getBlogByYearMonth($yearMonth);
-		$total = count($tagBlogList);
+	public function getYearMonthTotalPages($yearMonthId, $pageSize) {
+		$blogList = $this->getBlogByYearMonthId($yearMonthId);
+		$total = count($blogList);
 		return ceil($total / $pageSize);
 	}
 	
 	//按分类获取分页列表
 	public function getBlogsPageByCategory($categoryId, $pageNo, $pageSize) {
-		$categoryBlogList = $this->getBlogByCategory($categoryId);
-		$total = count($categoryBlogList);
+		$blogList = $this->getBlogByCategory($categoryId);
+		$total = count($blogList);
 		$pages = ceil($total / $pageSize);
 		$offset = ($pageNo - 1) * $pageSize;
-		$blogList = array_slice($categoryBlogList, $offset, $pageSize);
+		$blogList = array_slice($blogList, $offset, $pageSize);
 		
 		return array(
 			"total" => $total,
@@ -210,11 +210,11 @@ class Markdown {
 	
 	//按标签获取分页列表
 	public function getBlogsPageByTag($tagId, $pageNo, $pageSize) {
-		$tagBlogList = $this->getBlogByTag($tagId);
-		$total = count($tagBlogList);
+		$blogList = $this->getBlogByTag($tagId);
+		$total = count($blogList);
 		$pages = ceil($total / $pageSize);
 		$offset = ($pageNo - 1) * $pageSize;
-		$blogList = array_slice($tagBlogList, $offset, $pageSize);
+		$blogList = array_slice($blogList, $offset, $pageSize);
 		
 		return array(
 			"total" => $total,
@@ -224,12 +224,12 @@ class Markdown {
 	}
 	
 	//按月份获取分页列表
-	public function getBlogsPageByYearMonth($yearMonth, $pageNo, $pageSize) {
-		$monthBlogList = $this->getBlogByYearMonth($yearMonth);
-		$total = count($monthBlogList);
+	public function getBlogsPageByYearMonth($yearMonthId, $pageNo, $pageSize) {
+		$blogList = $this->getBlogByYearMonthId($yearMonthId);
+		$total = count($blogList);
 		$pages = ceil($total / $pageSize);
 		$offset = ($pageNo - 1) * $pageSize;
-		$blogList = array_slice($monthBlogList, $offset, $pageSize);
+		$blogList = array_slice($blogList, $offset, $pageSize);
 		
 		return array(
 			"total" => $total,
@@ -380,23 +380,29 @@ class Markdown {
 		}
 		
 		$keywrodsArr = array_merge($tagsArr, $cateArr);
+		
 		$blogProp['keywords'] = implode(",", $keywrodsArr);
 		
 		return $blogProp;
 	}
 	
+	//获取标签，分类数组
 	private function cleanKeywords2Arr($keywordsStr) {
 		$tagsArr = array();
 		
 		//$tagArrTmp1 = explode(",", $keywordsStr);
-		$tagArrTmp1 = preg_split("/[\s,，|、；;]+/", $keywordsStr);
+		//$tagArrTmpl = preg_split("[，,|；、\s]+", $keywordsStr);
 		
-		foreach ($tagArrTmp1 as $tag) {
+		mb_regex_encoding("UTF-8");
+		mb_internal_encoding("UTF-8");
+		$tagArrTmpl = mb_split("[\s,;|，；、]+", $keywordsStr);
+		foreach ($tagArrTmpl as $tag) {
 			$tag = trim($tag);
 			if ($tag != "" && !in_array($tag, $tagsArr)) {
 				array_push($tagsArr, $tag);
 			}
 		}
+		
 		return $tagsArr;
 	}
 	
@@ -414,13 +420,14 @@ class Markdown {
 			$relativePath = str_replace($this->postPath, "", $serverPath);
 			
 			$sitePath = $this->changeFileExt($relativePath);
-			$sitePath = "blog/" . $this->changeFileExt($relativePath);
+			$siteURL = "/blog/" . $this->changeFileExt($relativePath);
 			
-			$siteURL = base_url($sitePath);
-			$blogId = md5($sitePath);
+			$blogId = md5($siteURL);
 			
+			//读取博客内容
 			$content = $this->readPostContent($serverPath);
 			
+			//读取自定义博客属性信息
 			$blogProp = $this->readPostBaseInfo($serverPath);
 			
 			//草稿状态的不处理
@@ -438,8 +445,15 @@ class Markdown {
 			);
 			
 			$month = date("Y-m", strtotime($ctime));
-			if (!in_array($month, $this->yearMonths)) {
-				array_push($this->yearMonths, $month);
+			$yearMonthId = date("Ym", strtotime($ctime));
+			$monthObj = array(
+				"id" => $yearMonthId,
+				"name" => $month,
+				"url" => "/archive/" . $yearMonthId . ".html"
+			);
+			
+			if (!$this->checkObjInArr($monthObj, "yearMonths")) {
+				array_push($this->yearMonths, $monthObj);
 			}
 			$blog = array_merge($blog, $blogProp);
 			array_push($this->blogs, $blog);
@@ -493,24 +507,21 @@ class Markdown {
 	
 	//将tags, category字符串转成数组
 	private function converStrArr($tags, $type) {
-		$tagsArr = array();
 		$tagsObjArr = array();
 		
-		$tagArrTmp1 = explode(",", $tags);
+		$tagArrTmp1 = $this->cleanKeywords2Arr($tags);
 		
 		foreach ($tagArrTmp1 as $tag) {
 			$tag = trim($tag);
 			$id = abs(crc32(md5($tag)));
+			
 			$tagObj = array(
 				"id" => $id,
 				"name" => $tag,
-				"url" => base_url("/$type/" . $id)
+				"url" => "/$type/" . $id . ".html"
 			);
 			
-			if (!in_array($tag, $tagsArr)) {
-				array_push($tagsObjArr, $tagObj);
-				array_push($tagsArr, $tag);
-			}
+			array_push($tagsObjArr, $tagObj);
 			
 			if (!$this->checkObjInArr($tagObj, $type)) {
 				if ($type == "tags") {
@@ -529,6 +540,8 @@ class Markdown {
 			$objArr = $this->categorys;
 		} else if ($type == "tags") {
 			$objArr = $this->tags;
+		} else if ($type == "yearMonths") {
+			$objArr = $this->yearMonths;
 		}
 		
 		foreach ($objArr as $idx => $obj) {

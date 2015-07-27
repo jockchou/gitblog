@@ -21,11 +21,10 @@ class Gitblog extends CI_Controller {
  	}
  	
  	private function init() {
- 		
- 		//加载必要的类库
+		//加载必要的类库
 		$this->load->library('ConfigLoad');
 		$this->load->library('Markdown');
-		$this->load->library('Twig');
+		$this->load->library('Pager');
 		
  		//加载配置文件
 		$this->confObj = $this->configload->loadConfig();
@@ -33,6 +32,8 @@ class Gitblog extends CI_Controller {
 		if (!$this->confObj) {
 			show_error($this->configload->errMsg(), 500, '解析配置文件出错');
 		}
+		
+		$this->load->library('Twig', array("theme" => $this->confObj['blog']['theme']));
 		
 		//初始化博客信息
 		$this->markdown->initAllBlogData();
@@ -92,6 +93,9 @@ class Gitblog extends CI_Controller {
 		
 		$category = $this->markdown->getCategoryById($categoryId);
 		
+		$pagination = $this->pager->splitPage($pages, $pageNo, "/category/$categoryId/");
+		
+		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "category");
 		$this->setData("categoryId", $categoryId);
 		$this->setData("category", $category);
@@ -103,13 +107,13 @@ class Gitblog extends CI_Controller {
 	}
 	
 	//按月归档下的博客列表
-	public function archive($yearMonth, $pageNo=1) {
+	public function archive($yearMonthId, $pageNo=1) {
 		if ($this->loadOutCache()) return;
 		
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
 		
-		$pages = $this->markdown->getYearMonthTotalPages($yearMonth, $pageSize);
+		$pages = $this->markdown->getYearMonthTotalPages($yearMonthId, $pageSize);
 		
 		if ($pageNo <= 0) {
 			$pageNo = 1;
@@ -119,10 +123,14 @@ class Gitblog extends CI_Controller {
 			$pageNo = $pages;
 		}
 		
-		$pageData = $this->markdown->getBlogsPageByYearMonth($yearMonth, $pageNo, $pageSize);
+		$pageData = $this->markdown->getBlogsPageByYearMonth($yearMonthId, $pageNo, $pageSize);
 		
+		$pagination = $this->pager->splitPage($pages, $pageNo, "/archive/$yearMonthId/");
+		
+		
+		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "archive");
-		$this->setData("yearMonth", $yearMonth);
+		$this->setData("yearMonthId", $yearMonthId);
 		$this->setData("pageNo", $pageNo);
 		$this->setData("pages", $pageData['pages']);
 		$this->setData("blogList", $pageData['blogList']);
@@ -154,6 +162,9 @@ class Gitblog extends CI_Controller {
 		
 		$tag = $this->markdown->getTagById($tagId);
 		
+		$pagination = $this->pager->splitPage($pages, $pageNo, "/tags/$tagId/");
+		$this->setData("pagination", $pagination);
+		
 		$this->setData("pageName", "tags");
 		$this->setData("tagId", $tagId);
 		$this->setData("tag", $tag);
@@ -182,6 +193,8 @@ class Gitblog extends CI_Controller {
 		}
 		
 		$pageData = $this->markdown->getBlogsByPage($pageNo, $pageSize);
+		$pagination = $this->pager->splitPage($pages, $pageNo);
+		$this->setData("pagination", $pagination);
 		
 		$this->setData("pageName", "home");
 		$this->setData("pageNo", $pageNo);
@@ -195,7 +208,7 @@ class Gitblog extends CI_Controller {
 	public function blog() {
 		if ($this->loadOutCache()) return;
 		
-		$openPage = uri_string();
+		$openPage = "/" . uri_string();
 		$blogId = md5($openPage);
 		
 		$blog = $this->markdown->getBlogById($blogId);
@@ -215,9 +228,11 @@ class Gitblog extends CI_Controller {
  	
  	//渲染页面
  	private function render($tpl) {
- 		$cacheKey = $this->getCacheKey();
  		$htmlPage = $this->twig->render($tpl, $this->data, TRUE);
- 		$this->cache->file->save($cacheKey, $htmlPage, GB_CACHE_TIME);
+ 		if (GB_CACHE) {
+ 			$cacheKey = $this->getCacheKey();
+ 			$this->cache->file->save($cacheKey, $htmlPage, GB_CACHE_TIME);
+ 		}
  	}
  	
  	//计算缓存Key

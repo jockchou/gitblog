@@ -7,13 +7,12 @@ class Twig {
 	private $twig;
 	private $CI;
     
-    function __construct() {
-    	
+    function __construct($params) {
 		$this->CI = & get_instance();
 		$cachePath = APPPATH . 'cache';
 		
 		Twig_Autoloader::register();
-		$this->loader = new Twig_Loader_Filesystem(dirname(APPPATH) . '/theme/default');
+		$this->loader = new Twig_Loader_Filesystem(dirname(APPPATH) . '/theme/' . $params['theme']);
 		if(!is_writable($cachePath)) {
 			$this->twig = new Twig_Environment($this->loader, array('auto_reload' => true));          
         } else {

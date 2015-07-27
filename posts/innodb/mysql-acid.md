@@ -2,7 +2,7 @@
 author: jockchou
 date: 2015-07-23
 title: MySQL数据库和ACID模型
-tags: ACID,MySQL,数据库
+tags: ACID，MySQL，数据库
 category: MySQL数据库
 status: publish
 summary: ACID模型是一组强调高可靠性的数据库系统设计原则。InnoDB存储引擎坚持ACID原则，确保即使在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。在一些情况下，如果你有额外的安全保证机制，可靠的硬件条件，或者应用能够容忍少量的数据丢失和不一致，你可以调整MYSQL设置，牺牲掉ACID的一些可靠性换取更高的性能和数据吞吐量。

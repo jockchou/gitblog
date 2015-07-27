@@ -49,16 +49,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['page/(:num)'] 					= 'gitblog/page/$1';
-$route['blog/(.+).html'] 				= 'gitblog/blog';
-$route['category/(:any)/page/(:num)'] 	= 'gitblog/category/$1/$2';
-$route['category/(:any)'] 				= 'gitblog/category/$1';
-$route['tags/(:any)/page/(:num)'] 		= 'gitblog/tags/$1/$2';
-$route['tags/(:any)'] 					= 'gitblog/tags/$1';
-$route['archive/(:any)/page/(:num)'] 	= 'gitblog/archive/$1/$2';
-$route['archive/(:any)']				= 'gitblog/archive/$1';
+$route['page/(:num).html'] 					= 'gitblog/page/$1';
 
-$route['default_controller'] = 'gitblog';
+$route['category/(:num)/page/(:num).html'] 	= 'gitblog/category/$1/$2';
+$route['category/(:num).html'] 				= 'gitblog/category/$1';
+
+$route['tags/(:num)/page/(:num).html'] 		= 'gitblog/tags/$1/$2';
+$route['tags/(:num).html'] 					= 'gitblog/tags/$1';
+
+$route['archive/(:any)/page/(:num).html'] 	= 'gitblog/archive/$1/$2';
+$route['archive/(:num).html']				= 'gitblog/archive/$1';
+
+$route['blog/(.+).html'] 					= 'gitblog/blog';
+$route['default_controller'] 				= 'gitblog';
 
 $route['404_override'] = '';
 

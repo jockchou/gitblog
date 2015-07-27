@@ -3,7 +3,7 @@
     <h2 class="widget-title">文章归档</h2>
     <ul>
     {% for yearMonth in yearMonthList %}
-    <li><a href="/archive/{{ yearMonth }}">{{ yearMonth }}</a></li>
+    <li><a href="{{ yearMonth.url }}">{{ yearMonth.name }}</a></li>
     {% endfor %}
     </ul>
 </aside>

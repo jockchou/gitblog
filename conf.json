@@ -13,7 +13,7 @@
         "subtitle": "自豪地采用Gitblog",
         "theme": "default",
         "recentSize": 5,
-        "pageSize": 5,
+        "pageSize": 3,
         "feedSize": 10,
         "visibility": true,
         "duoshuo": "jockchou",
