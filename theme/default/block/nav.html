@@ -8,9 +8,9 @@
 		
 		{% for page in pagination.showList %}
 			{% if page.isCurrent %}
-			<span class='page-numbers current'><span class="meta-nav screen-reader-text">Page </span>{{ pageNo }}</span>
+			<span class="page-numbers current"><span class="meta-nav screen-reader-text">Page </span>{{ pageNo }}</span>
 			{% else %}
-        	<a class='page-numbers' href='{{ page.url }}'><span class="meta-nav screen-reader-text">Page </span>{{ page.num }}</a>
+        	<a class="page-numbers" href="{{ page.url }}"><span class="meta-nav screen-reader-text">Page </span>{{ page.num }}</a>
         	{% endif %}
         {% endfor %}
 		

@@ -1,0 +1,10 @@
+{% if attribute(recentBlogList, 0) %}
+<aside class="widget widget_recent_entries sidebar-widget clearfix">
+	<h3 class="widget-title">近期文章</h3>
+	<ul>
+	{% for blog in recentBlogList %}
+    <li><a href="{{ blog.siteURL }}">{{ blog.title }}</a></li>
+    {% endfor %}
+	</ul>
+</aside>
+{% endif %}

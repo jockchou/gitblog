@@ -1,0 +1,23 @@
+<footer class="entry-footer">
+	{% if attribute(blog.category, 0) %}
+	<ul class="post-categories">
+        {% for category in blog.category %}  
+          <li><a href="{{ category.url }}" rel="category">{{ category.name }}</a></li>
+        {% endfor %}
+	</ul>
+	{% endif %}
+	
+	{% if attribute(blog.tags, 0) %}
+	<ul class="post-tags">
+        {% for tag in blog.tags %}
+           <li><a href="{{ tag.url }}" rel="tag">{{ tag.name }}</a></li>
+        {% endfor %}
+	</ul>
+	{% endif %}
+	
+	{% if pageName != "blog" %}
+	<div class="read-more">
+		<a href="{{ blog.siteURL }}">Read More <i class="fa fa-angle-double-right "></i></a>
+	</div>
+	{% endif %}
+</footer><!-- .entry-footer -->

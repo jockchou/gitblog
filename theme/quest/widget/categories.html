@@ -1,0 +1,10 @@
+{% if attribute(categoryList, 0) %}
+<aside class="widget widget_categories sidebar-widget clearfix">
+	<h3 class="widget-title">分类目录</h3>
+	<ul>
+		{% for category in categoryList %}
+        <li class="cat-item"><a href="{{ category.url }}" >{{ category.name }}</a></li>
+        {% endfor %}
+	</ul>
+</aside>
+{% endif %}

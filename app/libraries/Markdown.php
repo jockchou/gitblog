@@ -166,6 +166,16 @@ class Markdown {
 		return NULL;
 	}
 	
+		//根据Id获取标签
+	public function getYearMonthById($yearMonthId) {
+		foreach ($this->yearMonths as $idx => $yearMonth) {
+			if ($yearMonth['id'] == $yearMonthId) {
+				return $yearMonth;
+			}
+		}
+		return NULL;
+	}
+	
 	//获取总页数
 	public function getTotalPages($pageSize) {
 		$total = count($this->blogs);

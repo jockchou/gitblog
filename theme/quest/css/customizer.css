@@ -1,0 +1,307 @@
+/* Theme/Text Colors */
+.entry-content blockquote,.action-icon.normal,.action, .pagination>.active>a, .pagination .current, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle, .main-navigation .nav > li.current-menu-item, .main-navigation .nav > li.current-menu-parent {
+	border-color: #27ae60;
+}
+
+.button, input[type="submit"],#submit,.wpcf7-submit,.action-icon.normal:after,.action-icon.normal:hover,.social-icon-container .social-icon:hover,.main-footer a.tag:hover,.pagination .current,.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .main-navigation .navbar-toggle,.quest-gallery .quest-gallery-thumb .fa, .sticky-post-label,.cd-top {
+	background-color: #27ae60;
+}
+
+span a, p a,a,a.tag,.pagination a,.action-icon.normal, .pagination>li>a, .pagination>li>span, .main-navigation .nav > li.current-menu-item > a, .main-navigation .nav > li.current-menu-parent > a {
+	color: #27ae60;
+}
+
+span a:hover,h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover,p a:hover,a:hover,a.tag:hover,.pagination a,.pagination.post-pagination a:hover,.action-icon.normal, .pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
+	color: #239e57;
+}
+
+.button:hover, input[type="submit"]:hover, input[type="submit"]:active, #submit:hover, .wpcf7-submit:hover, #submit:active, .wpcf7-submit:active, .button-:active {
+	-webkit-box-shadow: 0 0 5px #239e57;
+	box-shadow: 0 0 5px #239e57;
+	background: #239e57;
+}
+
+#content textarea, .wpcf7 textarea, #content select, .wpcf7 select, #content input[type="text"], .wpcf7 input[type="text"], #content input[type="password"], .wpcf7 input[type="password"], #content input[type="datetime"], .wpcf7 input[type="datetime"], #content input[type="datetime-local"], .wpcf7 input[type="datetime-local"], #content input[type="date"], .wpcf7 input[type="date"], #content input[type="month"], .wpcf7 input[type="month"], #content input[type="time"], .wpcf7 input[type="time"], #content input[type="week"], .wpcf7 input[type="week"], #content input[type="number"], .wpcf7 input[type="number"], #content input[type="email"], .wpcf7 input[type="email"], #content input[type="url"], .wpcf7 input[type="url"], #content input[type="search"], .wpcf7 input[type="search"], #content input[type="tel"], .wpcf7 input[type="tel"], #content input[type="color"], .wpcf7 input[type="color"], .entry-content blockquote, .action, a .action-icon, .action-icon, .post-grid, .recent-post, #comments .post-comments-form textarea, #comments .post-comments-form input[type=text], #comments #post-comments-form textarea, #comments #post-comments-form input[type=text], #content article.error404 .search input, #menu-item-search form input, .main-sidebar .search input {
+	background-color: #f5f5f5;
+}
+
+#content textarea, .wpcf7 textarea, #content select, .wpcf7 select, #content input[type="text"], .wpcf7 input[type="text"], #content input[type="password"], .wpcf7 input[type="password"], #content input[type="datetime"], .wpcf7 input[type="datetime"], #content input[type="datetime-local"], .wpcf7 input[type="datetime-local"], #content input[type="date"], .wpcf7 input[type="date"], #content input[type="month"], .wpcf7 input[type="month"], #content input[type="time"], .wpcf7 input[type="time"], #content input[type="week"], .wpcf7 input[type="week"], #content input[type="number"], .wpcf7 input[type="number"], #content input[type="email"], .wpcf7 input[type="email"], #content input[type="url"], .wpcf7 input[type="url"], #content input[type="search"], .wpcf7 input[type="search"], #content input[type="tel"], .wpcf7 input[type="tel"], #content input[type="color"], .wpcf7 input[type="color"],article.post-normal .post-image-dummy, article.page .post-image-dummy, .post .post-image-dummy, .post-half .post-image-dummy,.post-grid, .recent-post,#comments .post-comments-form textarea, #comments .post-comments-form input[type=text], #comments #post-comments-form textarea, #comments #post-comments-form input[type=text],.entry-content table,h2.section-head,article.post-normal,hr.fancy,#content article.error404 .search input,.main-header,.main-header.mobile .main-navigation .nav li:hover a,.main-header.mobile .main-navigation .nav a,.main-header.mobile .main-navigation .navbar-collapse.collapse,.main-navigation ul > li ul,#menu-item-search .dropdown-menu,#title-container,.post-image .empty-image,.pagination.post-pagination,#comments #reply-title,#comments li,#comments li li,#comments .post-comments-heading h3,#about-author,.main-sidebar .widget_nav_menu li,.main-sidebar .widget_nav_menu li ul.children,.main-sidebar .widget_categories li,.main-sidebar .widget_archive li,.main-sidebar .widget_archive li ul.children,.main-sidebar .widget_pages li,.main-sidebar .widget_pages li ul.children,.main-sidebar .widget_meta li,.main-sidebar .widget_meta li ul.children,.main-sidebar .widget_recent_comments li,.main-sidebar .widget_recent_comments li ul.children,.main-sidebar .widget_rss li,.main-sidebar .widget_rss li ul.children,.main-sidebar .widget_recent_entries li,.main-sidebar .widget_recent_entries li ul.children,.portfolio-grid-alt-bg,.pagination.post-pagination .previous,.gallery-container .gallery-item, #menu-item-search form input {
+	border-color: #e0e0e0;
+}
+
+#menu-item-search form .arrow-up:before {
+	border-bottom-color: #e0e0e0
+}
+
+.fancy {
+	background-image: linear-gradient(left, white, #e0e0e0 , white);
+}
+
+@media (max-width: 767px) {
+	.main-navigation .nav {
+		border-color: #27ae60;
+	}
+}
+
+h1,h2,h3,h4,h5,h6, h1 a,h2 a,h3 a,h4 a,h5 a,h6 a, .pagination.post-pagination a {
+	color: #222;
+}
+
+body {
+	color: #333;
+}
+
+.post-categories:before, .post-tags:before, article.post-normal .entry-meta, article.page .entry-meta, .post .entry-meta, .post-half .entry-meta, .post-date, .main-sidebar .widget_nav_menu li:before, .main-sidebar .widget_categories li:before, .main-sidebar .widget_archive li:before, .main-sidebar .widget_pages li:before, .main-sidebar .widget_meta li:before, .main-sidebar .widget_recent_comments li:before, .main-sidebar .widget_rss li:before, .main-sidebar .widget_recent_entries li:before, .comment-meta .fa {
+	color: #9d9a9a;
+}
+
+.boxed {
+	background-color: #ddd;
+}
+
+#content {
+	background-color: #fff;
+}
+
+.main-header {
+	background-color: #fff;
+	border-color: #e0e0e0;
+}
+
+.main-header, .main-header a {
+	color: #333;
+}
+
+.main-navigation .nav > li > a {
+	color: #333;
+}
+
+.main-navigation .nav > li:hover > a {
+	color: #239e57;
+}
+
+.main-navigation .nav .dropdown-menu a {
+	color: #333;
+}
+
+.main-navigation .nav .dropdown-menu li:hover > a {
+	color: #239e57;
+}
+
+.main-navigation .nav .dropdown-menu {
+	border-color: #e0e0e0;
+	background-color: #f5f5f5;
+}
+
+.main-navigation .nav .dropdown-menu li:hover > a, .main-navigation .nav .dropdown-menu li:focus > a, .main-navigation .nav .dropdown-menu li.current-menu-item a, .main-navigation .nav .dropdown-menu li.current-menu-ancestor > a {
+	background-color: #fff;
+	color: #239e57;
+}
+
+#title-container {
+	background-color: #f5f5f5;
+	color: #333;
+	border-color: #e0e0e0;
+}
+
+#title-container h3 {
+	color: #333;
+}
+
+.main-footer {
+	background-color: #efefef;
+	color: #5f5f5f;
+}
+
+.main-footer h1 {
+	color: #777777;
+}
+
+.main-footer p, .main-footer li {
+	color: #5f5f5f;
+}
+
+.main-footer, .main-footer li, .main-footer li:last-child {
+	border-color: #c1c1c1;
+}
+
+.copyright {
+	background-color: #2B3A42;
+	color: #d4d7d9;
+}
+
+.social-icon-container .social-icon {
+	color: #959ca0;
+}
+
+.social-icon-container .social-icon:hover {
+	color: #fff;
+	background-color: #27ae60;
+}
+
+
+			/* Typography */
+body, .tooltip {
+	font: 13px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+h1 {
+	font: 32px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+h2 {
+	font: 28px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+h3 {
+	font: 24px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+h4 {
+	font: 20px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+h5 {
+	font: 16px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+h6 {
+	font: 14px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+.main-navigation .nav > li > a {
+	font: 14px 'Open Sans';
+	line-height: inherit;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+.main-navigation .nav .dropdown-menu li a {
+	font: 14px 'Open Sans';
+	line-height: 2.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+.site-title {
+	font: 32px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+.site-description {
+	font: 13px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	word-spacing: 0px;
+}
+
+#title-container ul li {
+	line-height: 36px;
+}
+
+.main-sidebar .sidebar-widget {
+	font: 13px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+.main-sidebar .sidebar-widget .widget-title {
+	font: 24px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+.main-sidebar {
+	font: 13px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+.main-footer h1, .main-footer h2, .main-footer h3 {
+	font: 24px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+
+.copyright {
+	font: 13px 'Open Sans';
+	line-height: 1.5em;
+	font-weight: 300;
+	font-style: normal;
+	text-transform: none;
+	letter-spacing: 0px;
+	word-spacing: 0px;
+}
+			

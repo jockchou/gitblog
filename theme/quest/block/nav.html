@@ -1,0 +1,21 @@
+{% if pages > 1 %}
+<div class="center">
+	<ul class="pagination">
+	{% if pagination.prev %}
+	<li><a class="prev page-numbers" href="{{ pagination.prev.url }}"><i class="fa fa-angle-double-left"></i></a></li>
+	{% endif %}
+	
+	{% for page in pagination.showList %}
+		{% if page.isCurrent %}
+		<li><span class="page-numbers current">{{ pageNo }}</span></li>
+		{% else %}
+		<li><a class="page-numbers" href="{{ page.url }}">{{ page.num }}</a></li>
+    	{% endif %}
+    {% endfor %}
+        
+	{% if pagination.next %}
+	<li><a class="next page-numbers" href="{{ pagination.next.url }}"><i class="fa fa-angle-double-right"></i></a></li>
+	{% endif %}
+	</ul>
+</div>
+{% endif %}

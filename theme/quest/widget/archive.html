@@ -1,0 +1,8 @@
+<aside class="widget widget_archive sidebar-widget clearfix">
+	<h3 class="widget-title">文章归档</h3>
+	<ul>
+	{% for yearMonth in yearMonthList %}
+	<li><a href="{{ yearMonth.url }}">{{ yearMonth.name }}</a></li>
+	{% endfor %}
+	</ul>
+</aside>

@@ -32,10 +32,10 @@ summary: 由于产品需求的需要，我们做的产品里要实现类似微�
 ## 第一种方案 ##
 用一行纪录表示关注和粉丝，字段u2的值表示粉丝，u1表示被关注者。
 
-Table: user(用户表)
+Table: user(用户表)  
 ![](../img/3.png)
 
-Table: follower(u2表示粉丝， u1表示被关注的人)
+Table: follower(u2表示粉丝， u1表示被关注的人)  
 ![](../img/1.png)
 
 查询用户id = 1的关注列表

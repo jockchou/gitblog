@@ -1,0 +1,32 @@
+<div id="content">
+		{% if category %}
+			{% set navObj=category %}
+    	{% elseif tag %}
+    		{% set navObj=tag %}
+    	{% elseif yearMonth %}
+    		{% set navObj=yearMonth %}
+    	{% endif %}
+    	
+    	{% if navObj %}
+    		{% include "block/breadcrumbs.html" %}
+    	{% endif %}
+	<div class="quest-row site-content">
+		<div class="container">
+			<div class="row">
+				<div id="primary" class="content-area col-md-9">
+					<div id="main" class="site-main" role="main">
+						{% for blog in blogList %}
+				        	{% include "blog/blog.html" %}
+				        {% endfor %}
+						{% include "block/nav.html" %}
+					</div>
+					<!-- #main -->
+				</div>
+				{% include "block/secondary.html" %}
+			</div>
+			<!-- .row -->
+		</div>
+		<!-- .container -->
+	</div>
+	<!-- .quest-row -->
+</div><!-- #content -->

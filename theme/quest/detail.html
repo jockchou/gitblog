@@ -1,0 +1,20 @@
+{% extends "block/base.html" %}
+
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block keywords %}{{ blog.keywords }},{{ confObj.blog.title }}{% endblock %}
+
+{% block description %}{{ blog.summary }}{% endblock %}
+
+{% block header %}
+    {% include "block/header.html" %}
+{% endblock %}
+
+{% block content %}
+    {% include "block/content.html" %}
+{% endblock %}
+
+
+{% block footer %}
+    {% include "block/footer.html" %}
+{% endblock %}
