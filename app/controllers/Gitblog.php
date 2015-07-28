@@ -147,30 +147,49 @@ class Gitblog extends CI_Controller {
 		$this->load->library('Pager');
 		
 		$configPath = str_replace("\\", "/", dirname(APPPATH)) . '/' . GB_CONF_FILE;
-		
  		//加载配置文件
 		$this->confObj = $this->yaml->getConfObject($configPath);
 		
+		//侧边栏最近博客条数		
+		$recentSize = $this->confObj['blog']['recentSize'];
+		
+		//是否需要所有博客
+		$allBlogsForPage = $this->confObj['blog']['allBlogsForPage'];
+		
+		//加载模板引擎
 		$this->load->library('Twig', array("theme" => $this->confObj['theme']));
 		
 		//初始化博客信息
 		$this->markdown->initAllBlogData();
 		
+		//所有博客
+		$allBlogsList = null;
+		if ($allBlogsForPage) {
+			//所有博客
+			$allBlogsList = $this->markdown->getAllBlogs();
+		}
+		
 		//所有分类
-		$this->data['categoryList'] = $this->markdown->getAllCategorys();
+		$categoryList = $this->markdown->getAllCategorys();
 		
 		//所有标签
-		$this->data['tagsList'] = $this->markdown->getAllTags();
+		$tagsList = $this->markdown->getAllTags();
 		
 		//归档月份
-		$this->data['yearMonthList'] = $this->markdown->getAllYearMonths();
-		
-		//配置文件
-		$this->data['confObj'] = $this->confObj;
+		$yearMonthList = $this->markdown->getAllYearMonths();
 		
 		//最近博客
-		$recentSize = $this->confObj['blog']['recentSize'];
-		$this->data['recentBlogList'] = $this->markdown->getBlogsRecent($recentSize);
+		$recentBlogList = $this->markdown->getBlogsRecent($recentSize);
+		
+		//设置数据
+		$this->setData("allBlogsList", $allBlogsList);
+		$this->setData("categoryList", $categoryList);
+		$this->setData("tagsList", $tagsList);
+		$this->setData("yearMonthList", $yearMonthList);
+		$this->setData("confObj", $this->confObj);
+		
+		//配置名件对象别名
+		$this->setData("site", $this->confObj);
  	}
  	
  	//加载缓存文件

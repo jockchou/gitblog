@@ -1,0 +1,18 @@
+{% extends "_layouts/default.html" %}
+
+{% block content %}
+<div class="home">
+	<h1 class="page-heading">{{ site.subtitle }}</h1>
+	{% if allBlogsList %}
+	<ul class="post-list">
+		{% for blog in allBlogsList %}
+		<li>
+			<span class="post-meta">{{ blog.date | date("Y-m-d")}}</span>
+			<h2><a class="post-link" href="{{ blog.siteURL }}">{{ blog.title }}</a></h2>
+		</li>
+		{% endfor %}
+	</ul>
+	<p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+	{% endif %}
+</div>
+{% endblock %}

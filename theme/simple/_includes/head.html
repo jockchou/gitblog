@@ -1,0 +1,18 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% if blog %}{{ blog.title }}{% else %}{{ site.title }}{% endif %}</title>
+	<meta name="description" content="{% if blog %}{{ blog.summary | escape | replace({'\n': ''}) | slice(0, 4) }}{% else %}{{ site.description }}{% endif %}">
+	<link rel="stylesheet" href="/theme/simple/css/main.css?ver={{ site.version }}">
+	{% if site.baiduAnalytics %}<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?{{ site.baiduAnalytics }}";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	{% endif %}
+</head>
