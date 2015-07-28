@@ -2,7 +2,7 @@
 
 class Pager {
 	
-	public function splitPage($pages, $pageNo, $path="/", $showLen=4) {
+	public function splitPage($pages, $pageNo, $showLen=4, $path="/") {
 		$pagination = array();
 		$pageList = array();
 		$showList = array();

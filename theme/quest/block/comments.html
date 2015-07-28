@@ -1,3 +1,4 @@
+{% if confObj.duoshuo %}
 <div id="comments" class="clearfix">
 	<div id="respond" class="comment-respond">
 		<!-- 多说评论框 start -->
@@ -5,7 +6,7 @@
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">
-		var duoshuoQuery = {short_name:"{{ confObj.blog.duoshuo }}"};
+		var duoshuoQuery = {short_name:"{{ confObj.duoshuo }}"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;
@@ -18,3 +19,4 @@
         <!-- 多说公共JS代码 end -->
 	</div><!-- #respond -->
 </div>
+{% endif %}

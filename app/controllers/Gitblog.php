@@ -111,7 +111,7 @@ class Gitblog extends CI_Controller {
 		}
 		
 		//复制主题到目录下
-		$theme = $this->confObj['blog']['theme'];
+		$theme = $this->confObj['theme'];
 		$thfiles = get_dir_file_info("./theme/" . $theme, FALSE);
 		
 		foreach ($thfiles as $fileName => $file) {
@@ -142,18 +142,16 @@ class Gitblog extends CI_Controller {
  	
  	private function init() {
 		//加载必要的类库
-		$this->load->library('ConfigLoad');
+		$this->load->library('Yaml');
 		$this->load->library('Markdown');
 		$this->load->library('Pager');
 		
+		$configPath = str_replace("\\", "/", dirname(APPPATH)) . '/' . GB_CONF_FILE;
+		
  		//加载配置文件
-		$this->confObj = $this->configload->loadConfig();
+		$this->confObj = $this->yaml->getConfObject($configPath);
 		
-		if (!$this->confObj) {
-			show_error($this->configload->errMsg(), 500, '解析配置文件出错');
-		}
-		
-		$this->load->library('Twig', array("theme" => $this->confObj['blog']['theme']));
+		$this->load->library('Twig', array("theme" => $this->confObj['theme']));
 		
 		//初始化博客信息
 		$this->markdown->initAllBlogData();
@@ -198,6 +196,7 @@ class Gitblog extends CI_Controller {
 		$categoryId = (int)$categoryId;
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
+		$pageBarSize = $this->confObj['blog']['pageBarSize'];
 		
 		$pages = $this->markdown->getCategoryTotalPages($categoryId, $pageSize);
 		
@@ -211,7 +210,7 @@ class Gitblog extends CI_Controller {
 		
 		$category = $this->markdown->getCategoryById($categoryId);
 		$pageData = $this->markdown->getBlogsPageByCategory($categoryId, $pageNo, $pageSize);
-		$pagination = $this->pager->splitPage($pages, $pageNo, "/category/$categoryId/");
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "/category/$categoryId/");
 		
 		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "category");
@@ -230,6 +229,7 @@ class Gitblog extends CI_Controller {
 		
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
+		$pageBarSize = $this->confObj['blog']['pageBarSize'];
 		
 		$pages = $this->markdown->getYearMonthTotalPages($yearMonthId, $pageSize);
 		
@@ -243,7 +243,7 @@ class Gitblog extends CI_Controller {
 		
 		$yearMonth = $this->markdown->getYearMonthById($yearMonthId);
 		$pageData = $this->markdown->getBlogsPageByYearMonth($yearMonthId, $pageNo, $pageSize);
-		$pagination = $this->pager->splitPage($pages, $pageNo, "/archive/$yearMonthId/");
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "/archive/$yearMonthId/");
 		
 		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "archive");
@@ -265,6 +265,7 @@ class Gitblog extends CI_Controller {
 		$tagId = (int)$tagId;
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
+		$pageBarSize = $this->confObj['blog']['pageBarSize'];
 		
 		$pages = $this->markdown->getTagTotalPages($tagId, $pageSize);
 		
@@ -278,7 +279,7 @@ class Gitblog extends CI_Controller {
 		
 		$tag = $this->markdown->getTagById($tagId);
 		$pageData = $this->markdown->getBlogsPageByTag($tagId, $pageNo, $pageSize);
-		$pagination = $this->pager->splitPage($pages, $pageNo, "/tags/$tagId/");
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "/tags/$tagId/");
 		
 		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "tags");
@@ -297,6 +298,7 @@ class Gitblog extends CI_Controller {
 		
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
+		$pageBarSize = $this->confObj['blog']['pageBarSize'];
 		
 		$pages = $this->markdown->getTotalPages($pageSize);
 		
@@ -309,7 +311,7 @@ class Gitblog extends CI_Controller {
 		}
 		
 		$pageData = $this->markdown->getBlogsByPage($pageNo, $pageSize);
-		$pagination = $this->pager->splitPage($pages, $pageNo);
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize);
 		$this->setData("pagination", $pagination);
 		
 		$this->setData("pageName", "home");
@@ -347,7 +349,8 @@ class Gitblog extends CI_Controller {
  		$htmlPage = $this->twig->render($tpl, $this->data, TRUE);
  		
  		if (!$this->export) {
-	 		if (GB_CACHE) {
+ 			//生产模式下才会缓存
+	 		if (ENVIRONMENT == "production") {
 	 			$cacheKey = $this->getCacheKey();
 	 			$this->cache->file->save($cacheKey, $htmlPage, GB_CACHE_TIME);
 	 		}

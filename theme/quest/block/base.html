@@ -4,9 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% block title %}{{ confObj.blog.title }}{% endblock %}</title>
-	<meta name="keywords" content="{% block keywords %}{{ confObj.blog.keywords }},{{ confObj.blog.title }}{% endblock %}">
-	<meta name="description" content="{% block description %}{{ confObj.blog.description }}{% endblock %}">
+	<title>{% block title %}{{ confObj.title }}{% endblock %}</title>
+	<meta name="keywords" content="{% block keywords %}{{ confObj.keywords }},{{ confObj.title }}{% endblock %}">
+	<meta name="description" content="{% block description %}{{ confObj.description }}{% endblock %}">
 	
 	<link rel="stylesheet" id="quest-bootstrap-css"  href="/theme/quest/assets/plugins/bootstrap/css/bootstrap.min.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	<link rel="stylesheet" id="smartmenus-css"  href="/theme/quest/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css?ver={{ confObj.version }}" type="text/css" media="all" />
@@ -32,11 +32,11 @@
 	<script type="text/javascript" src="/theme/quest/assets/js/quest.js?ver={{ confObj.version }}"></script>
 	<link rel="stylesheet" id="customizer-css"  href="/theme/quest/css/customizer.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	
-	{% if confObj.blog.baiduAnalytics %}<script>
+	{% if confObj.baiduAnalytics %}<script>
 	var _hmt = _hmt || [];
 	(function() {
 	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?{{ confObj.blog.baiduAnalytics }}";
+	  hm.src = "//hm.baidu.com/hm.js?{{ confObj.baiduAnalytics }}";
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();

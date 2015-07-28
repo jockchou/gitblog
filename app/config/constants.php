@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | always be used to set the mode correctly.
 |
 */
-define('GB_CACHE', FALSE);
+define('GB_CONF_FILE', "conf.yaml");
 define('GB_CACHE_TIME', 60 * 60);
 define('GB_SITE_DIR', "./_site");
 
