@@ -38,7 +38,7 @@ class Yaml {
     			"recentSize" => 5,
     			"pageSize" => 5,
     			"pageBarSize" => 4,
-    			"allBlogsForPage" => true
+    			"allBlogsForPage" => false
     		),
     		"text" => array(
     			"title" => "介绍",
