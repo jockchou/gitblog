@@ -186,6 +186,7 @@ class Gitblog extends CI_Controller {
 		$this->setData("categoryList", $categoryList);
 		$this->setData("tagsList", $tagsList);
 		$this->setData("yearMonthList", $yearMonthList);
+		$this->setData("recentBlogList", $recentBlogList);
 		$this->setData("confObj", $this->confObj);
 		
 		//配置名件对象别名

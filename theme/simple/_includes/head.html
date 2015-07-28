@@ -2,8 +2,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% if blog %}{{ blog.title }}{% else %}{{ site.title }}{% endif %}</title>
-	<meta name="description" content="{% if blog %}{{ blog.summary | escape | replace({'\n': ''}) | slice(0, 4) }}{% else %}{{ site.description }}{% endif %}">
+	<title>{% if blog %}{{ blog.title }}|{{ site.title }} {% else %}{{ site.title }}{% endif %}</title>
+	<meta name="keywords" content="{% if blog %}{{ blog.keywords}},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
+	<meta name="description" content="{% if blog %}{{ blog.summary | escape | replace({'\n': ''}) | slice(0, 140) }}{% else %}{{ site.description }}{% endif %}">
 	<link rel="stylesheet" href="/theme/simple/css/main.css?ver={{ site.version }}">
 	{% if site.baiduAnalytics %}<script>
 	var _hmt = _hmt || [];

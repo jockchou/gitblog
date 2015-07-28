@@ -1,10 +1,10 @@
 {% extends "block/base.html" %}
 
-{% block title %}{{ blog.title }}{% endblock %}
+{% block title %}{{ blog.title }}|{{ confObj.title }}{% endblock %}
 
 {% block keywords %}{{ blog.keywords }},{{ confObj.title }}{% endblock %}
 
-{% block description %}{{ blog.summary }}{% endblock %}
+{% block description %}{{ blog.summary | escape | slice(0, 140) }}{% endblock %}
 
 {% block sidebar %}
     {% include "block/sidebar.html" %}  
