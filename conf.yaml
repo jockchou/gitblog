@@ -11,10 +11,10 @@ description     : GitBlog是一个简单易用的Markdown博客系统,这是我�
 version         : 1.0
 
 blog:
-    recentSize: 5
-    pageSize: 5
-    pageBarSize: 4
-    allBlogsForPage: false
+    recentSize      : 5
+    pageSize        : 5
+    pageBarSize     : 4
+    allBlogsForPage : false
     
 author:
     name    : jockchou
