@@ -31,6 +31,8 @@ class Gitblog extends CI_Controller {
  		
  		$pageNo = 0;
  		
+ 		echo "\nexport index page\n";
+ 		
  		//首页所有页面
 		$pageSize = $this->confObj['blog']['pageSize'];
  		$pages = $this->markdown->getTotalPages($pageSize);
@@ -45,7 +47,9 @@ class Gitblog extends CI_Controller {
  				write_file(GB_SITE_DIR  . "/index.html", $fileContent);
  			}
  		}
+ 		echo "export index page success\n";
  		
+ 		echo "\nexport category page\n";
  		//分类下所有页面
  		$categoryList = $this->markdown->getAllCategorys();
  		foreach ($categoryList as $idx => $category) {
@@ -64,7 +68,9 @@ class Gitblog extends CI_Controller {
 	 			}
 	 		}
 		}
+		echo "export category page success\n";
 		
+		echo "\nexport tag page\n";
 		//标签下所有页面
 		$tagsList = $this->markdown->getAllTags();
  		foreach ($tagsList as $idx => $tag) {
@@ -83,7 +89,9 @@ class Gitblog extends CI_Controller {
 	 			}
 	 		}
 		}
+		echo "export tag page success\n";
 		
+		echo "\nexport archive page\n";
 		//归档下所有页面
 		$yearMonthList = $this->markdown->getAllYearMonths();
  		foreach ($yearMonthList as $idx => $yearMonth) {
@@ -102,7 +110,9 @@ class Gitblog extends CI_Controller {
 	 			}
 	 		}
 		}
+		echo "\nexport archive page success\n";
 		
+		echo "\nexport detail page\n";
 		//博客详情页
 		$blogList = $this->markdown->getAllBlogs();
 		foreach ($blogList as $idx => $blog) {
@@ -117,11 +127,12 @@ class Gitblog extends CI_Controller {
 			$fileContent = $this->blog($blogId);
 			write_file(GB_SITE_DIR  . $siteURL, $fileContent);
 		}
+		echo "export detail page success\n";
 		
+		echo "\ncopy theme\n";
 		//复制主题到目录下
 		$theme = $this->confObj['theme'];
 		$thfiles = get_dir_file_info("./theme/" . $theme, FALSE);
-		
 		foreach ($thfiles as $fileName => $file) {
 			$pics = explode('.' , $fileName);
 			$fileExt = strtolower(end($pics));
@@ -138,7 +149,9 @@ class Gitblog extends CI_Controller {
 				copy($serverPath, $targetFile);
 			}
 		}
+		echo "copy theme success\n";
 		
+		echo "\ncopy image\n";
 		//复制图片文件夹
 		$thfiles = get_dir_file_info("./img/", FALSE);
 		foreach ($thfiles as $fileName => $file) {
@@ -150,7 +163,9 @@ class Gitblog extends CI_Controller {
 			if (!file_exists($targetPath)) mkdir($targetPath, 0755, true);
 			copy($serverPath, $targetFile);
 		}
+		echo "copy image success\n";
 		
+		echo "\ncopy feed.xml, robots.txt, favicon.ico\n";
 		//feed.xml文件
 		$feedXmlfilePath = GB_SITE_DIR . "/feed.xml";
 		$feedXmlfileContent = $this->feed();
@@ -158,6 +173,8 @@ class Gitblog extends CI_Controller {
 			
 		copy("robots.txt", GB_SITE_DIR . "/robots.txt");
 		copy("favicon.ico", GB_SITE_DIR . "/favicon.ico");
+		
+		echo "\nexport site success!!!\n";
  	}
  	
  	//首页
