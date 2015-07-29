@@ -26,10 +26,14 @@ class Gitblog extends CI_Controller {
  	//导出网站
  	public function exportSite() {
  		
- 		$this->export = true;
- 		$this->init();
+ 		//非命令行访问，返回404
+ 		if (!$this->input->is_cli_request()) show_404();
  		
  		$pageNo = 0;
+ 		$this->export = true;
+ 		
+ 		//初始化
+ 		$this->init();
  		
  		echo "\nexport index page\n";
  		
