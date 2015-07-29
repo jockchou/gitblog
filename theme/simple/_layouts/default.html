@@ -9,5 +9,11 @@
 		</div>
 	</div>
 	{% include "_includes/footer.html" %}
+
+{% if site.highlight %}
+<link rel="stylesheet" href="/static/highlight/styles/magula.css">
+<script src="/static/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endif %}
 </body>
 </html>

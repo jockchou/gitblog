@@ -23,6 +23,7 @@ class Yaml {
     		"title" => "Your GitBlog",
     		"subtitle" => "自豪地采用GitBlog",
     		"theme" => "simple",
+    		"highlight" => true,
     		"duoshuo" => "",
     		"baiduAnalytics" => "",
     		"keywords" => "GitBlog,博客,Markdown博客,jockchou",

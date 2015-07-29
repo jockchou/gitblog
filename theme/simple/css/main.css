@@ -108,9 +108,14 @@ blockquote > :last-child {
 pre,
 code {
 	font-size: 15px;
-	border: 1px solid #e8e8e8;
+   /**
+	* border: 1px solid #e8e8e8;
+	* border-radius: 3px;
+	* background-color: #eef;
+	*/
+	border: 1px solid #f4f4f4;
 	border-radius: 3px;
-	background-color: #eef;
+	background-color: #f4f4f4;
 }
 
 code {
@@ -119,13 +124,14 @@ code {
 
 pre {
 	padding: 8px 12px;
-	overflow-x: scroll;
+	overflow-x: none;
 }
 
 pre > code {
 	border: 0;
 	padding-right: 0;
 	padding-left: 0;
+	overflow-x: scroll;
 }
 
 /**

@@ -1,2 +1,28 @@
-# gitblog
-markdown blog system, writing blog with markdown!
+## 一. 简介 ##
+
+## 二. 功能特点 ##
+
+## 三. GitBlog优势 ##
+
+## 四. 环境要求 ##
+
+## 五. 详细说明 ##
+
+1. 安装
+2. 配置说明
+3. 常见问题
+4. 编写markdown博客
+5. 评论，订阅，统计相关
+6. 缓存机制
+7. 全站静态导出
+8. 主题
+9. 功能特点FAQ
+10. 在Nginx上运行GitBlog
+10. 在SAE上运行GitBlog
+11. 使用Github Pages搭建
+
+## 六. 需求及bug反馈 ##
+
+## 七. 关于 ##
+
+

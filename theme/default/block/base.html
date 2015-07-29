@@ -52,5 +52,10 @@
 	
 </div><!-- .site -->
 {% include "block/script.html" %}
+{% if site.highlight %}
+<link rel="stylesheet" href="/static/highlight/styles/github.css">
+<script src="/static/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endif %}
 </body>
 </html>

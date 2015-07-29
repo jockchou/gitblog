@@ -55,7 +55,7 @@ PHP 支持 8 种原始数据类型
 	var_dump($e);
 ?>
 ```
-*运行如果：*
+*运行如果：*  
 ![demo01](http://qptemp.qiniudn.com/zhoujing/demo01.jpg)
 
 ## [2. 变量][2] ##
@@ -85,7 +85,7 @@ PHP 支持 8 种原始数据类型
 	}	
 ?>
 ```
-*运行如果：*
+*运行如果：*  
 ![demo01](http://qptemp.qiniudn.com/zhoujing/demo02.jpg)
 
 *例子中几个常用函数，死记住*
@@ -110,7 +110,7 @@ PHP 支持 8 种原始数据类型
 	echo __DIR__ . "\n";
 ?>
 ```
-*运行如果：*
+*运行如果：*  
 ![demo03](http://qptemp.qiniudn.com/zhoujing/demo03.jpg)
 
 *常量的特性：*
@@ -144,7 +144,7 @@ PHP 支持 8 种原始数据类型
 	var_dump($rtn2);
 ?>
 ```
-*运行如果：*
+*运行如果：*  
 ![demo04](http://qptemp.qiniudn.com/zhoujing/demo04.jpg)
 
 *1.php不支持函数重载*
@@ -199,7 +199,7 @@ PHP中数组的功能非常强大，几乎是现实了Java中的Array, List, Map
 	var_dump($map);
 ?>
 ```
-*运行如果：*
+*运行如果：*  
 ![demo05](http://qptemp.qiniudn.com/zhoujing/demo05.jpg)
 
 ## [6. 面向对象][17] ##
@@ -255,7 +255,7 @@ $tom->setSchool("shengzhen");
 var_dump($tom);
 ?>
 ```
-*运行如果：*
+*运行如果：*  
 ![demo06](http://qptemp.qiniudn.com/zhoujing/demo06.jpg)
 
 
@@ -333,7 +333,7 @@ server {
 		echo "you muse input your name.";
 ?>
 ```
-*运行如果：*
+*运行如果：*  
 ![demo07](http://qptemp.qiniudn.com/zhoujing/demo07.jpg)
 ### 5. Nginx配置CodeIgniter
 *nginx配置php:*

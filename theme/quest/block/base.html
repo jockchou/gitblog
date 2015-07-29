@@ -53,5 +53,10 @@
 		{% block footer %} {% endblock %}
 	</div><!-- #page -->
 	<a href="#0" class="cd-top"><i class="fa fa-angle-up"></i></a>
+{% if site.highlight %}
+<link rel="stylesheet" href="/static/highlight/styles/kimbie.css">
+<script src="/static/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endif %}
 </body>
 </html>
