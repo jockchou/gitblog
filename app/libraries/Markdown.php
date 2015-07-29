@@ -481,6 +481,7 @@ class Markdown {
 		
 		foreach ($blogArray as $key => $row) {
 			$dateArr[$key] = $row[$sortKey];
+			$ctimeArr[$key] = $row['mtime'];
 		}
 		
 		array_multisort($dateArr, SORT_DESC, $ctimeArr, SORT_DESC, $blogArray);
