@@ -15,5 +15,10 @@
 <script src="/static/highlight/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 {% endif %}
+
+{% if site.mathjax %}
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+{% endif %}
 </body>
 </html>

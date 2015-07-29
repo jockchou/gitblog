@@ -3,7 +3,7 @@
 url             : "http://demo.gitblog.cn"
 title           : jockchou的博客
 subtitle        : 自豪地采用GitBlog
-theme           : default
+theme           : simple
 highlight       : on
 mathjax         : on
 duoshuo         : jockchou

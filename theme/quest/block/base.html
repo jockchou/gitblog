@@ -33,11 +33,6 @@
 	<link rel="stylesheet" id="customizer-css"  href="/theme/quest/css/customizer.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	<link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
 	
-	{% if site.mathjax %}
-	<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
-	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-	{% endif %}
-	
 	{% if confObj.baiduAnalytics %}<script>
 	var _hmt = _hmt || [];
 	(function() {
@@ -59,10 +54,16 @@
 		{% block footer %} {% endblock %}
 	</div><!-- #page -->
 	<a href="#0" class="cd-top"><i class="fa fa-angle-up"></i></a>
+	
 {% if site.highlight %}
 <link rel="stylesheet" href="/static/highlight/styles/kimbie.css">
 <script src="/static/highlight/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
+{% endif %}
+
+{% if site.mathjax %}
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
 </body>
 </html>

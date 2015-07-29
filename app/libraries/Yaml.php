@@ -24,7 +24,7 @@ class Yaml {
     		"subtitle" => "自豪地采用GitBlog",
     		"theme" => "simple",
     		"highlight" => true,
-    		"mathjax" => true,
+    		"mathjax" => false,
     		"duoshuo" => "",
     		"baiduAnalytics" => "",
     		"keywords" => "GitBlog,博客,Markdown博客,jockchou",
