@@ -1,6 +1,6 @@
 #GitBlog配置文件，使用4个空格代替Tab
 ---
-url             : "http://demo.gitblog.cn"
+url             : "http://jockchou.gitblog.cn"
 title           : jockchou的博客
 subtitle        : 自豪地采用GitBlog
 theme           : quest
