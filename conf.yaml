@@ -3,7 +3,7 @@
 url             : "http://demo.gitblog.cn"
 title           : jockchou的博客
 subtitle        : 自豪地采用GitBlog
-theme           : simple
+theme           : quest
 highlight       : on
 mathjax         : on
 duoshuo         : jockchou
@@ -14,7 +14,7 @@ version         : 1.0
 
 blog:
     recentSize      : 5
-    pageSize        : 5
+    pageSize        : 10
     pageBarSize     : 5
     allBlogsForPage : false
     

@@ -469,18 +469,21 @@ class Markdown {
 			array_push($this->blogs, $blog);
 		}
 		
-		$this->sortBlogs($this->blogs, 'ctime');
+		$this->sortBlogs($this->blogs, 'date');
 	}
 	
 	//对所有博客排序
-	private function sortBlogs($blogArray, $sortKey, $desc = 1) {
+	private function sortBlogs($blogArray, $sortKey) {
 		if (count($blogArray) <= 0) return $blogArray;
+		
 		$ctimeArr = null;
+		$dateArr = null;
 		
 		foreach ($blogArray as $key => $row) {
-			$ctimeArr[$key] = $row[$sortKey];
+			$dateArr[$key] = $row[$sortKey];
 		}
-		array_multisort($ctimeArr, $desc == 1 ? SORT_DESC : SORT_ASC, $blogArray);
+		
+		array_multisort($dateArr, SORT_DESC, $ctimeArr, SORT_DESC, $blogArray);
 		
 		$this->blogs = $blogArray;
 	}
