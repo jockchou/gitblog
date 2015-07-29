@@ -32,6 +32,12 @@
 	<script type="text/javascript" src="/theme/quest/assets/js/quest.js?ver={{ confObj.version }}"></script>
 	<link rel="stylesheet" id="customizer-css"  href="/theme/quest/css/customizer.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	<link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
+	
+	{% if site.mathjax %}
+	<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	{% endif %}
+	
 	{% if confObj.baiduAnalytics %}<script>
 	var _hmt = _hmt || [];
 	(function() {

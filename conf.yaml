@@ -3,8 +3,9 @@
 url             : "http://demo.gitblog.cn"
 title           : jockchou的博客
 subtitle        : 自豪地采用GitBlog
-theme           : simple
+theme           : default
 highlight       : on
+mathjax         : on
 duoshuo         : jockchou
 baiduAnalytics  : 732acc76ff6bd41343951a67cbfafe34
 keywords        : jockchou,markdown,blog,php,github
