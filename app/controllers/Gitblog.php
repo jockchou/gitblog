@@ -106,12 +106,15 @@ class Gitblog extends CI_Controller {
 		//博客详情页
 		$blogList = $this->markdown->getAllBlogs();
 		foreach ($blogList as $idx => $blog) {
+			$blogId = $blog['blogId'];
 			$siteURL = $blog['siteURL'];
 			$fileName = $blog['fileName'];
 			$fileName = $this->markdown->changeFileExt($fileName);
 			$filePath = str_replace($fileName, "", $siteURL);
 			$filePath = GB_SITE_DIR . $filePath;
 			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+			
+			$fileContent = $this->blog($blogId);
 			write_file(GB_SITE_DIR  . $siteURL, $fileContent);
 		}
 		
@@ -136,6 +139,23 @@ class Gitblog extends CI_Controller {
 			}
 		}
 		
+		//复制图片文件夹
+		$thfiles = get_dir_file_info("./img/", FALSE);
+		foreach ($thfiles as $fileName => $file) {
+			$serverPath = $file['server_path'];
+			$serverPath = str_replace("\\", "/", $serverPath);
+			
+			$targetPath = GB_SITE_DIR . "/img/";
+			$targetFile = GB_SITE_DIR . "/img/" . $file['name'];
+			if (!file_exists($targetPath)) mkdir($targetPath, 0755, true);
+			copy($serverPath, $targetFile);
+		}
+		
+		//feed.xml文件
+		$feedXmlfilePath = GB_SITE_DIR . "/feed.xml";
+		$feedXmlfileContent = $this->feed();
+		write_file($feedXmlfilePath, $feedXmlfileContent);
+			
 		copy("robots.txt", GB_SITE_DIR . "/robots.txt");
 		copy("favicon.ico", GB_SITE_DIR . "/favicon.ico");
  	}
@@ -347,11 +367,13 @@ class Gitblog extends CI_Controller {
 	}
 	
 	//博客详情页
-	public function blog() {
+	public function blog($blogId=null) {
 		if ($this->loadOutCache()) return;
 		
-		$openPage = "/" . uri_string();
-		$blogId = md5($openPage);
+		if (!$blogId) {
+			$openPage = "/" . uri_string();
+			$blogId = md5($openPage);
+		}
 		
 		$blog = $this->markdown->getBlogById($blogId);
 		if ($blog == null) {
@@ -360,7 +382,7 @@ class Gitblog extends CI_Controller {
 		
 		$this->setData("pageName", "blog");
 		$this->setData("blog", $blog);
-		$this->render('detail.html');
+		return $this->render('detail.html');
 	}
 	
 	//feed.xml
@@ -379,10 +401,12 @@ class Gitblog extends CI_Controller {
 		$data['site'] = $this->yaml->getConfObject($this->configPath);
 		
 		$feedXml = $this->load->view('feed', $data, true);
-		$this->cache->file->save('feed.xml', $feedXml, 24 * 60 *60);
-		
-		$this->output->set_content_type("application/xml");
-		$this->output->set_output($feedXml);
+		if (!$this->export) {
+			$this->cache->file->save('feed.xml', $feedXml, 24 * 60 *60);
+			$this->output->set_content_type("application/xml");
+			$this->output->set_output($feedXml);
+		}
+		return $feedXml;
 	}
 	//设置渲染数据
 	private function setData($key, $dataObj) {
