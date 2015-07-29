@@ -6,6 +6,7 @@
 	<meta name="keywords" content="{% if blog %}{{ blog.keywords}},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
 	<meta name="description" content="{% if blog %}{{ blog.summary | escape | replace({'\n': ''}) | slice(0, 140) }}{% else %}{{ site.description }}{% endif %}">
 	<link rel="stylesheet" href="/theme/simple/css/main.css?ver={{ site.version }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
 	{% if site.baiduAnalytics %}<script>
 	var _hmt = _hmt || [];
 	(function() {

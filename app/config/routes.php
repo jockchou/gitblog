@@ -49,6 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+$route['feed.xml'] 							= 'gitblog/feed';
+
 $route['page/(:num).html'] 					= 'gitblog/page/$1';
 
 $route['category/(:num)/page/(:num).html'] 	= 'gitblog/category/$1/$2';

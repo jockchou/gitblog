@@ -11,11 +11,16 @@ class Gitblog extends CI_Controller {
 	//是否导出操作
 	private $export = false;
 	
+	//配置文件
+	private $configPath;
+	
 	function __construct() {
 		parent::__construct();
 		$this->load->helper('file');
 		$this->load->helper('url');
 		$this->load->driver('cache');
+		
+		$this->configPath = str_replace("\\", "/", dirname(APPPATH)) . '/' . GB_CONF_FILE;
  	}
  	
  	//导出网站
@@ -146,9 +151,8 @@ class Gitblog extends CI_Controller {
 		$this->load->library('Markdown');
 		$this->load->library('Pager');
 		
-		$configPath = str_replace("\\", "/", dirname(APPPATH)) . '/' . GB_CONF_FILE;
  		//加载配置文件
-		$this->confObj = $this->yaml->getConfObject($configPath);
+		$this->confObj = $this->yaml->getConfObject($this->configPath);
 		
 		//侧边栏最近博客条数		
 		$recentSize = $this->confObj['blog']['recentSize'];
@@ -359,6 +363,27 @@ class Gitblog extends CI_Controller {
 		$this->render('detail.html');
 	}
 	
+	//feed.xml
+	public function feed() {
+		
+		//加载必要的类库
+		$this->load->library('Markdown');
+		$this->load->library('Yaml');
+		
+		//初始化博客信息
+		$this->markdown->initAllBlogData();
+		
+		$blogList = $this->markdown->getAllBlogs();
+		
+		$data['blogList'] = $blogList;
+		$data['site'] = $this->yaml->getConfObject($this->configPath);
+		
+		$feedXml = $this->load->view('feed', $data, true);
+		$this->cache->file->save('feed.xml', $feedXml, 24 * 60 *60);
+		
+		$this->output->set_content_type("application/xml");
+		$this->output->set_output($feedXml);
+	}
 	//设置渲染数据
 	private function setData($key, $dataObj) {
  		$this->data[$key] = $dataObj;
