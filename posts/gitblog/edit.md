@@ -37,7 +37,7 @@ Gitblog是一个简单易用的Markdown博客系统，它不需要数据库，�
 -->
 ```
 
-*注意：markdowny文件须采用utf8编码*，如果出现乱码，请修改编码为utf8。
+*注意：markdown文件须采用utf8编码*，如果出现乱码，请修改编码为utf8。
 
 
 ## 博客属性定义 ##
@@ -49,7 +49,7 @@ Gitblog目前针对博客定义了以下属性：
 - title: 博客标题  
 - tags: 博客里的标签，多个用逗号或空格分隔  
 - category: 博客分类，多个用逗号或空格分隔  
-- status: 博客状态，`draft`表示草稿，不会加载展示；`publish`表示发表状态，默认为publish  
+- status: 博客状态，`draft`表示草稿，Gitblog解析时会忽略草稿；`publish`表示发表状态，默认为publish  
 - summary: 博客摘要信息  
 
 以上所有信息都是独占一行，暂不支持写在多行。

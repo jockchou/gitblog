@@ -36,16 +36,15 @@ PHP 5.2.4+
 ## 六. 详细说明 ##
 
 [1. 安装][1]  
-[2. 配置说明][2]  
-[3. 常见问题][3]  
-[4. 编写markdown博客][4]  
-[5. 评论，订阅，统计相关][5]  
-[6. 缓存机制][6]  
-[7. 全站静态导出][7]  
-[8. 主题开发][8]  
-[9. 在Nginx上运行GitBlog][9]  
-[10. 在SAE上运行GitBlog][10]  
-[11. 使用Github Pages搭建][11]  
+[2. 配置说明][2]    
+[3. 编写markdown博客][3]  
+[4. 评论，订阅，统计等][4]  
+[5. 缓存机制][5]  
+[6. 全站静态导出][6]  
+[7. 主题开发][7]  
+[8. 在Nginx上运行GitBlog][8]  
+[9. 在SAE上运行GitBlog][9]  
+[10. 使用Github Pages搭建][10]  
 
 ## 七. 问题及bug反馈 ##
 
@@ -61,14 +60,13 @@ QQ群：`84692078`
 
 [1]:./posts/gitblog/install.md
 [2]:./posts/gitblog/config.md
-[3]:./posts/gitblog/faqs.md
-[4]:./posts/gitblog/edit.md
-[5]:./posts/gitblog/other-func.md
-[6]:./posts/gitblog/cache.md
-[7]:./posts/gitblog/export.md
-[8]:./posts/gitblog/theme.md
-[9]:./posts/gitblog/nginx.md
-[10]:./posts/gitblog/sae.md
-[11]:./posts/gitblog/github-pages.md
+[3]:./posts/gitblog/edit.md
+[4]:./posts/gitblog/other-func.md
+[5]:./posts/gitblog/cache.md
+[6]:./posts/gitblog/export.md
+[7]:./posts/gitblog/theme.md
+[8]:./posts/gitblog/nginx.md
+[9]:./posts/gitblog/sae.md
+[10]:./posts/gitblog/github-pages.md
 
 
