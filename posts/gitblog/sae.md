@@ -19,7 +19,7 @@ https://svn.sinaapp.com/gitblogdoc/
 ```
 
 ## SAE的配置 ##
-在上传代码到SAE这前，需要配置一下。SAE的配置文件为`config.yaml`，把它放到网站根目录下，需要配置rewrite用以支持Gitblog伪静态。
+在上传代码到SAE前，需要配置一下。SAE的配置文件为`config.yaml`，把它放到网站根目录下，配置rewrite用以支持Gitblog伪静态。
 
 ```
 name: gitblogdoc
