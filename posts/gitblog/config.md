@@ -47,12 +47,12 @@ text:
 ```
 
 你可能需要修改的配置参数：
-url: 修改成你的域名
-title： 修改成你的博客标题
-subtitle： 修改成你的副标题
-duoshuo： Gitblog采用多[说评](http://duoshuo.com/)论框，你需要申请多说账号，并在这里填写你的多说ID
-baiduAnalytics： Gitblog采用[百度统计](http://tongji.baidu.com/)，你需要申请百度统计账号，在这里填写你的统计Key
-author：修改为你个人的信息即可
+- url: 修改成你的域名  
+- title： 修改成你的博客标题  
+- subtitle： 修改成你的副标题  
+- duoshuo： Gitblog采用多[说评](http://duoshuo.com/)论框，你需要申请多说账号，并在这里填写你的多说ID  
+- baiduAnalytics： Gitblog采用[百度统计](http://tongji.baidu.com/)，你需要申请百度统计账号，在这里填写你的统计Key  
+- author：修改为你个人的信息即可  
 
 如果你不需要评论和统计功能，删除`duoshuo`和`baiduAnalytics`这两荐即可。其他信息，可根据浏览博客页面的效果进行修改调整。
 
