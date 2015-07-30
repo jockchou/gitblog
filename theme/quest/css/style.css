@@ -233,7 +233,7 @@ q:after {
 
 tt, kbd, pre, code, samp, var {
   color: #c7254e;
-  background-color: #f9f2f4;
+  background-color: #f0f0f0;
   font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, monospace;
   padding: 4px 6px;
   -webkit-border-radius: 3px;

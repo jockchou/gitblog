@@ -1,11 +1,11 @@
 <!--
 author: jockchou
 date: 2015-07-30
-title: 编写markdown博客
+title: 编写Gitblog博客
 tags: GitBlog
 category: GitBlog
 status: publish
-summary: 一篇Gitblog就是一个markdown文件，Gitblog使用解析markdown文件为html展示在网页上。所有的博客markdown文件必须放在`posts`文件夹里。后缀名只可以是`xx.md`或者`xx.markdown`。
+summary: 一篇Gitblog就是一个markdown文件，Gitblog使用解析markdown文件为html展示在网页上。所有的博客markdown文件必须放在posts文件夹里。后缀名只可以是xx.md或者xx.markdown。
 -->
 
 一篇Gitblog就是一个markdown文件，Gitblog使用解析markdown文件为html展示在网页上。所有的博客markdown文件必须放在`posts`文件夹里。后缀名只可以是`xx.md`或者`xx.markdown`。
@@ -68,4 +68,4 @@ posts/hello/helloword.md
 http://jockchou.gitblog.cn/blog/hello/helloworld.html
 ```
 
-Gitblog对`posts`中子文件夹的层级没有限制，但请尽量不要太深，一般2，3层就够了。
+Gitblog对`posts`中子文件夹的层级没有限制，但请尽量不要太深，一般2，3层就够了。如果你在本地编写博客，使用FTP工具上传markdown文件到`posts`目录。
