@@ -440,6 +440,9 @@ class Markdown {
 			//读取自定义博客属性信息
 			$blogProp = $this->readPostBaseInfo($serverPath);
 			
+			//没有title的博客不处理
+			if (empty($blogProp['title'])) continue;
+			
 			//草稿状态的不处理
 			if ($blogProp == "draft") continue;
 			

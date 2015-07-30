@@ -16,7 +16,9 @@
 				<div id="primary" class="content-area col-md-9">
 					<div id="main" class="site-main" role="main">
 						{% for blog in blogList %}
+							{% if blog.title %}
 				        	{% include "blog/blog.html" %}
+				        	{% endif %}
 				        {% endfor %}
 						{% include "block/nav.html" %}
 					</div>

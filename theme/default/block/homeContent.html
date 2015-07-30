@@ -16,7 +16,9 @@
     	{% endif %}
     	
         {% for blog in blogList %}
+        	{% if blog.title %}
         	{% include "blog/blog.html" %}
+        	{% endif %}
         {% endfor %}
         
         {% include "block/nav.html" %}

@@ -6,10 +6,12 @@
 	{% if blogList %}
 	<ul class="post-list">
 		{% for blog in blogList %}
+		{% if blog.title %}
 		<li>
 			<span class="post-meta">{{ blog.date | date("Y-m-d")}}</span>
 			<h2><a class="post-link" href="{{ blog.siteURL }}">{{ blog.title }}</a></h2>
 		</li>
+		{% endif %}
 		{% endfor %}
 	</ul>
 	<p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
