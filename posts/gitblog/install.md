@@ -83,8 +83,8 @@ server {
 
 ## 权限问题 ##
 
-确保`posts`拥有读权限
-确保`app/cache`和`app/logs`目录的写权限
+确保`posts`拥有读权限  
+确保`app/cache`和`app/logs`目录的写权限  
 
 假如运行php-fpm的用户名为apache：
 
