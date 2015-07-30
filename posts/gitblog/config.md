@@ -1,6 +1,6 @@
 <!--
 author: jockchou
-date: 2015-07-30
+date: 2015-07-28
 title: GitBlog配置
 tags: GitBlog
 category: GitBlog

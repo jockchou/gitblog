@@ -1,6 +1,6 @@
 <!--
 author: jockchou
-date: 2015-07-30
+date: 2015-07-27
 title: 编写Gitblog博客
 tags: GitBlog
 category: GitBlog

@@ -442,7 +442,7 @@ class Gitblog extends CI_Controller {
  			//生产模式下才会缓存
 	 		if (ENVIRONMENT == "production") {
 	 			$cacheKey = $this->getCacheKey();
-	 			$this->cache->file->save($cacheKey, $htmlPage, GB_CACHE_TIME);
+	 			$this->cache->file->save($cacheKey, $htmlPage, GB_PAGE_CACHE_TIME);
 	 		}
 	 		
 	 		$this->output->set_output($htmlPage);

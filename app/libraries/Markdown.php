@@ -25,18 +25,6 @@ class Markdown {
 	//博客属性
 	public $notePropArray;
 	
-	//博客分类缓存
-	private $_cacheCategoryBlogs = array();
-	
-	//博客分标签缓存
-	private $_cacheTagBlogs = array();
-	
-	//博客按关键字缓存
-	private $_cacheTitleBlogs = array();
-	
-	//博客按月缓存
-	private $_cacheYearMonthBlogs = array();
-	
 	public function __construct() {
 		if (!isset($this->CI)) {
 			$this->CI =& get_instance();
@@ -46,134 +34,163 @@ class Markdown {
 		
 		$this->CI->load->helper('file');
 		$this->CI->load->helper('url');
+		$this->CI->load->driver('cache');
 		
     	$this->postPath = str_replace("\\", "/", dirname(APPPATH)) . '/posts/';
 	}
 	
 	//按分类查找博客
 	public function getBlogByCategory($categoryId) {
-		if (isset($this->_cacheCategoryBlogs[$categoryId])) {
-			return $this->_cacheCategoryBlogs[$categoryId];
-		}
+		$cacheKey = "getBlogByCategory_" . $categoryId . ".gb";
+		$blogList = $this->gbReadCache($cacheKey);
 		
-		$blogList = array();
-		foreach ($this->blogs as $idx => $blog) {
-			$categoryArr = $blog['category'];
-			
-			if (count($categoryArr) > 0) {
-				foreach ($categoryArr as $idx => $cateObj) {
-					if ($cateObj['id'] == $categoryId) {
-						array_push($blogList, $blog);
-						continue;
+		if ($blogList === false) {
+			$blogList = array();
+			foreach ($this->blogs as $idx => $blog) {
+				$categoryArr = $blog['category'];
+				
+				if (count($categoryArr) > 0) {
+					foreach ($categoryArr as $idx => $cateObj) {
+						if ($cateObj['id'] == $categoryId) {
+							array_push($blogList, $blog);
+							continue;
+						}
 					}
 				}
 			}
+			$this->gbWriteCache($cacheKey, $blogList);
 		}
-		$this->_cacheCategoryBlogs[$categoryId] = $blogList;
 		return $blogList;
 	}
 	
 	//按标签查找博客
 	public function getBlogByTag($tagId) {
-		if (isset($this->_cacheTagBlogs[$tagId])) {
-			return $this->_cacheTagBlogs[$tagId];
-		}
+		$cacheKey = "getBlogByTag_" . $tagId . ".gb";
+		$blogList = $this->gbReadCache($cacheKey);
 		
-		$blogList = array();
-		foreach ($this->blogs as $idx => $blog) {
-			$tagArr = $blog['tags'];
-			
-			if (count($tagArr) > 0) {
-				foreach ($tagArr as $idx => $tagObj) {
-					if ($tagObj['id'] == $tagId) {
-						array_push($blogList, $blog);
-						continue;
+		if ($blogList === false) {
+			$blogList = array();
+			foreach ($this->blogs as $idx => $blog) {
+				$tagArr = $blog['tags'];
+				
+				if (count($tagArr) > 0) {
+					foreach ($tagArr as $idx => $tagObj) {
+						if ($tagObj['id'] == $tagId) {
+							array_push($blogList, $blog);
+							continue;
+						}
 					}
 				}
 			}
+			$this->gbWriteCache($cacheKey, $blogList);
 		}
-		
-		$this->_cacheTagBlogs[$tagId] = $blogList;
 		
 		return $blogList;
 	}
 	
 	//按月份查找博客
 	public function getBlogByYearMonthId($yearMonthId) {
-		if (isset($this->_cacheYearMonthBlogs[$yearMonthId])) {
-			return $this->_cacheYearMonthBlogs[$yearMonthId];
-		}
+		$cacheKey = "getBlogByYearMonthId_" . $yearMonthId . ".gb";
+		$blogList = $this->gbReadCache($cacheKey);
 		
-		$blogList = array();
-		foreach ($this->blogs as $idx => $blog) {
-			$_yearMonthId = date("Ym", strtotime($blog['ctime']));
-			if ($yearMonthId == $_yearMonthId) {
-				array_push($blogList, $blog);
+		if ($blogList === false) {
+			$blogList = array();
+			foreach ($this->blogs as $idx => $blog) {
+				$_yearMonthId = date("Ym", strtotime($blog['ctime']));
+				if ($yearMonthId == $_yearMonthId) {
+					array_push($blogList, $blog);
+				}
 			}
+			$this->gbWriteCache($cacheKey, $blogList);
 		}
-		
-		$this->_cacheYearMonthBlogs[$yearMonthId] = $blogList;
-		
 		return $blogList;
 	}
 	
 	//按标题关键字查找博客
 	public function getBlogByTitle($title) {
-		if (isset($this->_cacheTitleBlogs[$title])) {
-			return $this->_cacheTitleBlogs[$title];
-		}
+		$cacheKey = "getBlogByTitle_" . (md5($title)) . ".gb";
+		$blogList = $this->gbReadCache($cacheKey);
 		
-		$blogList = array();
-		foreach ($this->blogs as $idx => $blog) {
-			$blogTitle = $blog['title'];
-			
-			if (strpos($blogTitle, $title) >= 0) {
-				array_push($blogList, $blog);
+		if ($blogList === false) {
+			$blogList = array();
+			foreach ($this->blogs as $idx => $blog) {
+				$blogTitle = $blog['title'];
+				
+				if (strpos($blogTitle, $title) >= 0) {
+					array_push($blogList, $blog);
+				}
 			}
+			$this->gbWriteCache($cacheKey, $blogList);
 		}
-		
-		$this->_cacheTagBlogs[$title] = $blogList;
 		return $blogList;
 	}
 	
 	//根据Id获取博客
 	public function getBlogById($blogId) {
-		foreach ($this->blogs as $idx => $blog) {
-			if ($blog['blogId'] == $blogId) {
-				return $blog;
+		$cacheKey = "getBlogById_" . $blogId . ".gb";
+		$blogObj = $this->gbReadCache($cacheKey);
+		
+		if ($blogObj === false) {
+			foreach ($this->blogs as $idx => $blog) {
+				if ($blog['blogId'] == $blogId) {
+					$blogObj = $blog;
+					$this->gbWriteCache($cacheKey, $blogObj);
+					break;
+				}
 			}
 		}
-		return NULL;
+		return $blogObj;
 	}
 	
 	//根据Id获取分类
 	public function getCategoryById($categoryId) {
-		foreach ($this->categorys as $idx => $category) {
-			if ($category['id'] == $categoryId) {
-				return $category;
+		$cacheKey = "getCategoryById_" . $categoryId . ".gb";
+		$categoryObj = $this->gbReadCache($cacheKey);
+		
+		if ($categoryObj === false) {
+			foreach ($this->categorys as $idx => $category) {
+				if ($category['id'] == $categoryId) {
+					$categoryObj = $category;
+					$this->gbWriteCache($cacheKey, $categoryObj);
+					break;
+				}
 			}
 		}
-		return NULL;
+		return $categoryObj;
 	}
 	
 	//根据Id获取标签
 	public function getTagById($tagId) {
-		foreach ($this->tags as $idx => $tag) {
-			if ($tag['id'] == $tagId) {
-				return $tag;
+		$cacheKey = "getTagById_" . $tagId . ".gb";
+		$tagObj = $this->gbReadCache($cacheKey);
+		
+		if ($tagObj === false) {
+			foreach ($this->tags as $idx => $tag) {
+				if ($tag['id'] == $tagId) {
+					$tagObj = $tag;
+					$this->gbWriteCache($cacheKey, $tagObj);
+					break;
+				}
 			}
 		}
-		return NULL;
+		return $tagObj;
 	}
 	
 		//根据Id获取标签
 	public function getYearMonthById($yearMonthId) {
-		foreach ($this->yearMonths as $idx => $yearMonth) {
-			if ($yearMonth['id'] == $yearMonthId) {
-				return $yearMonth;
+		$cacheKey = "getYearMonthById_" . $yearMonthId . ".gb";
+		$yearMonthObj = $this->gbReadCache($cacheKey);
+		
+		if ($yearMonthObj === false) {
+			foreach ($this->yearMonths as $idx => $yearMonth) {
+				if ($yearMonth['id'] == $yearMonthId) {
+					$yearMonthObj = $yearMonth;
+					$this->gbWriteCache($cacheKey, $yearMonthObj);
+					break;
+				}
 			}
 		}
-		return NULL;
+		return $yearMonthObj;
 	}
 	
 	//获取总页数
@@ -278,7 +295,6 @@ class Markdown {
 	}
 	
 	//获取所有月份
-	
 	public function getAllYearMonths() {
 		return $this->yearMonths;
 	}
@@ -300,10 +316,13 @@ class Markdown {
 		$this->categorys = array();
 		$this->yearMonths = array();
 		
-		//列出所有文件，可能包含非markdown文件
-		$mdfiles = get_dir_file_info($this->postPath, FALSE);
-		
-		$this->readAllPostInfo($mdfiles);
+		//先读缓存
+		if (!$this->globalDataCacheRead()) {
+			//列出所有文件，可能包含非markdown文件
+			$mdfiles = get_dir_file_info($this->postPath, FALSE);
+			
+			$this->readAllPostInfo($mdfiles);
+		}
 	}
 	
 	//读取post的内容
@@ -473,6 +492,49 @@ class Markdown {
 		}
 		
 		$this->sortBlogs($this->blogs, 'date');
+		
+		//缓存全局数据
+		$this->globalDataCacheWrite();
+	}
+	
+	//写缓存
+	private function gbWriteCache($key, $objdata) {
+		$this->CI->cache->file->save($key, serialize($objdata), GB_DATA_CACHE_TIME);
+	}
+	
+	//读缓存
+	private function gbReadCache($key) {
+		$stream = $this->CI->cache->file->get($key);
+		if ($stream) {
+			return unserialize($stream);
+		}
+		return false;
+	}
+	
+	//缓存全局数据
+	private function globalDataCacheWrite() {
+		$this->gbWriteCache(GB_BLOG_CACHE, $this->blogs);
+		$this->gbWriteCache(GB_TAG_CACHE, $this->tags);
+		$this->gbWriteCache(GB_CATEGORY_CACHE, $this->categorys);
+		$this->gbWriteCache(GB_ARCHIVE_CACHE, $this->yearMonths);
+	}
+	
+	//从文件缓存中读取数据
+	private function globalDataCacheRead() {
+		$blogs = $this->gbReadCache(GB_BLOG_CACHE);
+		$tags = $this->gbReadCache(GB_TAG_CACHE);
+		$categorys = $this->gbReadCache(GB_CATEGORY_CACHE);
+		$yearMonths = $this->gbReadCache(GB_ARCHIVE_CACHE);
+		
+		if ($blogs === false || $tags === false || $categorys === false || $yearMonths === false) {
+			return false;
+		} else {
+			$this->blogs = $blogs;
+			$this->tags = $tags;
+			$this->categorys = $categorys;
+			$this->yearMonths = $yearMonths;
+		}
+		return true;
 	}
 	
 	//对所有博客排序

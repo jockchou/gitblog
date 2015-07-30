@@ -1,6 +1,6 @@
 <!--
 author: jockchou
-date: 2015-07-30
+date: 2015-07-26
 title: GitBlog评论，订阅，统计等功能
 tags: GitBlog
 category: GitBlog

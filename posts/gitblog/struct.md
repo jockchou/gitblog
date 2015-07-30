@@ -1,6 +1,6 @@
 <!--
 author: jockchou
-date: 2015-07-30
+date: 2015-07-29
 title: GitBlog目录结构
 tags: GitBlog
 category: GitBlog
