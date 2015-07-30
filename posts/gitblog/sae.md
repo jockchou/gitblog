@@ -18,5 +18,18 @@ Gitblog支持在新浪[SAE](http://sae.sina.com.cn)云平台上运行。SAE是Si
 https://svn.sinaapp.com/gitblogdoc/
 ```
 
+## SAE的配置 ##
+在上传代码到SAE这前，需要配置一下。SAE的配置文件为`config.yaml`，把它放到网站根目录下，需要配置rewrite用以支持Gitblog伪静态。
+
+```
+name: gitblogdoc
+version: 1
+handle:
+ - rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
+```
+
 ## 关于SAE的特别说明 ##
+
 由于SAE禁止PHP访问本地IO，所以Gitblog的缓存机制在SAE上是不支持的，不过没关系，没有缓存Gitblog照样能运行良好，只是博客数量太多了页面会稍微慢一点，后面的版本会考虑使用的SAE的Storage来支持缓存。
+
+
