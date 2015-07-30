@@ -142,7 +142,7 @@ body {
 
 			/* Typography */
 body, .tooltip {
-	font: 13px 'Open Sans';
+	font: 14px 'Open Sans';
 	line-height: 1.5em;
 	font-weight: 300;
 	font-style: normal;
@@ -242,7 +242,7 @@ h6 {
 }
 
 .site-description {
-	font: 13px 'Open Sans';
+	font: 14px 'Open Sans';
 	line-height: 1.5em;
 	font-weight: 300;
 	font-style: normal;
@@ -256,7 +256,7 @@ h6 {
 }
 
 .main-sidebar .sidebar-widget {
-	font: 13px 'Open Sans';
+	font: 14px 'Open Sans';
 	line-height: 1.5em;
 	font-weight: 300;
 	font-style: normal;
@@ -276,7 +276,7 @@ h6 {
 }
 
 .main-sidebar {
-	font: 13px 'Open Sans';
+	font: 14px 'Open Sans';
 	line-height: 1.5em;
 	font-weight: 300;
 	font-style: normal;
@@ -296,7 +296,7 @@ h6 {
 }
 
 .copyright {
-	font: 13px 'Open Sans';
+	font: 14px 'Open Sans';
 	line-height: 1.5em;
 	font-weight: 300;
 	font-style: normal;
