@@ -1,6 +1,6 @@
 <!--
 author: jockchou
-date: 2015-07-30
+date: 2015-07-20
 title: 使用Gitblog和Github Pages搭建博客
 tags: GitBlog
 category: GitBlog

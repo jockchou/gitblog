@@ -1,6 +1,6 @@
 <!--
 author: jockchou
-date: 2015-07-30
+date: 2015-07-22
 title: 在Nginx上运行GitBlog
 tags: GitBlog
 category: GitBlog

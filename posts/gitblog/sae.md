@@ -1,6 +1,6 @@
 <!--
 author: jockchou
-date: 2015-07-24
+date: 2015-07-21
 title: 在新浪SAE上运行GitBlog
 tags: GitBlog
 category: GitBlog
