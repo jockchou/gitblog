@@ -64,6 +64,7 @@ QQ群：`84692078`
 
 Gitblog的文档由Gitblog自身搭建，布署在新浪SAE上。
 
+[Gitblog官网](http://www.gitblog.cn/)
 [Gitblog使用手册](http://gitblogdoc.sinaapp.com/)
 
 
