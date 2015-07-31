@@ -9,7 +9,7 @@ class Yaml {
     }
     
     public function dump($array) {
-        return Spyc::YAMLDump($array);
+        return Spyc::YAMLDump($array, 4);
     }
     
     public function getConfObject($filePath) {
@@ -20,7 +20,7 @@ class Yaml {
     	
     	$defaultConf = array(
     		"url" => "/",
-    		"title" => "Your GitBlog",
+    		"title" => "Your-GitBlog",
     		"subtitle" => "自豪地采用GitBlog",
     		"theme" => "simple",
     		"highlight" => true,
@@ -31,20 +31,20 @@ class Yaml {
     		"description" => "GitBlog是一个简单易用的Markdown博客系统",
     		"version" => "1.0",
     		"author" => array(
-    			"name" => "your name",
-    			"email" => "your email@example.com",
-    			"github" => "your github",
-    			"weibo" => "your weibo"
+    			"name" => "your-name",
+    			"email" => "your-email@example.com",
+    			"github" => "your-github",
+    			"weibo" => "your-weibo"
     		),
     		"blog" => array(
     			"recentSize" => 5,
-    			"pageSize" => 5,
-    			"pageBarSize" => 4,
+    			"pageSize" => 10,
+    			"pageBarSize" => 5,
     			"allBlogsForPage" => false
     		),
     		"text" => array(
     			"title" => "介绍",
-    			"intro" => "这是我的博客，欢迎你!"
+    			"intro" => "本博客使用Gitblog搭建，欢迎你!"
     		)
     	);
     	
