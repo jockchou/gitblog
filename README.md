@@ -45,7 +45,7 @@ PHP 5.2.4+
 [8. 主题开发][8]  
 [9. 在Nginx上运行GitBlog][9]  
 [10. 在SAE上运行GitBlog][10]  
-[11. 使用Github Pages搭建][11]  
+[11. 使用Gitblog和Github Pages搭建博客][11]  
 
 ## 七. 问题及bug反馈 ##
 
