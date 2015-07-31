@@ -68,6 +68,8 @@ Gitblog的文档由Gitblog自身搭建，布署在新浪SAE上。
 
 [Gitblog使用手册](http://gitblogdoc.sinaapp.com/)  
 
+Gitblog官方QQ群：`84692078`
+
 
 [1]:./posts/gitblog/install.md
 [2]:./posts/gitblog/struct.md
