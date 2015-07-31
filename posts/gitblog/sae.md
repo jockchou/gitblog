@@ -25,7 +25,7 @@ https://svn.sinaapp.com/gitblogdoc/
 name: gitblogdoc
 version: 1
 handle:
- - rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
+    - rewrite: if(!is_dir() && !is_file() && path ~ "/") goto "/index.php?%{QUERY_STRING}"
 ```
 
 ## 关于SAE的特别说明 ##
