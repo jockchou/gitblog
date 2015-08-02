@@ -2,6 +2,7 @@
 */logs/log-*.php
 */logs/log-*.log
 */logs/!index.html
+*/cache/*
 */cache/!README
 */cache/!index.html
 */cache/!.htaccess
