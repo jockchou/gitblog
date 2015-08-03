@@ -1,9 +1,9 @@
 #GitBlog配置文件，使用4个空格代替Tab
 ---
-url: 
+url: /
 title: Your-GitBlog
 subtitle: 自豪地采用GitBlog
-theme: simple
+theme: line
 highlight: true
 mathjax: false
 duoshuo:

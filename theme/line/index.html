@@ -1,0 +1,15 @@
+{% extends "_layouts/default.html" %}
+
+{% block content %}
+	{% include "_includes/posts.html" %}
+	<a title="首页" class="fa fa-paper-plane dp-dropplets-icon" href="{{ site.url }}"></a>
+	{% if pages > 1 %}
+		{% if pagination.prev %}
+		<a title="上一页" class="fa fa-arrow-left dp-dropplets-icon dp-dropplets-prev" href="{{ pagination.prev.url }}"></a>
+		{% endif %}
+		
+		{% if pagination.next %}
+		<a title="下一页" class="fa fa-arrow-right dp-dropplets-icon dp-dropplets-next" href="{{ pagination.next.url }}"></a>
+		{% endif %}
+	{% endif %}
+{% endblock %}

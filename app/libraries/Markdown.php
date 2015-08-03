@@ -30,7 +30,7 @@ class Markdown {
 			$this->CI =& get_instance();
 		}
 		
-		$this->notePropArray = array("author", "date", "title", "summary", "tags", "category", "status");
+		$this->notePropArray = array("author", "head", "date", "title", "summary", "tags", "category", "status");
 		
 		$this->CI->load->helper('file');
 		$this->CI->load->helper('url');
@@ -368,6 +368,7 @@ class Markdown {
 		
 		$blogProp = array(
 			"author" => "",
+			"head" => "",
 			"date" => "",
 			"title" => "",
 			"summary" => "",
@@ -384,6 +385,9 @@ class Markdown {
 			switch($propName) {
 				case "author":
 					$blogProp['author'] = $propVal;
+					break;
+				case "head":
+					$blogProp['head'] = $propVal;
 					break;
 				case "date":
 					$blogProp['date'] = $propVal;

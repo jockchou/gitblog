@@ -1,0 +1,55 @@
+{% extends "_layouts/default.html" %}
+{% block content %}
+<a title="首页" class="fa fa-paper-plane dp-dropplets-icon" href="{{ site.url }}"></a>
+	<article class="single ">
+    <div class="row">
+        <div class="one-quarter meta">
+            <div class="thumbnail">
+            	{% set headUrl = "/img/logo_64x64.png" %}
+        	{% if blog.authorHead %}
+        		{% set headUrl = blog.authorHead %}
+        	{% endif %}
+                <img src="{{ headUrl }}" alt="{{ blog.author }}" />
+            </div>
+
+            <ul>
+                <li>{{ blog.author }}</li>
+                <li>{{ blog.date | date("Y-m-d")}}</li>
+                <li>
+                {% if attribute(blog.category, 0) %}
+                {% for category in blog.category %}  
+			    <a href="{{ category.url }}">{{ category.name }}</a>
+			    {% endfor %}
+			    {% endif %}
+                </li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="three-quarters post">
+            <h2>{{ blog.title }}</h2>
+            {{ blog.content | raw }}
+            
+            <br/>
+        	{% if site.duoshuo %}
+			<!-- 多说评论框 start -->
+			<div class="ds-thread" data-thread-key="{{ blog.blogId }}" data-title="{{ blog.title }}" data-url="{{ blog.siteURL }}"></div>
+			<!-- 多说评论框 end -->
+			<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+			<script type="text/javascript">
+			var duoshuoQuery = {short_name:"{{ site.duoshuo }}"};
+			(function() {
+				var ds = document.createElement('script');
+				ds.type = 'text/javascript';ds.async = true;
+				ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+				ds.charset = 'UTF-8';
+				(document.getElementsByTagName('head')[0] 
+				 || document.getElementsByTagName('body')[0]).appendChild(ds);
+			})();
+			</script>
+	        <!-- 多说公共JS代码 end -->
+		</div>
+		{% endif %}
+    </div>
+</article>	
+{% endblock %}
