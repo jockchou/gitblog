@@ -53,9 +53,10 @@ PHP 5.2.4+
 [6. 缓存机制][6]  
 [7. 全站静态导出][7]  
 [8. 主题制作][8]  
-[9. 在Nginx上运行GitBlog][9]  
-[10. 在SAE上运行GitBlog][10]  
-[11. 使用Gitblog和Github Pages搭建博客][11]  
+[9. 在Nginx上运行GitBlog][9] 
+[10. 在Apache上运行GitBlog][10] 
+[11. 在SAE上运行GitBlog][11]  
+[12. 使用Gitblog和Github Pages搭建博客][12]  
 
 ## 七. 问题及bug反馈 ##
 
@@ -78,7 +79,8 @@ QQ群：`84692078`
 [7]:/blog/gitblog/export.html
 [8]:/blog/gitblog/theme.html
 [9]:/blog/gitblog/nginx.html
-[10]:/blog/gitblog/sae.html
-[11]:/blog/gitblog/github-pages.html
+[10]:/blog/gitblog/apache.html
+[11]:/blog/gitblog/sae.html
+[12]:/blog/gitblog/github-pages.html
 
 
