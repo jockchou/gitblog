@@ -30,7 +30,7 @@ jockchou.gitblog.cn
 /data/vhosts/jockchou.gitblog.cn
 ```
 
-Gitblog采用[CodeIgniter](http://codeigniter.org.cn/)开发，nginx可参考如下配置：
+GitBlog采用[CodeIgniter](http://codeigniter.org.cn/)开发，nginx可参考如下配置：
 
 ```
 server {
@@ -75,11 +75,11 @@ server {
 
 ## 下载GitBlog源码包 ##
 
-到[这里](https://github.com/jockchou/gitblog/releases)下载最新的Gitblog源码包，下传到你的服务器，解压复制包中的所有文件到网站根目录:
+到[这里](https://github.com/jockchou/gitblog/releases)下载最新的GitBlog源码包，下传到你的服务器，解压复制包中的所有文件到网站根目录:
 ```
 /data/vhosts/jockchou.gitblog.cn
 ```
-再访问域名，就能看到Gitblog的默认页面了。
+再访问域名，就能看到GitBlog的默认页面了。
 
 ## 权限问题 ##
 

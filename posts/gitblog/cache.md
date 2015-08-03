@@ -5,10 +5,10 @@ title: GitBlog的缓存机制
 tags: GitBlog
 category: GitBlog
 status: publish
-summary: 由于Gitblog没有数据库，是依靠解析posts文件夹中的markdown文件来展示表客数据的。通常我们写好一篇博客以后，对其进行修改的频率并不高。Gitblog没必要每次访问页面时，都去解析markdown文件。基于这个理由，Gitblog对数据进行了缓存，Gitblog的缓存有三个层面的实现。
+summary: 由于GitBlog没有数据库，是依靠解析posts文件夹中的markdown文件来展示表客数据的。通常我们写好一篇博客以后，对其进行修改的频率并不高。GitBlog没必要每次访问页面时，都去解析markdown文件。基于这个理由，GitBlog对数据进行了缓存，GitBlog的缓存有三个层面的实现。
 -->
 
-由于Gitblog没有数据库，是依靠解析`posts`文件夹中的markdown文件来展示表客数据的。通常我们写好一篇博客以后，对其进行修改的频率并不高。Gitblog没必要每次访问页面时，都去解析markdown文件。基于这个理由，Gitblog对数据进行了缓存，Gitblog的缓存有三个层面的实现。
+由于GitBlog没有数据库，是依靠解析`posts`文件夹中的markdown文件来展示表客数据的。通常我们写好一篇博客以后，对其进行修改的频率并不高。GitBlog没必要每次访问页面时，都去解析markdown文件。基于这个理由，GitBlog对数据进行了缓存，GitBlog的缓存有三个层面的实现。
 
 ## 三层缓存机制 ##
 
@@ -36,13 +36,13 @@ all_archive.gb	->所有的归档月份
 
 ## Twig模板缓存 ##
 
-Gitblog采用[Twig](http://twig.sensiolabs.org/)模板引擎，Twig是一个轻量，高效，安全的PHP模板引擎。Twig会将html模板块转换成PHP类文件缓存起来。这些模板层级的缓存，主要是针对重复载入拼接模板的优化。
+GitBlog采用[Twig](http://twig.sensiolabs.org/)模板引擎，Twig是一个轻量，高效，安全的PHP模板引擎。Twig会将html模板块转换成PHP类文件缓存起来。这些模板层级的缓存，主要是针对重复载入拼接模板的优化。
 
 ## HTML页面缓存 ##
 
-这是最上层的缓存机制，Gitblog会将访问过的每一个页面都缓存为一个html文件。下次访问时，直接读取这个html文件。
+这是最上层的缓存机制，GitBlog会将访问过的每一个页面都缓存为一个html文件。下次访问时，直接读取这个html文件。
 
-当你对Gitblog作了改动后，发现没有生效，可以先尝试清除`app/cache`下的所有缓存文件。比如你上传了新的markdown，希望马上能访问看到，可以这样做。
+当你对GitBlog作了改动后，发现没有生效，可以先尝试清除`app/cache`下的所有缓存文件。比如你上传了新的markdown，希望马上能访问看到，可以这样做。
 
 
 

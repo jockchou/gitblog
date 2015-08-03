@@ -5,15 +5,15 @@ title: GitBlog评论，订阅，统计等功能
 tags: GitBlog
 category: GitBlog
 status: publish
-summary: Gitblog支持评论，订阅，百度统计相关功能，这些功能可由conf.yaml配置开启或关闭，评论采用多说评论框，统计采用百度统计。
+summary: GitBlog支持评论，订阅，百度统计相关功能，这些功能可由conf.yaml配置开启或关闭，评论采用多说评论框，统计采用百度统计。
 -->
 
-Gitblog支持评论，订阅，百度统计相关功能，这些功能可由`conf.yaml`配置开启或关闭，评论采用多说评论框，统计采用百度统计。
+GitBlog支持评论，订阅，百度统计相关功能，这些功能可由`conf.yaml`配置开启或关闭，评论采用多说评论框，统计采用百度统计。
 
 
 ## 多说评论框 ##
 
-Gitblog目前只支持多说评论框，如果你希望你的博客有评论功能，你需要申请多说账号来管理你的评论。多说的官方地址是：[http://duoshuo.com](http://duoshuo.com/ "多说")。
+GitBlog目前只支持多说评论框，如果你希望你的博客有评论功能，你需要申请多说账号来管理你的评论。多说的官方地址是：[http://duoshuo.com](http://duoshuo.com/ "多说")。
 
 在多说的管理后台，工具一栏中`获取代码`你会看到这样一段代码：
 
@@ -36,7 +36,7 @@ var duoshuoQuery = {short_name:"jockchou"};
 <!-- 多说公共JS代码 end -->
 
 ```
-Gitblog中已经引入了多说代码，你要做的事情只是在`conf.yaml`配置文中填上你的多说`short_name`即可。例如我的博客：
+GitBlog中已经引入了多说代码，你要做的事情只是在`conf.yaml`配置文中填上你的多说`short_name`即可。例如我的博客：
 
 ```
 duoshuo: jockchou  //填写你的多说账号
@@ -67,7 +67,7 @@ baiduAnalytics  : 732acc76ff6bd41343951a67cbfafe34  #百度统计
 
 ## 代码高亮 ##
 
-Gitblog的代码高亮功能采用[highlight.js](https://highlightjs.org/)。它能自动识别代码中的语言类型。默认是开启代码高亮功能的。关闭此功能配置如下：
+GitBlog的代码高亮功能采用[highlight.js](https://highlightjs.org/)。它能自动识别代码中的语言类型。默认是开启代码高亮功能的。关闭此功能配置如下：
 
 ```
 highlight: off
@@ -75,7 +75,7 @@ highlight: off
 
 ## 数学公式 ##
 
-Gitblog支持[LaTeX](https://en.wikipedia.org/wiki/LaTeX)数据公式，采用的是[MathJax.js](http://www.mathjax.org/)。此功能默认是关闭的，开启的配置如下：
+GitBlog支持[LaTeX](https://en.wikipedia.org/wiki/LaTeX)数据公式，采用的是[MathJax.js](http://www.mathjax.org/)。此功能默认是关闭的，开启的配置如下：
 
 ```
 mathjax: on
@@ -83,7 +83,7 @@ mathjax: on
 
 ## RSS订阅 ##
 
-Gitblog支持RSS订阅，订阅的xml文件地址是：
+GitBlog支持RSS订阅，订阅的xml文件地址是：
 
 ```
 http://jockchou.gitblog.cn/feed.xml

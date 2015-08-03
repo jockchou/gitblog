@@ -1,11 +1,11 @@
 <!--
 author: jockchou
 date: 2015-07-20
-title: 使用Gitblog和Github Pages搭建博客
+title: 使用GitBlog和Github Pages搭建博客
 tags: GitBlog
 category: GitBlog
 status: publish
-summary: 如果你没有主机，也不想使用SAE，只有Github账号，你想用Gitblog搭建自己的博客系统也是可以简单地做到的，[Github pages](https://pages.github.com/)允许你基于Github分库建立一个站点。
+summary: 如果你没有主机，也不想使用SAE，只有Github账号，你想用GitBlog搭建自己的博客系统也是可以简单地做到的，[Github pages](https://pages.github.com/)允许你基于Github分库建立一个站点。
 -->
 
 
@@ -13,7 +13,7 @@ summary: 如果你没有主机，也不想使用SAE，只有Github账号，你�
 
 你首先要创建一个新的Github仓库，这个仓库的名字必须为`username.github.io`，username为你的github账户名，必须一致。具体的步骤请参照这里[https://pages.github.com/](https://pages.github.com/)。
 
-## 导出Gitblog静态网站 ##
+## 导出GitBlog静态网站 ##
 Github pages不支持PHP程序运行，所以需要导出静态页面，将导出的`_site`目录下的所有文件复制到上一步创建的本地仓库，把仓库同步到Github上面。这样就好了，你可以通过域名username.github.io来访问刚才同步的Github pages了。
 
 ## 绑定域名到Github pages ##

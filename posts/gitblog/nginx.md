@@ -5,10 +5,10 @@ title: 在Nginx上运行GitBlog
 tags: GitBlog
 category: GitBlog
 status: publish
-summary: 如果你自己拥有服务器或者云平台提供的云主机，我推荐你使用Linux+[Nginx](http://nginx.org/)来运行Gitblog，如果你目前只有Apache环境也是可以的。
+summary: 如果你自己拥有服务器或者云平台提供的云主机，我推荐你使用Linux+[Nginx](http://nginx.org/)来运行GitBlog，如果你目前只有Apache环境也是可以的。
 -->
 
-如果你自己拥有服务器或者云平台提供的云主机，我推荐你使用Linux+[Nginx](http://nginx.org/)来运行Gitblog，如果你目前只有Apache环境也是可以的。
+如果你自己拥有服务器或者云平台提供的云主机，我推荐你使用Linux+[Nginx](http://nginx.org/)来运行GitBlog，如果你目前只有Apache环境也是可以的。
 
 ## 域名解析 ##
 将你准备好的域名解析到你的主机IP，推荐使用[dnspod](https://www.dnspod.cn/)来管理和监控你的域名，具体的使用方法参考dnspod官方说明文档，非常简单。
@@ -60,9 +60,9 @@ server {
 
 ## 权限配置 ##
 
-由于Gitblog的缓存机制需要写`app/cache`目录，必要时请查看并修改这个目录的权限，以确保你的PHP拥有写这个目录的权限。通常你只需要将此目录的所属者和组修改成CGI的运行账户。
+由于GitBlog的缓存机制需要写`app/cache`目录，必要时请查看并修改这个目录的权限，以确保你的PHP拥有写这个目录的权限。通常你只需要将此目录的所属者和组修改成CGI的运行账户。
 
 
 ## 运行 ##
 
-以上配置好以后，启动你的Nginx和CGI服务，上传Gitblog源代码到网站目录，通过浏览器访问解析到本机的域名观察页面效果。如果页面没有正常显示，通过错误码来检查你的CGI和Nginx配置。
+以上配置好以后，启动你的Nginx和CGI服务，上传GitBlog源代码到网站目录，通过浏览器访问解析到本机的域名观察页面效果。如果页面没有正常显示，通过错误码来检查你的CGI和Nginx配置。
