@@ -54,7 +54,7 @@ PHP 5.2.4+
 [7. 全站静态导出][7]  
 [8. 主题制作][8]  
 [9. 在Nginx上运行GitBlog][9]  
-[10. 在Apache上运行GitBlog][10] v
+[10. 在Apache上运行GitBlog][10]  
 [11. 在SAE上运行GitBlog][11]  
 [12. 使用Gitblog和Github Pages搭建博客][12]  
 

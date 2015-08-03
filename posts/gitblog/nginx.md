@@ -34,8 +34,8 @@ server {
 
         location / {
                 if (!-e $request_filename) {
-					rewrite ^(.*)$ /index.php?$1 last ;
-					break;
+                    rewrite ^(.*)$ /index.php?$1 last ;
+                    break;
                 }
         }
 
