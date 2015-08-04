@@ -22,15 +22,10 @@ class Markdown {
 	//CI
 	private $CI;
 	
-	//博客属性
-	public $notePropArray;
-	
 	public function __construct() {
 		if (!isset($this->CI)) {
 			$this->CI =& get_instance();
 		}
-		
-		$this->notePropArray = array("author", "head", "date", "title", "summary", "tags", "category", "status");
 		
 		$this->CI->load->helper('file');
 		$this->CI->load->helper('url');
@@ -335,38 +330,19 @@ class Markdown {
 		return $blogHtml;
 	}
 	
-	//获取博客头部的注释块信息
-	private function getCleanNoteBlockArr($serverPath) {
-		$noteBlockArr = array();
-		$fcontents = file($serverPath);
-		$start = false;
-		
-		if (!empty($fcontents)) {
-			foreach ($fcontents as $textLine) {
-				$textLine = trim($textLine);
-				if ($textLine == "<!--")  {
-					$start = true;
-				} else if ($textLine == "-->") {
-					$start = false;
-					break;
-				} else {
-					if ($this->checkNoteLine($textLine)) {
-						array_push($noteBlockArr, $textLine);
-					}
-				}
-			}
-		}
-		return $noteBlockArr;
-	}
-	
 	//读取博客的基本信息
 	private function readPostBaseInfo($serverPath) {
-		$noteBlockArr = $this->getCleanNoteBlockArr($serverPath);
 		$keywrodsArr = array();
 		$tagsArr = array();
 		$cateArr = array();
 		
-		$blogProp = array(
+		$matches = null;
+		$noteBlockArr = array();
+		$noteTmpArr = array();
+		$pattern1 = '/<\!\-\-(.*?)\-\->/is';
+	    $pattern2 = '/^\s*(author|head|date|title|summary|tags|category|status)\s*:(.*?)$/im';
+	    
+	    $blogProp = array(
 			"author" => "",
 			"head" => "",
 			"date" => "",
@@ -378,42 +354,67 @@ class Markdown {
 			"status" => "publish"
 		);
 		
-		foreach ($noteBlockArr as $textLine) {
-			$noteTmpArr = explode(":", $textLine);
-			$propName = trim($noteTmpArr[0]);
-			$propVal = trim($noteTmpArr[1]);
-			switch($propName) {
-				case "author":
-					$blogProp['author'] = $propVal;
-					break;
-				case "head":
-					$blogProp['head'] = $propVal;
-					break;
-				case "date":
-					$blogProp['date'] = $propVal;
-					break;
-				case "title":
-					$blogProp['title'] = $propVal;
-					break;
-				case "summary":
-					$blogProp['summary'] = $propVal;
-					break;
-				case "tags":
-					$blogProp['tags'] = $this->converStrArr($propVal, "tags");
-					$tagsArr = $this->cleanKeywords2Arr($propVal);
-					break;
-				case "category":
-					$blogProp['category'] = $this->converStrArr($propVal, "category");
-					$cateArr = $this->cleanKeywords2Arr($propVal);
-					break;
-				case "status":
-					$blogProp['status'] = $propVal == "draft" ? $propVal : "publish";
-					break;
+	    $subject = file_get_contents($serverPath);
+	    preg_match($pattern1, $subject, $matches);
+	    
+	    if (isset($matches[1])) {
+	        $procontent = trim($matches[1]);
+	        $proarr = explode("\n", $procontent);
+	        
+	        foreach($proarr as $proline) {
+	            $proline = trim($proline);
+	            if ($proline) {
+	                preg_match($pattern2, $proline, $matches);
+	                if(isset($matches[2])) {
+	                    $propName = trim($matches[1]);
+	                    $propVal = trim($matches[2]);
+	                    //echo $proName . " --> " . $proVal . "\n";
+	                    switch($propName) {
+							case "author":
+								$blogProp['author'] = $propVal;
+								break;
+							case "head":
+								$blogProp['head'] = $propVal;
+								break;
+							case "date":
+								$blogProp['date'] = $propVal;
+								break;
+							case "title":
+								$blogProp['title'] = $propVal;
+								break;
+							case "summary":
+								$blogProp['summary'] = $propVal;
+								break;
+							case "tags":
+								$blogProp['tags'] = $this->converStrArr($propVal, "tags");
+								$tagsArr = $this->cleanKeywords2Arr($propVal);
+								break;
+							case "category":
+								$blogProp['category'] = $this->converStrArr($propVal, "category");
+								$cateArr = $this->cleanKeywords2Arr($propVal);
+								break;
+							case "status":
+								$blogProp['status'] = $propVal == "draft" ? $propVal : "publish";
+								break;
+						}
+	                }
+	            }
+	        }
+	    }
+		
+		//summary支持多行
+		$patternSummary = '/\s*(summary)\s*:(.*?)(author|head|date|title|tags|category|status)\s*:(.*?)\-\->/is';
+		preg_match($patternSummary, $subject, $matches);
+		
+		if (isset($matches[2])) {
+			$summary = trim($matches[2]);
+			if (!empty($summary)) {
+				$blogProp['summary'] = $this->parseMarkdown($summary);
 			}
 		}
-		
 		$keywrodsArr = array_merge($tagsArr, $cateArr);
-		
+		//关键字去重
+		$keywrodsArr = array_unique($keywrodsArr);
 		$blogProp['keywords'] = implode(",", $keywrodsArr);
 		
 		return $blogProp;
@@ -422,9 +423,6 @@ class Markdown {
 	//获取标签，分类数组
 	private function cleanKeywords2Arr($keywordsStr) {
 		$tagsArr = array();
-		
-		//$tagArrTmp1 = explode(",", $keywordsStr);
-		//$tagArrTmpl = preg_split("[，,|；、\s]+", $keywordsStr);
 		
 		mb_regex_encoding("UTF-8");
 		mb_internal_encoding("UTF-8");
@@ -577,15 +575,6 @@ class Markdown {
 		}
 		
 		return implode(".", $pics);
-	}
-	
-	//检查markdown注释块
-	private function checkNoteLine($textLine) {
-		$noteTmpArr = explode(":", $textLine);
-		if (count($noteTmpArr) > 1 && in_array(trim($noteTmpArr[0]), $this->notePropArray)) {
-			return true;
-		}
-		return false;
 	}
 	
 	//将tags, category字符串转成数组

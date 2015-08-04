@@ -3,7 +3,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{% if blog %}{{ blog.title }}|{{ site.title }} {% else %}{{ site.title }}{% endif %}</title>
 	<meta name="keywords" content="{% if blog %}{{ blog.keywords}},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
-	<meta name="description" content="{% if blog %}{{ blog.summary | escape | replace({'\n': ''}) | slice(0, 140) }}{% else %}{{ site.description }}{% endif %}">
+	<meta name="description" content="{% if blog %}{{ blog.summary | striptags | replace({'\n': ''}) | slice(0, 140) }}{% else %}{{ site.description }}{% endif %}">
 	<link rel="stylesheet" href="/theme/line/css/font-awesome.min.css?ver={{ site.version }}">
 	<link rel="stylesheet" href="/theme/line/css/main.css?ver={{ site.version }}">
 	<link rel="stylesheet" href="/theme/line/css/style.css?ver={{ site.version }}">

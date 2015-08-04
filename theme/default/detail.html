@@ -4,7 +4,7 @@
 
 {% block keywords %}{{ blog.keywords }},{{ confObj.title }}{% endblock %}
 
-{% block description %}{{ blog.summary | escape | slice(0, 140) }}{% endblock %}
+{% block description %}{{ blog.summary | replace({'\n': ''}) | striptags | slice(0, 140) }}{% endblock %}
 
 {% block sidebar %}
     {% include "block/sidebar.html" %}  
