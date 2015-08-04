@@ -1,6 +1,16 @@
-## 一. 简介 ##
+<!--
+author: jockchou
+head: /img/my_head.png
+date: 2015-07-31
+title: 欢迎使用GitBlog
+tags: GitBlog
+category: GitBlog
+status: publish
+summary: GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，没有管理后台功能，更新博客只需要添加你写好的Markdown文件即可。
+-->
 
-Gitblog是一个简单易用的Markdown博客系统，它不需要数据库，没有管理后台功能，更新博客只需要添加你写好的Markdown文件即可。它摆脱了在线编辑器排版困难，无法实时预览的缺点，一切都交给Markdown来完成，一篇博客就是一个Markdown文件。同时也支持评论，代码高亮，数学公式，页面PV统计等常用功能。Gitblog提供了不同的主题样式，你可以根据自己的喜好配置，如果你想自己制作博客主题，也是非常容易的。Gitblog还支持整站静态导出，你完全可以导出整站静态网页部署到Github Pages。
+## 一. 简介 ##
+GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，没有管理后台功能，更新博客只需要添加你写好的Markdown文件即可。它摆脱了在线编辑器排版困难，无法实时预览的缺点，一切都交给Markdown来完成，一篇博客就是一个Markdown文件。同时也支持评论，代码高亮，数学公式，页面PV统计等常用功能。GitBlog提供了不同的主题样式，你可以根据自己的喜好配置，如果你想自己制作博客主题，也是非常容易的。GitBlog还支持整站静态导出，你完全可以导出整站静态网页部署到Github Pages。
 
 ## 二. 功能特点 ##
 
@@ -29,7 +39,7 @@ PHP 5.2.4+
 
 ## 五. 安装步骤 ##
 
-1. 下载Gitblog源代码  
+1. 下载GitBlog源代码  
 2. 解压上传到你的PHP网站根目录  
 3. 打开浏览器，访问网站首页  
 4. 上传Markdown文件到`posts`文件夹  
@@ -38,37 +48,36 @@ PHP 5.2.4+
 
 [1. 安装][1]  
 [2. 目录结构][2]  
-[3. 配置说明][3]    
+[3. 配置说明][3]  
 [4. 编写博客][4]  
 [5. 评论，订阅，统计等][5]  
 [6. 缓存机制][6]  
 [7. 全站静态导出][7]  
 [8. 主题制作][8]  
 [9. 在Nginx上运行GitBlog][9]  
-[10. 在SAE上运行GitBlog][10]  
-[11. 使用Gitblog和Github Pages搭建博客][11]  
+[10. 在Apache上运行GitBlog][10]  
+[11. 在SAE上运行GitBlog][11]  
+[12. 使用GitBlog和Github Pages搭建博客][12]  
 
 ## 七. 问题及bug反馈 ##
 
-如果在实际使用过程中对Gitblog有新的功能需求，或者在使用Gitblog的过程中发现了Bug，欢迎反馈给我。可以直接在Github上提交，也可以发邮件至`164068300[AT]qq.com`与我取得联系，我将及时回复。如果你自己制作了漂亮好用的主题，也非常欢迎你提交给我，我会在这里展示你的主题链接。如果你正在使用Gitblog，也可以告诉我，我将也会在这里列出使用者名单。如果你想和其他Gitblog使用者讨论交流，欢迎加入QQ群`84692078`。
+如果在实际使用过程中对GitBlog有新的功能需求，或者在使用GitBlog的过程中发现了Bug，欢迎反馈给我。可以直接在Github上提交，也可以发邮件至`164068300[AT]qq.com`与我取得联系，我将及时回复。如果你自己制作了漂亮好用的主题，也非常欢迎你提交给我，我会在这里展示你的主题链接。如果你正在使用GitBlog，也可以告诉我，我将也会在这里列出使用者名单。如果你想和其他GitBlog使用者讨论交流，欢迎加入QQ群`84692078`。
 
-## 八. 感谢 ##
+## 八. 使用者列表 ##
 
-Gitblog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用Gitblog，感激你们提供的自制主题。
+- [Weeds][20]
+- [橙子][21]
+- [jockchou][22]
+- [GitBlog Doc][23]
+
+## 九. 感谢 ##
+
+GitBlog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用GitBlog，感激你们提供的自制主题。
 
 QQ群：`84692078`  
 作者邮箱：`164068300[AT]qq.com`  
 
 
-## 九. 使用手册 ##
-
-Gitblog的文档由Gitblog自身搭建，布署在新浪SAE上。
-
-[Gitblog官网](http://www.gitblog.cn/)  
-
-[Gitblog使用手册](http://gitblogdoc.sinaapp.com/)  
-
-Gitblog官方QQ群：`84692078`
 
 
 [1]:./posts/gitblog/install.md
@@ -80,7 +89,12 @@ Gitblog官方QQ群：`84692078`
 [7]:./posts/gitblog/export.md
 [8]:./posts/gitblog/theme.md
 [9]:./posts/gitblog/nginx.md
-[10]:./posts/gitblog/sae.md
-[11]:./posts/gitblog/github-pages.md
+[10]:/blog/gitblog/apache.html
+[11]:./posts/gitblog/sae.md
+[12]:./posts/gitblog/github-pages.md
 
 
+[20]: http://blog.hiweeds.net
+[21]: http://xiaochengzi.sinaapp.com
+[22]: http://jockchou.gitblog.cn
+[23]: http://gitblogdoc.sinaapp.com

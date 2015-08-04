@@ -8,7 +8,7 @@ status: publish
 summary: GitBlog在Aapche上运行需要开启Aapche Rewrite模块以支持GitBlog的伪静态URL。并且要配置.htaccess文件可用，然后在.htaccess文件中配置Rewriter规则。
 -->
 
-GitBlog在Aapche上运行需要开启Aapche Rewrite模板用以支持GitBlog的伪静态URL。并且要配置`.htaccess`文件可用，然后在`.htaccess`文件中配置Rewriter规则。
+GitBlog在Aapche上运行需要开启Aapche Rewrite模块用以支持GitBlog的伪静态URL。并且要配置`.htaccess`文件可用，然后在`.htaccess`文件中配置Rewriter规则。
 
 
 ## 打开Aapache Rewrite模块##
@@ -28,7 +28,7 @@ AllowOverride None #修改为： AllowOverride All
 
 ## 配置Rewrite规则 ##
 
-在GitBlog根目录下创建`.htaccess`文件，输出以下内容：
+在GitBlog根目录下创建`.htaccess`文件，输入以下内容：
 
 ```
 RewriteEngine on
