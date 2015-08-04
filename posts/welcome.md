@@ -92,3 +92,9 @@ QQ群：`84692078`
 [12]:/blog/gitblog/github-pages.html
 
 
+[20]: http://blog.hiweeds.net
+[21]: http://xiaochengzi.sinaapp.com
+[22]: http://jockchou.gitblog.cn
+[23]: http://gitblogdoc.sinaapp.com
+
+
