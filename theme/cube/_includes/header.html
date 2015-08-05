@@ -1,0 +1,11 @@
+<header class="light" style="background-image: url('/theme/cube/image/header.jpg');">
+    <div class="intro">
+        <h1>{{ site.title }}</h1>
+        <p>{{ site.description  }}</p>
+        {% set headUrl = "/img/logo_128x128.png" %}
+    	{% if site.author.avatar %}
+    		{% set headUrl = site.author.avatar %}
+    	{% endif %}
+        <a href="{{ site.url }}"><img src="{{ headUrl }}" alt="avatar"/></a>
+    </div>
+</header>

@@ -1,0 +1,29 @@
+{% for blog in blogList %}
+<article>
+	{% if blog.images %}
+	<div class="look" style="background-image: url('{{ blog.images.0 }}');">
+    	<a href="{{ blog.siteURL }}" title="{{ blog.title }}"><!-- {{ blog.title }} --></a>
+    </div>
+    {% endif %}
+
+    <div class="read">
+    	{% if blog.images %}
+        <div class="excerpt">
+        {% else %}
+        <div class="excerpt" style="height:343px;">
+        {% endif %}
+            <h2><a href="{{ blog.siteURL }}" title="{{ blog.title }}">{{ blog.title }}</a></h2>
+            <p></p>
+            <p>{{ blog.summary | raw }}</p>
+            <p></p>
+        </div>
+
+        <div class="meta">
+            <span>{{ blog.date | date("Y-m-d")}}</span>
+            <div class="share">
+                <a class="facebook fa fa-paper-plane" href="{{ blog.siteURL }}#duoshuo" title="add comment"></a>
+            </div>
+        </div>
+    </div>
+</article>
+{% endfor %}

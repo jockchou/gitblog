@@ -1,0 +1,23 @@
+<head>
+	<meta charset="utf-8">
+	<title>{% if blog %}{{ blog.title }}|{{ site.title }} {% else %}{{ site.title }}{% endif %}</title>
+	<meta name="keywords" content="{% if blog %}{{ blog.keywords}},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
+	<meta name="description" content="{% if blog %}{{ blog.summary | striptags | replace({'\n': ''}) | slice(0, 140) }}{% else %}{{ site.description }}{% endif %}">
+	<link rel="stylesheet" href="/theme/cube/css/font-awesome.min.css?ver={{ site.version }}">
+	<link rel="stylesheet" href="/theme/cube/css/style.css?ver={{ site.version }}">
+	<link rel="stylesheet" href="/theme/cube/css/style-mobile.css?ver={{ site.version }}">
+	<link rel="stylesheet" href="/theme/cube/css/main.css?ver={{ site.version }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
+    <link href="http://fonts.useso.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" type="text/css">
+    
+	{% if site.baiduAnalytics %}<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?{{ site.baiduAnalytics }}";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	{% endif %}
+</head>

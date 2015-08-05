@@ -2,6 +2,7 @@
 author: jockchou
 date: 2015-07-27
 title: 编写GitBlog博客
+images: /theme/cube/image/cube4.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

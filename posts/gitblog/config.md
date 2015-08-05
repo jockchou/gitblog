@@ -2,6 +2,7 @@
 author: jockchou
 date: 2015-07-28
 title: GitBlog配置
+images: /theme/cube/image/cube3.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

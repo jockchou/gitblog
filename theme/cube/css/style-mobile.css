@@ -1,0 +1,211 @@
+/* Mobile Optimizations (XL)
+*********************************************************************************************/
+
+@media (max-width: 1450px) {
+
+    /* Setup
+    *****************************************************************************************/
+    
+    .content {
+        width: 960px;
+    }
+    
+    /* Home Page Header
+    *****************************************************************************************/
+    
+    header .intro {
+        width: 920px;
+    }
+    
+    /* Posts & Pages
+    *****************************************************************************************/
+    
+    article:nth-child(1),
+    article.full {
+        width: 940px;
+    }
+    
+    article.full .look {
+        height: 529px;
+    }
+    
+}
+
+/* Mobile Optimizations (L)
+*********************************************************************************************/
+
+@media (max-width: 1130px) {
+
+    /* Setup
+    *****************************************************************************************/
+    
+    .content {
+        width: 640px;
+    }
+    
+    /* Home Page Header
+    *****************************************************************************************/
+    
+    header .intro {
+        width: 540px;
+    }
+    
+    header p {
+        width: 480px;
+    }
+    
+    /* Posts & Pages
+    *****************************************************************************************/
+    
+    article:nth-child(1),
+    article.full {
+        width: 620px;
+    }
+    
+    article.full .look {
+        height: 349px;
+    }
+    
+}
+
+/* Mobile Optimizations (M)
+*********************************************************************************************/
+
+@media (max-width: 768px) {
+
+    /* Setup
+    *****************************************************************************************/
+    
+    .content {
+        width: 590px;
+    }
+    
+    /* Posts & Pages
+    *****************************************************************************************/
+    
+    article {
+        width: 275px;
+    }
+    
+    article:nth-child(1),
+    article.full {
+        width: 570px;
+    }
+    
+    article.full .look.video {
+        height: 321px;
+    }
+    
+}
+
+/* Mobile Optimizations (S)
+*********************************************************************************************/
+
+@media (max-width: 640px) {
+
+    /* Setup
+    *****************************************************************************************/
+    
+    .content {
+        width: 320px;
+    }
+    
+    /* Primary Nav
+    *****************************************************************************************/
+    
+    nav {
+        width: 30px;
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        z-index: 30;
+    }
+    
+    nav a {
+        font-size: 16px;
+        width: 30px;
+        height: 28px;
+        margin-bottom: 5px;
+        padding-top: 2px;
+    }
+    
+    nav a.menu {
+        height: 28px;
+        padding-top: 2px;
+    }
+    
+    nav .pagination {
+    width: 30px;
+        left: 5px;
+    }
+    
+    nav .pagination a {
+        font-size: 20px;
+        width: 30px;
+        height: 29px;
+        padding-top: 1px;
+    }
+    
+    /* Home Page Header
+    *****************************************************************************************/
+    
+    header {
+        padding: 40px 0 100px;
+    }
+    
+    header .intro {
+        width: 300px;
+    }
+    
+    header p {
+        width: 280px;
+    }
+    
+    /* Posts & Pages
+    *****************************************************************************************/
+    
+    article,    
+    article:nth-child(1),
+    article.full {
+        width: 280px;
+        margin: 10px 20px;
+    }
+    
+    article.full .look {
+        height: 247px;
+    }
+    
+    article.full .look.video {
+        height: 158px;
+    }
+    
+    /* Post Comment Button
+    *****************************************************************************************/
+    
+    a.post-comment {
+        font-size: 16px;
+        width: 30px;
+        height: 28px;
+        padding-top: 2px;
+        top: 5px;
+        right: 5px;
+    }
+    
+    /* Post Comment Form
+    *****************************************************************************************/
+    
+    #post-comment-form  input[type="submit"] {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+    
+    /* Footer
+    *****************************************************************************************/
+    
+    footer .content {
+        padding: 0;
+    }
+    
+    
+}

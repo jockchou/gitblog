@@ -2,6 +2,7 @@
 author: jockchou
 date: 2015-07-29
 title: GitBlog目录结构
+images: /theme/cube/image/cube11.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

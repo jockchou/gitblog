@@ -1,0 +1,44 @@
+<div class="container">
+    <span class="content-title">{{ blog.title }}</span>
+    <div class="content">
+        <article class="full">
+        	{% if blog.images %}
+			<div class="look" style="background-image: url('{{ blog.images.0 }}');"></div>
+		    {% endif %}
+            <div class="read">
+                <div class="post">
+                    <h2>{{ blog.title }}</h2>
+                    <p>
+                    	{{ blog.content | raw }}
+                    </p>
+                </div>
+                <div class="meta">
+                    <span>{{ blog.date | date('Y-m-d') }} {{ blog.author }}</span>
+                </div>
+            </div>
+        </article>
+        {% if site.duoshuo %}
+		<div class="post-content">
+			<!-- 多说评论框 start -->
+			<div class="ds-thread" data-thread-key="{{ blog.blogId }}" data-title="{{ blog.title }}" data-url="{{ blog.siteURL }}"></div>
+			<!-- 多说评论框 end -->
+			<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+			<script type="text/javascript">
+			var duoshuoQuery = {short_name:"{{ site.duoshuo }}"};
+			(function() {
+				var ds = document.createElement('script');
+				ds.type = 'text/javascript';ds.async = true;
+				ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+				ds.charset = 'UTF-8';
+				(document.getElementsByTagName('head')[0] 
+				 || document.getElementsByTagName('body')[0]).appendChild(ds);
+			})();
+			</script>
+	        <!-- 多说公共JS代码 end -->
+		</div>
+		{% endif %}
+    </div>
+    <div id="duoshuo"></div>
+</div>
+
+{% include "_includes/footer.html" %}

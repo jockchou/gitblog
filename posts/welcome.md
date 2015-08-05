@@ -3,6 +3,7 @@ author: jockchou
 head: /img/my_head.png
 date: 2015-07-31
 title: 欢迎使用GitBlog
+images: /theme/cube/image/cube2.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

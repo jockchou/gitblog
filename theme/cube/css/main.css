@@ -140,6 +140,74 @@ body.dp-install form button:hover {
     text-shadow: 0 0 10px rgba(54, 124, 49, 0.75);
 }
 
+/* Icon Font
+*********************************************************************************************/
+
+@font-face {
+	font-family: 'dropplets';
+	src:url('fonts/dropplets.eot');
+	src:url('fonts/dropplets.eot?#iefix') format('embedded-opentype'),
+		url('fonts/dropplets.woff') format('woff'),
+		url('fonts/dropplets.ttf') format('truetype'),
+		url('fonts/dropplets.svg#dropplets') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Icon Classes
+*********************************************************************************************/
+
+.dp-icon-dropplets, .dp-icon-key, .dp-icon-settings, .dp-icon-templates, .dp-icon-close, .dp-icon-checkmark, .dp-icon-preview, .dp-icon-question, .dp-icon-twitter, .dp-icon-edit, .dp-icon-grid {
+	font-family: 'dropplets';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+}
+.dp-icon-dropplets:before {
+	content: "\64";
+}
+.dp-icon-key:before {
+	content: "\6c";
+}
+.dp-icon-settings:before {
+	content: "\73";
+}
+.dp-icon-templates:before {
+	content: "\74";
+}
+.dp-icon-close:before {
+	content: "\63";
+}
+.dp-icon-checkmark:before {
+	content: "\6b";
+}
+.dp-icon-preview:before {
+	content: "\70";
+}
+.dp-icon-question:before {
+	content: "\71";
+}
+.dp-icon-twitter:before {
+	content: "\65";
+}
+.dp-icon-edit:before {
+	content: "\69";
+}
+.dp-icon-grid:before {
+	content: "\61";
+}
+.dp-icon-code:before {
+	content: "\21";
+}
+.dp-icon-profile:before {
+	content: "\22";
+}
+.dp-icon-text:before {
+	content: "\23";
+}
 
 /* Side Admin Panel
 *********************************************************************************************/

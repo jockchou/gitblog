@@ -340,7 +340,7 @@ class Markdown {
 		$noteBlockArr = array();
 		$noteTmpArr = array();
 		$pattern1 = '/<\!\-\-(.*?)\-\->/is';
-	    $pattern2 = '/^\s*(author|head|date|title|summary|tags|category|status)\s*:(.*?)$/im';
+	    $pattern2 = '/^\s*(author|head|date|title|summary|images|tags|category|status)\s*:(.*?)$/im';
 	    
 	    $blogProp = array(
 			"author" => "",
@@ -349,6 +349,7 @@ class Markdown {
 			"title" => "",
 			"summary" => "",
 			"keywords" => "",
+			"images" => array(),
 			"tags" => array(),
 			"category" => array(),
 			"status" => "publish"
@@ -385,6 +386,9 @@ class Markdown {
 							case "summary":
 								$blogProp['summary'] = $propVal;
 								break;
+							case "images":
+								$blogProp['images'] = $this->cleanKeywords2Arr($propVal);
+								break;
 							case "tags":
 								$blogProp['tags'] = $this->converStrArr($propVal, "tags");
 								$tagsArr = $this->cleanKeywords2Arr($propVal);
@@ -403,7 +407,7 @@ class Markdown {
 	    }
 		
 		//summary支持多行
-		$patternSummary = '/\s*(summary)\s*:(.*?)(author|head|date|title|tags|category|status)\s*:(.*?)\-\->/is';
+		$patternSummary = '/\s*(summary)\s*:(.*?)(author|head|date|title|images|tags|category|status)\s*:(.*?)\-\->/is';
 		preg_match($patternSummary, $subject, $matches);
 		
 		if (isset($matches[2])) {
@@ -615,6 +619,8 @@ class Markdown {
 		} else if ($type == "yearMonths") {
 			$objArr = $this->yearMonths;
 		}
+		
+		if (empty($objArr)) return false;
 		
 		foreach ($objArr as $idx => $obj) {
 			if ($obj['id'] == $tagObj['id']) {

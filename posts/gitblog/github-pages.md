@@ -2,6 +2,7 @@
 author: jockchou
 date: 2015-07-20
 title: 使用GitBlog和Github Pages搭建博客
+images: /theme/cube/image/cube6.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+{% include "_includes/head.html" %}
+<body>
+{% block content %}{% endblock %}
+
+{% if site.highlight %}
+<link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css">
+<script src="http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endif %}
+
+{% if site.mathjax %}
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+{% endif %}
+</body>
+</html>

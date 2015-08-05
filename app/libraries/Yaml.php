@@ -34,7 +34,8 @@ class Yaml {
     			"name" => "your-name",
     			"email" => "your-email@example.com",
     			"github" => "your-github",
-    			"weibo" => "your-weibo"
+    			"weibo" => "your-weibo",
+    			"avatar" => ""
     		),
     		"blog" => array(
     			"recentSize" => 5,

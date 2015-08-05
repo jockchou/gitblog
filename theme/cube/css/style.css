@@ -1,0 +1,603 @@
+/********************************************************************************************
+
+Clear v1.0.2 by Jason Schuller (Jason.sc)
+Copyright Circa75 Media, LLC (Circa75.co)
+
+*********************************************************************************************/
+
+/* Normalization
+*********************************************************************************************/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* Setup
+*********************************************************************************************/
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 26px;
+	color: #303030;
+}
+
+.container {
+    border-bottom: 1px solid #eeeeee;
+    background: #fefefe;
+    width: 100%;
+    float: left;
+    padding: 40px 0;
+    position: relative;
+}
+
+.container:first-child {
+    border-top: 1px solid #eeeeee;
+    margin-top: 50px;
+}
+
+.container.header {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    border-top: none;
+    margin-top: 0;
+}
+
+.content {
+    width: 1280px;
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+.content-title {
+    border: 1px solid #eeeeee;
+    background-color: #fefefe;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-size: 14px;
+    color: #b3b3b1;
+    text-align: center;
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    width: 280px;
+    margin-left: -140px;
+    padding: 2px 0;
+    z-index: 20;
+}
+
+.content-title a {
+    color: #b3b3b1;
+    font-weight: bold;
+}
+
+.content-title a:hover {
+    color: #848484;
+}
+
+/* Universal Typography
+*********************************************************************************************/
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+	color: #303030;
+	margin: 0;
+	padding: 0;
+}
+
+h1 { 
+    font-size: 34px;
+    line-height: 46px;
+}
+
+h2, h3  { 
+    font-size: 24px;
+    line-height: 39px;
+    margin-bottom: 5px;
+}
+
+h4, h5, h6  { 
+    font-size: 20px;
+    line-height: 32px;
+    margin-bottom: 5px;
+}
+
+
+p {
+    margin: 0 0 20px;
+}
+
+em { 
+    font-style: italic; 
+}
+
+strong { 
+    font-weight: bold; 
+}
+
+a { 
+    color: #303030;
+    text-decoration: none;
+    -moz-transition-duration: 0.1s;
+    -webkit-transition-duration: 0.1s;
+}
+
+a:hover, a:focus { 
+    color: #000000; 
+}
+
+/* Icon Font
+*********************************************************************************************/
+/* Social Links
+*********************************************************************************************/
+
+.share {
+    height: 24px;
+    position: absolute;
+    bottom: 14px;
+    right: 30px;
+}
+
+.share a {
+	padding-top: 7px;
+    border-radius: 20px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 8px;
+    width: 24px;
+    height: 24px;
+    float: left;
+    opacity: 0.8;
+    background-color: #3b5b99;
+    box-sizing: border-box;
+}
+
+
+/* Home Page Header
+*********************************************************************************************/
+
+header {
+    text-align: center;
+    width: 100%;
+    float: left;
+    padding: 80px 0 56px;
+    margin-bottom: 50px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    top: 0;
+    position: relative;
+}
+
+header .intro {
+    width: 940px;
+    margin: 0px auto;
+    padding: 20px 0 0 0;
+}
+
+header h1,
+header p {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+header h1 {
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    width: 640px;
+    margin: 0px auto;
+    margin-bottom: 40px;
+}
+
+header a,
+a.home {
+    background-color: #ffffff;
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -58px;
+    left: 50%;
+    margin-left: -58px;
+    z-index: 100;
+}
+
+header a {
+	webkit-animation: rotateH 60s linear infinite;
+	animation: rotateH 60s linear infinite;
+}
+a.home {
+    position: fixed;
+    bottom: -58px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
+}
+
+a.home:hover {
+    bottom: -10px;
+}
+
+
+header a img,
+a.home img {
+    background-color: #ffffff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 8px 0 0 8px;
+    float: left;
+}
+header a {
+	box-shadow: 0px 0px 3px rgba(0,0,0,0.25);
+}
+
+header a:hover {
+    color: #ffffff;
+    opacity: 1.0;
+}
+
+/* Posts & Pages
+*********************************************************************************************/
+
+article {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    width: 300px;
+    margin: 10px;
+    float: left;
+    position: relative;
+}
+
+article:nth-child(1) {
+    width: 620px;
+}
+
+article.full {
+    width: 1260px;
+}
+
+article .intro {
+    text-align: center;
+}
+
+article .look {
+    position: relative;
+    width: 100%;
+    height: 247px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+}
+
+article .look a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+article .look a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+article.full .look {
+    height: 709px;
+}
+
+article.full .look iframe,
+article.full .look object,
+article.full .look embed {
+    width: 100%;
+    height: 100%;
+}
+
+article .intro,
+article .post,
+article .excerpt {
+    padding: 21px 30px 0;
+}
+
+article .intro {
+    text-align: center;
+}
+
+article .excerpt {
+    height: 96px;
+    padding-bottom: 23px;
+    overflow: hidden;
+}
+
+article .excerpt h2  {
+    max-height: 39px;
+    overflow: hidden;
+}
+
+article .excerpt p {
+    margin: 0;
+}
+
+article.text-only .excerpt {
+    height: 343px;
+}
+
+article.text-only h2 {
+    max-height: 78px;
+    overflow: hidden;
+}
+
+article .meta {
+    border-top: 1px solid #f2f2f2;
+    background-color: #ffffff;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-size: 14px;
+    color: #b3b3b1;
+    margin-top: 28px;
+    padding: 13px 30px 13px;
+}
+
+/* Post & Page Typography
+*********************************************************************************************/
+
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+    border-bottom: 1px dotted #f2f2f2;
+}
+
+.post h1,
+.post h2 {
+    font-size: 34px;
+    line-height: 46px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+}
+
+.post h3 {
+    ont-size: 24px;
+    line-height: 39px;
+}
+
+.post ul,
+.post ol,
+.post dl {
+    margin: 0 0 20px 30px;
+}
+
+.post ul {
+    list-style: disc;
+}
+
+.post ol {
+    list-style: decimal;
+}
+
+.post dt {
+    font-size: 16px;
+}
+
+.post dd {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #747474;
+}
+
+.post blockquote,
+.post q,
+.post pre,
+.post code {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    color: #000;
+    background: #f0f0f0;
+    padding: 8px 10px;
+    border-radius: 3px;
+}
+
+.post blockquote,
+.post pre {
+    margin-bottom: 20px;
+    padding: 15px 20px;
+}
+
+.post pre,
+.post code {
+    font-family: "Courier New", Courier, mono;
+    overflow-x: auto;
+    line-height: 1.2;
+}
+
+.post code {
+    padding: 2px 6px;
+}
+
+.post a {
+    font-weight: bold;
+    color: #303030;
+    border-bottom: 1px dotted #f2f2f2;
+}
+
+.post .button {
+    background-color: #37b253;
+    border-radius: 3px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: bold;
+    color: #ffffff;
+    width: 100px;
+    text-align: center;
+    margin: 0 10px 20px 0;
+    padding: 16px 24px;
+    display: block;
+    border-bottom: none;
+}
+
+.post mark {
+    background-color: #fff289;
+}
+
+.post em {
+    font-weight: bold;
+}
+
+.post cite,
+.post abbr {
+    font-style: italic;
+}
+
+.post small {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.post sub,
+.post sup {
+    font-size: 12px;
+    display: inline-block;
+}
+
+.post table {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.post table caption {
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px dotted #f2f2f2;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.post thead {
+    font-weight: bold;
+}
+
+.post tr {
+    border-bottom: 1px solid #f2f2f2;
+    line-height: 2;
+}
+
+.post tfoot tr {
+    border: none;
+    font-size: 14px;
+}
+
+.post img {
+    max-width: 100%;
+    margin: 5px 0 20px;
+}
+
+.post img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+}
+
+.post a[href$=jpg], 
+.post a[href$=jpeg], 
+.post a[href$=jpe], 
+.post a[href$=png], 
+.post a[href$=gif] {
+	border: 0 none;
+}
+
+.post figure {
+    background-color: #fbfbfb;
+    color: #747474;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.post figure img {
+    margin: 0;
+}
+
+.post iframe,
+.post object,
+.post embed {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 5px 0 20px;
+}
+
+/* Footer
+*********************************************************************************************/
+.footer {
+	display: block;
+	clear: both;
+}
+
+.footer_bottom {
+	padding: 0.5em 0;
+	background: #2ABB9B;
+}
+.copy {
+	text-align: center;
+}
+.copy p {
+	font-size: 1em;
+	color: #fff;
+}
+.copy p a {
+	color: #fff;
+	border-bottom: 1px dotted;
+}
+.copy p a:hover {
+	color: #e5e52d;
+	border-bottom: 1px solid;
+	text-decoration: none;
+}
+
+.follow-us {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.social-icon {
+	padding-top: 6px;
+	font-size: 16px;
+	text-align: center;
+	width: 32px;
+	height: 32px;
+	border: 2px solid #d5f1eb;
+	border-radius: 50%;
+	color: #d5f1eb;
+	margin: 5px;
+	box-sizing: border-box;
+}
+a.social-icon:hover, a.social-icon:active, a.social-icon:focus {
+	text-decoration: none;
+	color: #e5e52d;
+	border-color: #e5e52d;
+}
+
+
+@-webkit-keyframes rotateH {
+	0% {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg)
+	}
+	100% {
+		-webkit-transform:rotate(360deg);
+		transform:rotate(360deg)
+	}
+}
+
+@keyframes rotateH {
+	0% {
+		-webkit-transform:rotate(0deg);
+		transform:rotate(0deg)
+	}
+	100% {
+	-webkit-transform:rotate(360deg);
+	transform:rotate(360deg)
+	}
+}

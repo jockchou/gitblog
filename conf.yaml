@@ -3,11 +3,11 @@
 url: /
 title: Your-GitBlog
 subtitle: 自豪地采用GitBlog
-theme: simple
+theme: cube
 highlight: true
 mathjax: false
-duoshuo:
-baiduAnalytics:
+duoshuo: jockchou                     #多说评论框ID
+baiduAnalytics: 732acc76ff6bd41343951a67cbfafe34  #百度统计ID
 keywords: GitBlog,博客,Markdown博客,jockchou
 description: >
     GitBlog是一个简单易用的Markdown博客系统
@@ -17,9 +17,10 @@ author:
     email: your-email@example.com
     github: your-github
     weibo: your-weibo
+    avatar: /img/my_head.png
 blog:
     recentSize: 5
-    pageSize: 12
+    pageSize: 7
     pageBarSize: 5
     allBlogsForPage: false
 text:

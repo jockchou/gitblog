@@ -2,6 +2,7 @@
 author: jockchou
 date: 2015-07-26
 title: GitBlog评论，订阅，统计等功能
+images: 
 tags: GitBlog
 category: GitBlog
 status: publish
