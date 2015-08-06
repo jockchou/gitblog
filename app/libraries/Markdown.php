@@ -399,6 +399,7 @@ class Markdown {
 	    }
 		
 		$keywrodsArr = array_merge($tagsArr, $cateArr);
+		
 		//关键字去重
 		$keywrodsArr = array_unique($keywrodsArr);
 		$blogProp['keywords'] = implode(",", $keywrodsArr);
@@ -444,6 +445,10 @@ class Markdown {
 			if (isset($matches[1])) {
 				$blogProp['images'] = $matches[1];
 			}
+		}
+		
+		if (empty($blogProp['author'])) {
+			$blogProp['author'] = "admin";
 		}
 		
 		return $blogProp;
@@ -496,15 +501,20 @@ class Markdown {
 			
 			//读取自定义博客属性信息
 			$blogProp = $this->readPostBaseInfo($serverPath);
-						
+			
 			//没有title的博客不处理
 			if (empty($blogProp['title'])) continue;
 			
 			//草稿状态的不处理
 			if ($blogProp == "draft") continue;
 			
-			$month = date("Y-m", strtotime($ctime));
-			$yearMonthId = date("Ym", strtotime($ctime));
+			$btime = strtotime($ctime);
+			if (empty($blogProp['date'])) {
+				$blogProp['date'] = date("Y-m-d", $btime);
+			}
+			
+			$month = date("Y-m", $btime);
+			$yearMonthId = date("Ym", $btime);
 			$monthObj = array(
 				"id" => $yearMonthId,
 				"name" => $month,

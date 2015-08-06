@@ -13,7 +13,7 @@ class Twig {
 		
 		Twig_Autoloader::register();
 		$this->loader = new Twig_Loader_Filesystem(dirname(APPPATH) . '/theme/' . $params['theme']);
-		if(!is_writable($cachePath)) {
+		if(!is_writable($cachePath) || ENVIRONMENT == "development") {
 			$this->twig = new Twig_Environment($this->loader, array('auto_reload' => true));          
         } else {
         	$this->twig = new Twig_Environment($this->loader, array('cache' => $cachePath, 'auto_reload' => true));                      

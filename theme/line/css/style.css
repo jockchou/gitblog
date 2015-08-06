@@ -15,7 +15,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 body {
 	background: #ffffff;
-	font-family: 'Merriweather', serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 27px;
@@ -128,7 +128,14 @@ article.single {
 .post p a,
 .post ul a,
 .post ol a {
-    border-bottom: 1px solid #ebebeb;
+	color: #4078c0;
+	text-decoration: none
+}
+
+.post p a:hover,
+.post ul a:hover,
+.post ol a:hover {
+    color: #9b9b9b;
 }
 
 .post p, 

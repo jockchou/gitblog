@@ -1,0 +1,24 @@
+{% extends "_layouts/default.html" %}
+
+{% block content %}
+	<article class="single">
+    <div class="row">
+    		{% set headUrl = "/img/logo_64x64.png" %}
+        	{% if site.author.avatar %}
+        		{% set headUrl = site.author.avatar %}
+        	{% endif %}
+        <div class="one-quarter meta">
+            <div class="thumbnail"><img alt="{{ site.author.name }}" src="{{ headUrl }}"></div>
+        </div>
+
+        <div class="three-quarters post">
+            <h1>Oops! 404.</h1>
+            <p>That page can’t be found.</p>
+
+            <ul class="actions">
+                <li><a class="button" href="{{ site.url }}">返回首页</a></li>
+            </ul>
+        </div>
+    </div>
+</article>
+{% endblock %}
