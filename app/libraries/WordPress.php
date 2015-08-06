@@ -7,7 +7,7 @@ class WordPress {
 	//配置文件
 	private $wpPath;
 	private $CI;
-	private $_error;
+	private $_error = null;
 	
 	public function __construct() {
 		if (!isset($this->CI)) {
@@ -31,7 +31,7 @@ class WordPress {
 	
 	//创建博客头部
 	public static function createMarkdownContent($wpObj) {
-		$headerList = array("author", "head", "date", "title", "summary", "tags", "category", "status");
+		$headerList = array("author", "head", "date", "title", "tags", "category", "status", "summary");
 		$headerArray = array();
 		array_push($headerArray, "<!--\n");
 		
@@ -56,16 +56,23 @@ class WordPress {
 					array_push($headerArray, "status: " . $wpObj['status'] . "\n");
 					break;
 				case "summary":
-					array_push($headerArray, "status: " . $wpObj['title'] . "\n");
+					array_push($headerArray, "summary: " . self::cleanSummary($wpObj['content']) . "\n");
 					break;
 				default:
 					break;
 			}
 		}
+		
 		array_push($headerArray, "-->\n\n");
 		array_push($headerArray, $wpObj['content']);
 		
 		return $headerArray;
+	}
+	
+	private static function cleanSummary($content) {
+		$content = strip_tags($content);
+		$content = str_replace(array("\r\n", "\r", "\n"), "", $content);
+		return mb_substr($content, 0, 140);
 	}
 	
 	public static function writeMarkdown($wpObj) {
