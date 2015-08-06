@@ -1,0 +1,64 @@
+<div id="content">
+    <div class="quest-row site-content">
+        <div class="container">
+            <div class="row">
+                <div class="content-area col-md-12" id="primary">
+                    <main class="site-main" id="main" role="main">
+                        <section class="error-404 not-found">
+                            <header class="entry-header">
+                                <h1 class="page-title">Oops! 404.</h1>
+                            </header><!-- .entry-header -->
+
+                            <div class="entry-content">
+                            	<p>您访问的页面不存了，你可以试试查看下面的内容.</p>
+                            
+								{% if recentBlogList is not empty %}
+                                <div class="widget widget_recent_entries">
+                                    <h2 class="widgettitle">近期文章</h2>
+                                    <ul>
+                                        {% for blog in recentBlogList %}
+									    <li><a href="{{ blog.siteURL }}">{{ blog.title }}</a></li>
+									    {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                
+                                {% if categoryList is not empty %}
+                                <div class="widget widget_categories">
+                                    <h2 class="widget-title">博客分类</h2>
+                                    <ul>
+                                    {% for category in categoryList %}
+							        <li class="cat-item"><a href="{{ category.url }}" >{{ category.name }}</a></li>
+							        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                
+                                {% if yearMonthList is not empty %}
+                                <div class="widget widget_archive">
+                                    <h2 class="widgettitle">文章归档</h2>
+                                    <ul>
+									{% for yearMonth in yearMonthList %}
+									<li><a href="{{ yearMonth.url }}">{{ yearMonth.name }}</a></li>
+									{% endfor %}
+									</ul>
+                                </div>
+                                {% endif %}
+                                
+                                <div class="widget widget_tag_cloud">
+                                    <h2 class="widgettitle">标签</h2>
+
+                                    <div class="tagcloud">
+									    {% for tag in tagsList %}
+										<a href="{{ tag.url }}"  title="{{ tag.name }}" >{{ tag.name }}</a>
+										{% endfor %}
+                                    </div>
+                                </div>
+                            </div><!-- .entry-content -->
+                        </section><!-- .error-404 -->
+                    </main><!-- #main -->
+                </div><!-- #primary -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div>
+</div>

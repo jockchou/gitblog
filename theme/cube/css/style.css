@@ -25,7 +25,6 @@ body {
     border-bottom: 1px solid #eeeeee;
     background: #fefefe;
     width: 100%;
-    float: left;
     padding: 40px 0;
     position: relative;
 }
@@ -156,7 +155,6 @@ a:hover, a:focus {
 header {
     text-align: center;
     width: 100%;
-    float: left;
     padding: 80px 0 56px;
     margin-bottom: 50px;
     background-repeat: no-repeat;
@@ -531,8 +529,8 @@ article .meta {
 /* Footer
 *********************************************************************************************/
 .footer {
+	width: 100%;
 	display: block;
-	clear: both;
 }
 
 .footer_bottom {

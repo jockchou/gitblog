@@ -429,6 +429,17 @@ class Gitblog extends CI_Controller {
 		}
 		return $feedXml;
 	}
+	
+	public function go404() {
+		$this->init();
+		
+		try {
+			$this->render("404.html");
+		} catch (Twig_Error_Loader $e) {
+			show_404();
+		}
+	}
+	
 	//设置渲染数据
 	private function setData($key, $dataObj) {
  		$this->data[$key] = $dataObj;

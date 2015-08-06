@@ -1,0 +1,16 @@
+{% extends "block/base.html" %}
+
+{% block keywords %}{% if tag %}{{ tag.name }},{% endif %}{% if category %}{{ category.name }},{% endif %}{{ parent() }}{% endblock %}
+
+{% block header %}
+    {% include "block/header.html" %}
+{% endblock %}
+
+{% block content %}
+    {% include "block/404Content.html" %}
+{% endblock %}
+
+
+{% block footer %}
+    {% include "block/footer.html" %}
+{% endblock %}

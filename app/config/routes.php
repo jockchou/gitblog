@@ -70,6 +70,6 @@ $route['wp2gb'] 							= 'Wp2Gb';
 
 $route['default_controller'] 				= 'gitblog';
 
-$route['404_override'] = '';
+$route['404_override'] 						= 'gitblog/go404';
 
 $route['translate_uri_dashes'] = FALSE;
