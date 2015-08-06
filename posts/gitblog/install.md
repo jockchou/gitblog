@@ -2,7 +2,7 @@
 author: jockchou
 date: 2015-07-30
 title: GitBlog安装
-images: /theme/cube/image/cube7.jpg
+images: http://pingodata.qiniudn.com/cube7.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

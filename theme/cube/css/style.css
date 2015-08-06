@@ -113,14 +113,14 @@ strong {
 }
 
 a { 
-    color: #303030;
+	color: #4078c0;
     text-decoration: none;
     -moz-transition-duration: 0.1s;
     -webkit-transition-duration: 0.1s;
 }
 
 a:hover, a:focus { 
-    color: #000000; 
+    color: #551A8B; 
 }
 
 /* Icon Font
@@ -412,8 +412,8 @@ article .meta {
 }
 
 .post a {
+	olor: #551A8B;
     font-weight: bold;
-    color: #303030;
     border-bottom: 1px dotted #f2f2f2;
 }
 
@@ -537,7 +537,7 @@ article .meta {
 
 .footer_bottom {
 	padding: 0.5em 0;
-	background: #2ABB9B;
+	background: #58cb8e;
 }
 .copy {
 	text-align: center;

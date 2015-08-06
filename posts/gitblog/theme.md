@@ -2,7 +2,7 @@
 author: jockchou
 date: 2015-07-23
 title: GitBlog主题制作
-images: /theme/cube/image/cube1.jpg
+images: http://pingodata.qiniudn.com/cube1.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

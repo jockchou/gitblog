@@ -2,7 +2,7 @@
 author: jockchou
 date: 2015-07-24
 title: GitBlog全站静态导出
-images: /theme/cube/image/cube11.jpg
+images: http://pingodata.qiniudn.com/cube11.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

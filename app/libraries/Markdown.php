@@ -320,16 +320,6 @@ class Markdown {
 		}
 	}
 	
-	//读取post的内容
-	private function readPostContent($filePath) {
-		$blogHtml = "";
-		$content = read_file($filePath);
-		if (!empty($content)) {
-			$blogHtml = $this->parseMarkdown($content);
-		}
-		return $blogHtml;
-	}
-	
 	//读取博客的基本信息
 	private function readPostBaseInfo($serverPath) {
 		$keywrodsArr = array();
@@ -342,6 +332,8 @@ class Markdown {
 		$pattern1 = '/<\!\-\-(.*?)\-\->/is';
 	    $pattern2 = '/^\s*(author|head|date|title|summary|images|tags|category|status)\s*:(.*?)$/im';
 	    
+	    $subject = file_get_contents($serverPath);
+	    
 	    $blogProp = array(
 			"author" => "",
 			"head" => "",
@@ -352,10 +344,10 @@ class Markdown {
 			"images" => array(),
 			"tags" => array(),
 			"category" => array(),
-			"status" => "publish"
+			"status" => "publish",
+			"content" => (string)$this->parseMarkdown($subject)
 		);
 		
-	    $subject = file_get_contents($serverPath);
 	    preg_match($pattern1, $subject, $matches);
 	    
 	    if (isset($matches[1])) {
@@ -384,7 +376,7 @@ class Markdown {
 								$blogProp['title'] = $propVal;
 								break;
 							case "summary":
-								$blogProp['summary'] = $propVal;
+								$blogProp['summary'] = $this->parseMarkdown($propVal);
 								break;
 							case "images":
 								$blogProp['images'] = $this->cleanKeywords2Arr($propVal);
@@ -406,20 +398,53 @@ class Markdown {
 	        }
 	    }
 		
-		//summary支持多行
-		$patternSummary = '/\s*(summary)\s*:(.*?)(author|head|date|title|images|tags|category|status)\s*:(.*?)\-\->/is';
-		preg_match($patternSummary, $subject, $matches);
-		
-		if (isset($matches[2])) {
-			$summary = trim($matches[2]);
-			if (!empty($summary)) {
-				$blogProp['summary'] = $this->parseMarkdown($summary);
-			}
-		}
 		$keywrodsArr = array_merge($tagsArr, $cateArr);
 		//关键字去重
 		$keywrodsArr = array_unique($keywrodsArr);
 		$blogProp['keywords'] = implode(",", $keywrodsArr);
+		
+		$blogProp = $this->autoCheckBlogProps($blogProp);
+		return $blogProp;
+	}
+	
+	//自动获取未填写的属性
+	private function autoCheckBlogProps($blogProp) {
+		$content = $blogProp['content'];
+		
+		if (empty($blogProp['title'])) {
+			$pattern = '/<h1>(.*?)<\/h1>/i';
+			preg_match($pattern, $content, $matches);
+			
+			if (isset($matches[1])) {
+				$blogProp['title'] = trim($matches[1]);
+			} else {
+				$pattern = '/<h2>(.*?)<\/h2>/si';
+				preg_match($pattern, $content, $matches);
+				if (isset($matches[1])) {
+					$blogProp['title'] = trim($matches[1]);
+				}
+			}
+		}
+		
+		if (empty($blogProp['summary'])) {
+			$pattern = "/<p>(.{50,600})<\/p>/i";
+			preg_match($pattern, $content, $matches);
+			if (isset($matches[1])) {
+				$blogProp['summary'] = trim($matches[1]);
+			}
+			
+			if (empty($blogProp['summary'])) {
+				$blogProp['summary'] = $blogProp['title'];
+			}
+		}
+		
+		if (empty($blogProp['images'])) {
+			$pattern = '/<img.*?src="(.*?)".*?>/i';
+			preg_match_all($pattern, $content, $matches);
+			if (isset($matches[1])) {
+				$blogProp['images'] = $matches[1];
+			}
+		}
 		
 		return $blogProp;
 	}
@@ -459,18 +484,6 @@ class Markdown {
 			
 			$blogId = md5($siteURL);
 			
-			//读取博客内容
-			$content = $this->readPostContent($serverPath);
-			
-			//读取自定义博客属性信息
-			$blogProp = $this->readPostBaseInfo($serverPath);
-			
-			//没有title的博客不处理
-			if (empty($blogProp['title'])) continue;
-			
-			//草稿状态的不处理
-			if ($blogProp == "draft") continue;
-			
 			$blog = array(
 				"blogId" => $blogId,
 				"fileName" => $fileName,
@@ -478,9 +491,17 @@ class Markdown {
 				"sitePath" => $sitePath,
 				"mtime" => $mtime,
 				"ctime" => $ctime,
-				"siteURL" => $siteURL,
-				"content" => $content
+				"siteURL" => $siteURL
 			);
+			
+			//读取自定义博客属性信息
+			$blogProp = $this->readPostBaseInfo($serverPath);
+						
+			//没有title的博客不处理
+			if (empty($blogProp['title'])) continue;
+			
+			//草稿状态的不处理
+			if ($blogProp == "draft") continue;
 			
 			$month = date("Y-m", strtotime($ctime));
 			$yearMonthId = date("Ym", strtotime($ctime));
@@ -519,10 +540,12 @@ class Markdown {
 	
 	//缓存全局数据
 	private function globalDataCacheWrite() {
-		$this->gbWriteCache(GB_BLOG_CACHE, $this->blogs);
-		$this->gbWriteCache(GB_TAG_CACHE, $this->tags);
-		$this->gbWriteCache(GB_CATEGORY_CACHE, $this->categorys);
-		$this->gbWriteCache(GB_ARCHIVE_CACHE, $this->yearMonths);
+		if (ENVIRONMENT != "development") {
+			$this->gbWriteCache(GB_BLOG_CACHE, $this->blogs);
+			$this->gbWriteCache(GB_TAG_CACHE, $this->tags);
+			$this->gbWriteCache(GB_CATEGORY_CACHE, $this->categorys);
+			$this->gbWriteCache(GB_ARCHIVE_CACHE, $this->yearMonths);
+		}
 	}
 	
 	//从文件缓存中读取数据

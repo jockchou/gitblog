@@ -17,10 +17,10 @@ author:
     email: your-email@example.com
     github: your-github
     weibo: your-weibo
-    avatar: /img/my_head.png
+    avatar: http://pingodata.qiniudn.com/jockchou-avatar.jpg
 blog:
     recentSize: 5
-    pageSize: 7
+    pageSize: 19
     pageBarSize: 5
     allBlogsForPage: false
 text:

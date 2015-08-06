@@ -2,7 +2,7 @@
 author: jockchou
 date: 2015-07-22
 title: 在Nginx上运行GitBlog
-images: /theme/cube/image/cube8.jpg
+images: http://pingodata.qiniudn.com/cube8.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

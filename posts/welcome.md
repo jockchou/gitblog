@@ -1,9 +1,9 @@
 <!--
 author: jockchou
-head: /img/my_head.png
+head: http://pingodata.qiniudn.com/jockchou-avatar.jpg
 date: 2015-07-31
 title: 欢迎使用GitBlog
-images: /theme/cube/image/cube2.jpg
+images: http://pingodata.qiniudn.com/cube2.jpg
 tags: GitBlog
 category: GitBlog
 status: publish

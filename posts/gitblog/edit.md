@@ -2,11 +2,13 @@
 author: jockchou
 date: 2015-07-27
 title: 编写GitBlog博客
-images: /theme/cube/image/cube4.jpg
+images: http://pingodata.qiniudn.com/cube4.jpg
 tags: GitBlog
 category: GitBlog
+
+summary: 一篇GitBlog就是一个markdown文件，GitBlog使用解析markdown文件为html展示在网页上。所有的博客markdown文件必须放在`posts`文件夹里。后缀名只可以是`xx.md`或者`xx.markdown`。
+
 status: publish
-summary: 一篇GitBlog就是一个markdown文件，GitBlog使用解析markdown文件为html展示在网页上。所有的博客markdown文件必须放在posts文件夹里。后缀名只可以是xx.md或者xx.markdown。
 -->
 
 一篇GitBlog就是一个markdown文件，GitBlog使用解析markdown文件为html展示在网页上。所有的博客markdown文件必须放在`posts`文件夹里。后缀名只可以是`xx.md`或者`xx.markdown`。

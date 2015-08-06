@@ -2,7 +2,7 @@
 author: jockchou
 date: 2015-07-25
 title: GitBlog的缓存机制
-images: /theme/cube/image/cube2.jpg
+images: http://pingodata.qiniudn.com/cube2.jpg
 tags: GitBlog
 category: GitBlog
 status: publish
