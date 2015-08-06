@@ -526,7 +526,9 @@ class Markdown {
 	
 	//写缓存
 	private function gbWriteCache($key, $objdata) {
-		$this->CI->cache->file->save($key, serialize($objdata), GB_DATA_CACHE_TIME);
+		if (ENVIRONMENT != "development") {
+			$this->CI->cache->file->save($key, serialize($objdata), GB_DATA_CACHE_TIME);
+		}
 	}
 	
 	//读缓存
