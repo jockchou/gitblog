@@ -1,0 +1,16 @@
+<div class="wp-pagenavi">
+	{% if pagination.prev %}
+	<a href="{{ pagination.prev.url }}">&laquo; Prev</a>
+	{% endif %}
+	{% for page in pagination.showList %}
+		{% if page.isCurrent %}
+		<span class="current">{{ pageNo }}</span>
+		{% else %}
+    	<a href="{{ page.url }}" title="{{ page.num }}">{{ page.num }}</a>
+    	{% endif %}
+    {% endfor %}
+    {% if pagination.next %}
+	<a href="{{ pagination.next.url }}">Next &raquo;</a>
+	{% endif %}
+</div>
+<div class="clear"></div>

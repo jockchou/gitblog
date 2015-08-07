@@ -1,0 +1,109 @@
+* {padding:0; margin:0;}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted #ccc;
+    cursor:help;
+}
+
+img {
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.post h1, h2, h3, h4, h5 {
+	margin: 10px 0 5px 0;
+}
+.clear {
+ clear:both;
+}
+.clear:after {
+ display:block; 
+ visibility:hidden; 
+ clear:both; 
+ height:0; 
+ content: "."; 
+}
+a {color:#F30;text-decoration: none;}
+body {background:url(../images/htmlbg.jpg) repeat; font-family: Arial, Helvetica, sans-serif; font-size:70%; color:#000;}
+#page {background:url(../images/wrapbg.jpg) left top no-repeat; width:943px; margin:0 0 25px 0;}
+#sidebar {width:139px; float:left; padding:165px 10px 10px 10px; text-align:right;}
+#contents { float:left; width:620px; }
+p, ul, ol {font-size:1.2em;}
+h1, h2, h3 {font-family: 'TeXGyreAdventor', Arial, sans-seif; font-weight:bold;}
+h1 {font-size:3.2em;}
+h2 {font-size:2.2em;}
+h3 {font-size:1.8em;}
+#contents #main {background:url(../images/pagebg.gif) repeat-y; padding:35px;}
+#social {background:url(../images/sidebar.gif) repeat-y; width:164px; float:right;}
+#pagewrap { padding-top:150px;}
+#mainheader {background:url(../images/headerbg.png) no-repeat; height:205px;
+	border-top-left-radius:20px;
+	-moz-border-radius-topleft: 20px;
+   	-webkit-border-top-left-radius: 20px;
+   	
+
+}
+#mainheader h1 {display:block; padding:70px 70px 0 35px; color:#f4731d;  font-size:5.2em!important; text-shadow:#fff 1px 1px 1px; }
+#mainheader h1 span {color:#302c24; font-weight:normal!important;}
+#socialwrap {padding:15px;}
+ul {list-style:none;}
+#social {color:#e6d3c6;}
+#social h2 {display:block; font-size:2.2em; color:#fff; text-transform:lowercase; margin-bottom:15px; text-align:center; height:25px; line-height:25px;}
+#mainnav h2 {background:url(../images/hd-browse.png) center top no-repeat; text-indent:-4000px;}
+#mainnav ul li {display:block; height:32px; margin-bottom:3px; font:bold 1.4em "Trebuchet MS", Arial, Helvetica, sans-serif;}
+#mainnav ul li a {display:block; text-decoration:none; text-align:center; height:28px; color:#e6d3c6; line-height:25px;}
+#mainnav ul li.current a {-moz-border-radius: 10px;  -webkit-border-radius: 10px;  border-radius: 10px; background:#c25308; color:#fff!important; 
+}
+#mainnav ul li a:hover { color:#fff; background:#df6411; -moz-border-radius: 10px; -webkit-border-radius: 10px;  border-radius: 10px; background:#c25308; 
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#df6411', endColorstr='#c6550a'); /* for IE */
+background: -webkit-gradient(linear, left top, left bottom, from(#df6411), to(#c6550a)); /* for webkit browsers */
+background: -moz-linear-gradient(top,  #df6411,  #c6550a); /* for firefox 3.6+ */}
+#mainnav {margin-bottom:20px;}
+#sidebar h2 {display:block; font-weight:bold; font-size:2.2em; color:#000; margin-bottom:10px;}
+#sidebar li {display:block; height:25px;}
+#sidebar li a {display:block; height:25px; background:url(../images/sidebarli.png) right 3px no-repeat; padding-right:12px; color:#585247; text-decoration:none;}
+#sidebar ul {margin-bottom:20px;}
+.post {margin-bottom:15px; padding-bottom:15px; border-bottom:solid 1px #ccc6b5;}
+.post header {margin-bottom:15px;}
+.post header p {margin-bottom:0!important; display:block; font-size:1.1em;}
+.post header h2 {display:block; font: italic normal 2.0em Georgia, "Times New Roman", Times, serif, sans-serif; color:#262119;}
+.post header h2 a {text-decoration:none; color:#262119;}
+#contents p {line-height:18px;}
+.post .entry p {margin-bottom:10px;}
+a img {border:none!important;}
+#main a:hover {color:#000; text-decoration:none;}
+#sidebar a:hover {color:#000;}
+#pagefooter {background:url(../images/footerbg.jpg) no-repeat; height:132px;}
+.wp-pagenavi {padding:5px!important; display:block; font-size:1.2em; height:20px;}
+.wp-pagenavi span, .wp-pagenavi a {color:#000; text-decoration:none; margin:0 10px; padding:0 5px; height:18px; line-height:18px;}
+.wp-pagenavi .current {font-weight:bold; border-bottom:solid 1px #000;}
+p.siteinfo {display:block; color:#fff; font-size:1.2em; text-align: center;padding: 50px 0px;}
+p.siteinfo a{color:#fff;}
+.footerwrap {height:112px; margin-bottom:5px;}
+
+
+.post img.alignleft  {float:left; border:solid 1px #ddd; padding:10px; display:block; margin:0 10px 5px 0;}
+.post img.alignright  {float:right; border:solid 1px #ddd; padding:10px; display:block; margin:0 0 5px 10px;}
+.post ul, .post ol {font-size:1.2em; line-height:18px; margin-bottom:15px; padding-left:20px;}
+.post ul li {display:block; background:url(../images/ulli.png) 0 6px no-repeat; padding-left:25px; margin-bottom:10px;}
+.post h4 {font:bold 1.4em "Trebuchet MS", Arial, Helvetica, sans-serif; color:#000; margin-bottom:10px;}
+.post h2 {display:block; font:1.8em "Trebuchet MS", Arial, Helvetica, sans-serif; color:#000;}
+.postinfo a {color:#000; text-decoration:none;}

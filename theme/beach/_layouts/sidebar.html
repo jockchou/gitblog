@@ -1,0 +1,34 @@
+<section id="sidebar">
+	{% if categoryList is not empty %}
+    <h2>分类</h2>
+    <ul>
+    {% for category in categoryList %}
+        <li>
+            <a href="{{ category.url }}">{{ category.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if tagsList is not empty %}
+    <h2>标签</h2>
+    <ul>
+    {% for tag in tagsList %}
+        <li>
+            <a href="{{ tag.url }}">{{ tag.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if yearMonthList is not empty %}
+    <h2>归档</h2>
+    <ul>
+    {% for yearMonth in yearMonthList %}
+        <li>
+            <a href="{{ yearMonth.url }}">{{ yearMonth.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</section>

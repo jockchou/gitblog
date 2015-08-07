@@ -1,0 +1,18 @@
+{% extends "_layouts/base.html" %}
+
+{% block sidebar %}
+	{% include "_layouts/sidebar.html" %}
+{% endblock %}
+
+{% block contents %}
+<section id="contents">
+	<header id="mainheader">
+		<h1><a href="{{ site.url }}"><span>{{ site.title }}</span></a></h1>
+	</header>
+	
+	{% block main %}
+    {% endblock %}
+    
+    {% include "_includes/footer.html" %} 
+</section>
+{% endblock %}

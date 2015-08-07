@@ -1,0 +1,13 @@
+{% extends "_layouts/struct.html" %}
+
+{% block main %}
+	<section id="main">
+	{% if blogList %}
+	{% for blog in blogList %}
+	{% include "_includes/post.html" %}
+	{% endfor %}
+	{% endif %}                    
+	
+	{% include "_includes/pagenav.html" %}
+    </section>
+{% endblock %}
