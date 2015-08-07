@@ -3,7 +3,7 @@
 url: /
 title: Your-GitBlog
 subtitle: 自豪地采用GitBlog
-theme: beach
+theme: cube
 highlight: true
 mathjax: false
 duoshuo: jockchou                     #多说评论框ID
@@ -20,7 +20,7 @@ author:
     avatar: http://pingodata.qiniudn.com/jockchou-avatar.jpg
 blog:
     recentSize: 5
-    pageSize: 5
+    pageSize: 7
     pageBarSize: 5
     allBlogsForPage: false
 text:

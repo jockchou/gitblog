@@ -136,14 +136,13 @@ a:hover, a:focus {
 
 .share a {
 	padding-top: 7px;
-    border-radius: 20px;
+    border-radius: 24px;
     color: #ffffff;
     text-align: center;
-    font-size: 8px;
+    font-size: 0.6em;
     width: 24px;
     height: 24px;
     float: left;
-    opacity: 0.8;
     background-color: #3b5b99;
     box-sizing: border-box;
 }
