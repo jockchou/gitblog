@@ -3,7 +3,7 @@
 url: /
 title: Your-GitBlog
 subtitle: 自豪地采用GitBlog
-theme: simple
+theme: beach
 highlight: true
 mathjax: false
 duoshuo:
@@ -20,7 +20,7 @@ author:
     avatar:
 blog:
     recentSize: 5
-    pageSize: 10
+    pageSize: 6
     pageBarSize: 5
     allBlogsForPage: false
 text:
