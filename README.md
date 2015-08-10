@@ -1,14 +1,3 @@
-<!--
-author: jockchou
-head: http://pingodata.qiniudn.com/jockchou-avatar.jpg
-date: 2015-07-31
-title: 欢迎使用GitBlog
-tags: GitBlog
-category: GitBlog
-status: publish
-summary: GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，没有管理后台功能，更新博客只需要添加你写好的Markdown文件即可。
--->
-
 ## 一. 简介 ##
 GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，没有管理后台功能，更新博客只需要添加你写好的Markdown文件即可。它摆脱了在线编辑器排版困难，无法实时预览的缺点，一切都交给Markdown来完成，一篇博客就是一个Markdown文件。同时也支持评论，代码高亮，数学公式，页面PV统计等常用功能。GitBlog提供了不同的主题样式，你可以根据自己的喜好配置，如果你想自己制作博客主题，也是非常容易的。GitBlog还支持整站静态导出，你完全可以导出整站静态网页部署到Github Pages。
 
@@ -81,20 +70,20 @@ QQ群：`84692078`
 作者邮箱：`164068300[AT]qq.com`    
 
 
-[1]:/blog/gitblog/install.html
-[2]:/blog/gitblog/struct.html
-[3]:/blog/gitblog/config.html
-[4]:/blog/gitblog/edit.html
-[5]:/blog/gitblog/other-func.html
-[6]:/blog/gitblog/cache.html
-[7]:/blog/gitblog/export.html
-[8]:/blog/gitblog/theme.html
-[9]:/blog/gitblog/nginx.html
-[10]:/blog/gitblog/apache.html
-[11]:/blog/gitblog/sae.html
-[12]:/blog/gitblog/github-pages.html
-[13]:/blog/gitblog/update.html
-[14]:/blog/gitblog/wordpress.html
+[1]:http://gitblogdoc.sinaapp.com/blog/gitblog/install.html
+[2]:http://gitblogdoc.sinaapp.com/blog/gitblog/struct.html
+[3]:http://gitblogdoc.sinaapp.com/blog/gitblog/config.html
+[4]:http://gitblogdoc.sinaapp.com/blog/gitblog/edit.html
+[5]:http://gitblogdoc.sinaapp.com/blog/gitblog/other-func.html
+[6]:http://gitblogdoc.sinaapp.com/blog/gitblog/cache.html
+[7]:http://gitblogdoc.sinaapp.com/blog/gitblog/export.html
+[8]:http://gitblogdoc.sinaapp.com/blog/gitblog/theme.html
+[9]:http://gitblogdoc.sinaapp.com/blog/gitblog/nginx.html
+[10]:http://gitblogdoc.sinaapp.com/blog/gitblog/apache.html
+[11]:http://gitblogdoc.sinaapp.com/blog/gitblog/sae.html
+[12]:http://gitblogdoc.sinaapp.com/blog/gitblog/github-pages.html
+[13]:http://gitblogdoc.sinaapp.com/blog/gitblog/update.html
+[14]:http://gitblogdoc.sinaapp.com/blog/gitblog/wordpress.html
 
 
 [20]: http://blog.hiweeds.net
