@@ -3,7 +3,6 @@ author: jockchou
 head: http://pingodata.qiniudn.com/jockchou-avatar.jpg
 date: 2015-07-31
 title: 欢迎使用GitBlog
-images: http://pingodata.qiniudn.com/cube2.jpg
 tags: GitBlog
 category: GitBlog
 status: publish
@@ -59,6 +58,8 @@ PHP 5.2.4+
 [10. 在Apache上运行GitBlog][10]  
 [11. 在SAE上运行GitBlog][11]  
 [12. 使用GitBlog和Github Pages搭建博客][12]  
+[13. Gitblog升级][13]  
+[14. 从wordpress导入][14]
 
 ## 七. 问题及bug反馈 ##
 
@@ -70,32 +71,35 @@ PHP 5.2.4+
 - [橙子][21]
 - [jockchou][22]
 - [GitBlog Doc][23]
+- [zxy][24]  
 
 ## 九. 感谢 ##
 
-GitBlog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用GitBlog，感激你们提供的自制主题。
+GitBlog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用GitBlog，感激你们对Gitblog的良好建议与Bug反馈。
 
 QQ群：`84692078`  
 作者邮箱：`164068300[AT]qq.com`    
 
 
-[1]:/blog/gitblog/install.html
-[2]:/blog/gitblog/struct.html
-[3]:/blog/gitblog/config.html
-[4]:/blog/gitblog/edit.html
-[5]:/blog/gitblog/other-func.html
-[6]:/blog/gitblog/cache.html
-[7]:/blog/gitblog/export.html
-[8]:/blog/gitblog/theme.html
-[9]:/blog/gitblog/nginx.html
-[10]:/blog/gitblog/apache.html
-[11]:/blog/gitblog/sae.html
-[12]:/blog/gitblog/github-pages.html
+[1]:http://gitblogdoc.sinaapp.com/blog/gitblog/install.html
+[2]:http://gitblogdoc.sinaapp.com/blog/gitblog/struct.html
+[3]:http://gitblogdoc.sinaapp.com/blog/gitblog/config.html
+[4]:http://gitblogdoc.sinaapp.com/blog/gitblog/edit.html
+[5]:http://gitblogdoc.sinaapp.com/blog/gitblog/other-func.html
+[6]:http://gitblogdoc.sinaapp.com/blog/gitblog/cache.html
+[7]:http://gitblogdoc.sinaapp.com/blog/gitblog/export.html
+[8]:http://gitblogdoc.sinaapp.com/blog/gitblog/theme.html
+[9]:http://gitblogdoc.sinaapp.com/blog/gitblog/nginx.html
+[10]:http://gitblogdoc.sinaapp.com/blog/gitblog/apache.html
+[11]:http://gitblogdoc.sinaapp.com/blog/gitblog/sae.html
+[12]:http://gitblogdoc.sinaapp.com/blog/gitblog/github-pages.html
+[13]:http://gitblogdoc.sinaapp.com/blog/gitblog/update.html
+[14]:http://gitblogdoc.sinaapp.com/blog/gitblog/wordpress.html
 
 
 [20]: http://blog.hiweeds.net
 [21]: http://xiaochengzi.sinaapp.com
 [22]: http://jockchou.gitblog.cn
 [23]: http://gitblogdoc.sinaapp.com
-
+[24]: http://zxy.link
 

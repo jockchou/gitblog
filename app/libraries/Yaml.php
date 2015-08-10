@@ -29,7 +29,7 @@ class Yaml {
     		"baiduAnalytics" => "",
     		"keywords" => "GitBlog,博客,Markdown博客,jockchou",
     		"description" => "GitBlog是一个简单易用的Markdown博客系统",
-    		"version" => "1.0",
+    		"version" => "2.1",
     		"author" => array(
     			"name" => "your-name",
     			"email" => "your-email@example.com",
