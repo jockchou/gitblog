@@ -1,6 +1,6 @@
 <!--
 author: jockchou
-head: /img/my_head.png
+head: http://pingodata.qiniudn.com/jockchou-avatar.jpg
 date: 2015-07-31
 title: 欢迎使用GitBlog
 tags: GitBlog
@@ -58,6 +58,8 @@ PHP 5.2.4+
 [10. 在Apache上运行GitBlog][10]  
 [11. 在SAE上运行GitBlog][11]  
 [12. 使用GitBlog和Github Pages搭建博客][12]  
+[13. Gitblog升级][13]  
+[14. 从wordpress导入][14]
 
 ## 七. 问题及bug反馈 ##
 
@@ -69,32 +71,35 @@ PHP 5.2.4+
 - [橙子][21]
 - [jockchou][22]
 - [GitBlog Doc][23]
+- [zxy][24]  
 
 ## 九. 感谢 ##
 
-GitBlog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用GitBlog，感激你们提供的自制主题。
+GitBlog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用GitBlog，感激你们对Gitblog的良好建议与Bug反馈。
 
 QQ群：`84692078`  
-作者邮箱：`164068300[AT]qq.com`  
+作者邮箱：`164068300[AT]qq.com`    
 
 
-
-
-[1]:./posts/gitblog/install.md
-[2]:./posts/gitblog/struct.md
-[3]:./posts/gitblog/config.md
-[4]:./posts/gitblog/edit.md
-[5]:./posts/gitblog/other-func.md
-[6]:./posts/gitblog/cache.md
-[7]:./posts/gitblog/export.md
-[8]:./posts/gitblog/theme.md
-[9]:./posts/gitblog/nginx.md
+[1]:/blog/gitblog/install.html
+[2]:/blog/gitblog/struct.html
+[3]:/blog/gitblog/config.html
+[4]:/blog/gitblog/edit.html
+[5]:/blog/gitblog/other-func.html
+[6]:/blog/gitblog/cache.html
+[7]:/blog/gitblog/export.html
+[8]:/blog/gitblog/theme.html
+[9]:/blog/gitblog/nginx.html
 [10]:/blog/gitblog/apache.html
-[11]:./posts/gitblog/sae.md
-[12]:./posts/gitblog/github-pages.md
+[11]:/blog/gitblog/sae.html
+[12]:/blog/gitblog/github-pages.html
+[13]:/blog/gitblog/update.html
+[14]:/blog/gitblog/wordpress.html
 
 
 [20]: http://blog.hiweeds.net
 [21]: http://xiaochengzi.sinaapp.com
 [22]: http://jockchou.gitblog.cn
 [23]: http://gitblogdoc.sinaapp.com
+[24]: http://zxy.link
+
