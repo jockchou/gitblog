@@ -11,6 +11,11 @@ class Wp2Gb extends CI_Controller {
  	}
  	
  	public function index() {
- 		$wpObj = $this->wordpress->loadWP();
+ 	
+ 		//非命令行访问，返回404
+ 		if (!$this->input->is_cli_request()) show_404();
+ 		
+ 		$result = $this->wordpress->loadWP();
+ 		echo $this->wordpress->errMsg();
  	}
 }

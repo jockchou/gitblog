@@ -20,13 +20,22 @@ class WordPress {
 	
 	//读取配置文件
 	public function loadWP() {
+		$fag = false;
+		
 		if (file_exists($this->wpPath)) {
 			phpQuery::newDocumentFileXML($this->wpPath);
 			$itemArr = pq("channel item");
-			phpQuery::each($itemArr, "WordPress::parseWpItem");
+			if ($itemArr->size() > 0) {
+				phpQuery::each($itemArr, "WordPress::parseWpItem");
+				$this->_error = "finish!";
+				$fag = true;
+			} else {
+				$this->_error = "not detected data!";
+			}
 		} else {
-		    $this->_error = "wordpress.xml文件不存在";
+		    $this->_error = "wordpress.xml file is not exists!";
 		}
+		return $fag;
 	}
 	
 	//创建博客头部
