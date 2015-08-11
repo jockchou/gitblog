@@ -91,7 +91,7 @@ class Markdown {
 		if ($blogList === false) {
 			$blogList = array();
 			foreach ($this->blogs as $idx => $blog) {
-				$_yearMonthId = date("Ym", strtotime($blog['ctime']));
+				$_yearMonthId = date("Ym", strtotime($blog['date']));
 				if ($yearMonthId == $_yearMonthId) {
 					array_push($blogList, $blog);
 				}
@@ -513,8 +513,10 @@ class Markdown {
 				$blogProp['date'] = date("Y-m-d", $btime);
 			}
 			
-			$month = date("Y-m", $btime);
-			$yearMonthId = date("Ym", $btime);
+			//按显示日期归档
+			$atime = strtotime($blogProp['date']);
+			$month = date("Y-m", $atime);
+			$yearMonthId = date("Ym", $atime);
 			$monthObj = array(
 				"id" => $yearMonthId,
 				"name" => $month,
