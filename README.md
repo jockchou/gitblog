@@ -61,10 +61,11 @@ PHP 5.2.4+
 - [jockchou][22]
 - [GitBlog Doc][23]
 - [zxy][24]  
+- [leo][25]
 
 ## 九. 感谢 ##
 
-GitBlog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用GitBlog，感激你们对Gitblog的良好建议与Bug反馈。
+GitBlog的成长需要喜欢Markdown，喜欢写博客的各位亲们支持！感谢你们使用GitBlog，感激你们对Gitblog的良好建议和Bug反馈。
 
 QQ群：`84692078`  
 作者邮箱：`164068300[AT]qq.com`    
@@ -91,4 +92,5 @@ QQ群：`84692078`
 [22]: http://jockchou.gitblog.cn
 [23]: http://gitblogdoc.sinaapp.com
 [24]: http://zxy.link
+[24]: http://mrleo.sinaapp.com
 
