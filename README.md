@@ -92,5 +92,5 @@ QQ群：`84692078`
 [22]: http://jockchou.gitblog.cn
 [23]: http://gitblogdoc.sinaapp.com
 [24]: http://zxy.link
-[24]: http://mrleo.sinaapp.com
+[25]: http://mrleo.sinaapp.com
 
