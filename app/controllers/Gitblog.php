@@ -27,7 +27,7 @@ class Gitblog extends CI_Controller {
  	public function exportSite() {
  		
  		//非命令行访问，返回404
- 		if (!$this->input->is_cli_request()) show_404();
+ 		if (!$this->input->is_cli_request()) return $this->go404();
  		
  		$pageNo = 0;
  		$this->export = true;
@@ -398,7 +398,7 @@ class Gitblog extends CI_Controller {
 		
 		$blog = $this->markdown->getBlogById($blogId);
 		if ($blog == null) {
-			show_404();
+			$this->go404();
 		}
 		
 		$this->setData("pageName", "blog");
@@ -434,6 +434,7 @@ class Gitblog extends CI_Controller {
 		$this->init();
 		
 		try {
+			set_status_header(404);
 			$this->render("404.html");
 		} catch (Twig_Error_Loader $e) {
 			show_404();

@@ -62,6 +62,7 @@ PHP 5.2.4+
 - [GitBlog Doc][23]
 - [zxy][24]  
 - [leo][25]
+- [江湖隐行客][26]
 
 ## 九. 感谢 ##
 
@@ -93,4 +94,5 @@ QQ群：`84692078`
 [23]: http://gitblogdoc.sinaapp.com
 [24]: http://zxy.link
 [25]: http://mrleo.sinaapp.com
+[26]: http://wangzugang.net
 
