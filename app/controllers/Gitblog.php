@@ -397,8 +397,9 @@ class Gitblog extends CI_Controller {
 		}
 		
 		$blog = $this->markdown->getBlogById($blogId);
+		
 		if ($blog == null) {
-			$this->go404();
+			return $this->go404();
 		}
 		
 		$this->setData("pageName", "blog");
