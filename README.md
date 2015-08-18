@@ -24,7 +24,9 @@ GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，�
 
 ## 四. 环境要求 ##
 
-PHP 5.2.4+
+PHP 5.2.4+ 
+mbstring扩展支持 
+php.ini开启short_open_tag = On 
 
 ## 五. 安装步骤 ##
 
