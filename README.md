@@ -90,7 +90,7 @@ QQ群：`84692078`
 
 [20]: http://blog.hiweeds.net
 [21]: http://xiaochengzi.sinaapp.com
-[22]: http://jockchou.gitblog.cn
+[22]: http://jockchou.com
 [23]: http://gitblogdoc.sinaapp.com
 [24]: http://zxy.link
 [25]: http://mrleo.sinaapp.com

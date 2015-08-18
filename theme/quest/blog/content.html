@@ -1,9 +1,7 @@
 <div class="entry-content">
-	<p>
 	{% if pageName == "blog" %}
 	{{ blog.content | raw }}
 	{% else %}
 	{{ blog.summary | raw }}
 	{% endif %}
-	</p>
 </div><!-- .entry-content -->
