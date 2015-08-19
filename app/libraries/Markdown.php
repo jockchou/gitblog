@@ -506,7 +506,7 @@ class Markdown {
 			if (empty($blogProp['title'])) continue;
 			
 			//草稿状态的不处理
-			if ($blogProp == "draft") continue;
+			if ($blogProp['status'] == "draft") continue;
 			
 			$btime = strtotime($ctime);
 			if (empty($blogProp['date'])) {
