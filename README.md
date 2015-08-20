@@ -65,6 +65,8 @@ php.ini开启short_open_tag = On
 - [zxy][24]  
 - [leo][25]
 - [江湖隐行客][26]
+- [liyu34][27]
+
 
 ## 九. 感谢 ##
 
@@ -97,4 +99,5 @@ QQ群：`84692078`
 [24]: http://zxy.link
 [25]: http://mrleo.sinaapp.com
 [26]: http://wangzugang.net
+[27]: http://liyu34.xyz
 
