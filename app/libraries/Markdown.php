@@ -330,11 +330,11 @@ class Markdown {
 		$noteBlockArr = array();
 		$noteTmpArr = array();
 		$pattern1 = '/<\!\-\-(.*?)\-\->/is';
-	    $pattern2 = '/^\s*(author|head|date|title|summary|images|tags|category|status)\s*:(.*?)$/im';
+		$pattern2 = '/^\s*(author|head|date|title|summary|images|tags|category|status)\s*:(.*?)$/im';
 	    
-	    $subject = file_get_contents($serverPath);
+		$subject = file_get_contents($serverPath);
 	    
-	    $blogProp = array(
+		$blogProp = array(
 			"author" => "",
 			"head" => "",
 			"date" => "",
@@ -348,21 +348,21 @@ class Markdown {
 			"content" => (string)$this->parseMarkdown($subject)
 		);
 		
-	    preg_match($pattern1, $subject, $matches);
+		preg_match($pattern1, $subject, $matches);
 	    
-	    if (isset($matches[1])) {
-	        $procontent = trim($matches[1]);
-	        $proarr = explode("\n", $procontent);
+		if (isset($matches[1])) {
+			$procontent = trim($matches[1]);
+			$proarr = explode("\n", $procontent);
 	        
-	        foreach($proarr as $proline) {
-	            $proline = trim($proline);
-	            if ($proline) {
-	                preg_match($pattern2, $proline, $matches);
-	                if(isset($matches[2])) {
-	                    $propName = trim($matches[1]);
-	                    $propVal = trim($matches[2]);
-	                    //echo $proName . " --> " . $proVal . "\n";
-	                    switch($propName) {
+			foreach($proarr as $proline) {
+				$proline = trim($proline);
+				if ($proline) {
+					preg_match($pattern2, $proline, $matches);
+					if(isset($matches[2])) {
+						$propName = trim($matches[1]);
+						$propVal = trim($matches[2]);
+						//echo $proName . " --> " . $proVal . "\n";
+						switch($propName) {
 							case "author":
 								$blogProp['author'] = $propVal;
 								break;
@@ -393,10 +393,10 @@ class Markdown {
 								$blogProp['status'] = $propVal == "draft" ? $propVal : "publish";
 								break;
 						}
-	                }
-	            }
-	        }
-	    }
+					}
+				}
+			}
+		}
 		
 		$keywrodsArr = array_merge($tagsArr, $cateArr);
 		
@@ -475,7 +475,7 @@ class Markdown {
 	private function readAllPostInfo($mdfiles) {
 		foreach ($mdfiles as $idx => $fileProp) {
 			
-            $fileName = $fileProp['name'];
+			$fileName = $fileProp['name'];
             
 			//非markdown文件，不处理，直接过滤
 			if (!$this->checkFileExt($fileName)) continue;
@@ -488,6 +488,7 @@ class Markdown {
 			$sitePath = $this->changeFileExt($relativePath);
 			$siteURL = "/blog/" . $this->changeFileExt($relativePath);
 			
+            $siteURL = $this->urlencodeFileName($siteURL);
 			$blogId = md5($siteURL);
 			
 			$blog = array(
@@ -499,7 +500,7 @@ class Markdown {
 				"ctime" => $ctime,
 				"siteURL" => $siteURL
 			);
-			
+            
 			//读取自定义博客属性信息
 			$blogProp = $this->readPostBaseInfo($serverPath);
 			
@@ -612,12 +613,23 @@ class Markdown {
 	//修改后缀名
 	public function changeFileExt($fileName, $ext="html") {
 		$pics = explode('.' , $fileName);
-		if (count($pics) > 1) {
-			$pics[count($pics) -1] = $ext;
+        $len = count($pics);
+		if ($len > 1) {
+			$pics[$len - 1] = $ext;
 		}
 		
 		return implode(".", $pics);
 	}
+    
+    //对URL中的中文编码
+    private function urlencodeFileName($fileName) {
+		$pics = explode('/' , $fileName);
+		$len = count($pics);
+		if ($len > 0) {
+			$pics[$len - 1] = urlencode($pics[$len - 1]);
+		}
+		return implode("/", $pics);
+    }
 	
 	//将tags, category字符串转成数组
 	private function converStrArr($tags, $type) {

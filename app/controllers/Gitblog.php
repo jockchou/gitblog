@@ -21,46 +21,46 @@ class Gitblog extends CI_Controller {
 		$this->load->driver('cache');
 		
 		$this->configPath = str_replace("\\", "/", dirname(APPPATH)) . '/' . GB_CONF_FILE;
- 	}
- 	
- 	//导出网站
- 	public function exportSite() {
- 		
- 		//非命令行访问，返回404
- 		if (!$this->input->is_cli_request()) return $this->go404();
- 		
- 		$pageNo = 0;
- 		$this->export = true;
- 		
- 		//初始化
- 		$this->init();
- 		
- 		echo "\nexport index page\n";
- 		
- 		//首页所有页面
+	}
+	
+	//导出网站
+	public function exportSite() {
+		
+		//非命令行访问，返回404
+		if (!$this->input->is_cli_request()) return $this->go404();
+		
+		$pageNo = 0;
+		$this->export = true;
+		
+		//初始化
+		$this->init();
+		
+		echo "\nexport index page\n";
+		
+		//首页所有页面
 		$pageSize = $this->confObj['blog']['pageSize'];
- 		$pages = $this->markdown->getTotalPages($pageSize);
- 		for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
- 			$fileContent = $this->page($pageNo);
- 			$filePath = GB_SITE_DIR . "/page/";
- 			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
- 			write_file($filePath . $pageNo . ".html", $fileContent);
- 			
- 			if ($pageNo == 1) {
- 				if (!file_exists($filePath)) mkdir($filePath, 0755, true);
- 				write_file(GB_SITE_DIR  . "/index.html", $fileContent);
- 			}
- 		}
- 		echo "export index page success\n";
- 		
- 		echo "\nexport category page\n";
- 		//分类下所有页面
- 		$categoryList = $this->markdown->getAllCategorys();
- 		foreach ($categoryList as $idx => $category) {
- 			$categoryId = $category['id'];
- 			$pages = $this->markdown->getCategoryTotalPages($categoryId, $pageSize);
- 			
- 			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
+		$pages = $this->markdown->getTotalPages($pageSize);
+		for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
+			$fileContent = $this->page($pageNo);
+			$filePath = GB_SITE_DIR . "/page/";
+			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+			write_file($filePath . $pageNo . ".html", $fileContent);
+			
+			if ($pageNo == 1) {
+				if (!file_exists($filePath)) mkdir($filePath, 0755, true);
+				write_file(GB_SITE_DIR  . "/index.html", $fileContent);
+			}
+		}
+		echo "export index page success\n";
+		
+		echo "\nexport category page\n";
+		//分类下所有页面
+		$categoryList = $this->markdown->getAllCategorys();
+		foreach ($categoryList as $idx => $category) {
+			$categoryId = $category['id'];
+			$pages = $this->markdown->getCategoryTotalPages($categoryId, $pageSize);
+			
+			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
 	 			$fileContent = $this->category($categoryId, $pageNo);
 	 			$filePath = GB_SITE_DIR . "/category/$categoryId/page/";
 	 			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
@@ -98,11 +98,11 @@ class Gitblog extends CI_Controller {
 		echo "\nexport archive page\n";
 		//归档下所有页面
 		$yearMonthList = $this->markdown->getAllYearMonths();
- 		foreach ($yearMonthList as $idx => $yearMonth) {
- 			$yearMonthId = $yearMonth['id'];
- 			$pages = $this->markdown->getYearMonthTotalPages($yearMonthId, $pageSize);
- 			
- 			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
+		foreach ($yearMonthList as $idx => $yearMonth) {
+			$yearMonthId = $yearMonth['id'];
+			$pages = $this->markdown->getYearMonthTotalPages($yearMonthId, $pageSize);
+			
+			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
 	 			$fileContent = $this->archive($yearMonthId, $pageNo);
 	 			$filePath = GB_SITE_DIR . "/archive/$yearMonthId/page/";
 	 			if (!file_exists($filePath)) mkdir($filePath, 0755, true);
@@ -179,20 +179,20 @@ class Gitblog extends CI_Controller {
 		copy("favicon.ico", GB_SITE_DIR . "/favicon.ico");
 		
 		echo "\nexport site success!!!\n";
- 	}
- 	
- 	//首页
- 	public function index() {
- 		$this->page(1);
- 	}
- 	
- 	private function init() {
+	}
+	
+	//首页
+	public function index() {
+		$this->page(1);
+	}
+	
+	private function init() {
 		//加载必要的类库
 		$this->load->library('Yaml');
 		$this->load->library('Markdown');
 		$this->load->library('Pager');
 		
- 		//加载配置文件
+		//加载配置文件
 		$this->confObj = $this->yaml->getConfObject($this->configPath);
 		
 		//侧边栏最近博客条数		
@@ -236,9 +236,9 @@ class Gitblog extends CI_Controller {
 		
 		//配置名件对象别名
 		$this->setData("site", $this->confObj);
- 	}
- 	
- 	//加载缓存文件
+	}
+	
+	//加载缓存文件
 	private function loadOutCache() {
 		$fag = false;
 		$cacheKey = $this->getCacheKey();
@@ -444,27 +444,27 @@ class Gitblog extends CI_Controller {
 	
 	//设置渲染数据
 	private function setData($key, $dataObj) {
- 		$this->data[$key] = $dataObj;
- 	}
- 	
- 	//渲染页面
- 	private function render($tpl) {
- 		$htmlPage = $this->twig->render($tpl, $this->data, TRUE);
- 		
- 		if (!$this->export) {
- 			//生产模式下才会缓存
+		$this->data[$key] = $dataObj;
+	}
+	
+	//渲染页面
+	private function render($tpl) {
+		$htmlPage = $this->twig->render($tpl, $this->data, TRUE);
+		
+		if (!$this->export) {
+			//生产模式下才会缓存
 	 		if (ENVIRONMENT == "production") {
 	 			$cacheKey = $this->getCacheKey();
 	 			$this->cache->file->save($cacheKey, $htmlPage, GB_PAGE_CACHE_TIME);
 	 		}
 	 		
 	 		$this->output->set_output($htmlPage);
- 		}
- 		return $htmlPage;
- 	}
- 	
- 	//计算缓存Key
- 	private function getCacheKey() {
- 		return md5(uri_string()) . ".html"; //category/1460001917
- 	}
+		}
+		return $htmlPage;
+	}
+	
+	//计算缓存Key
+	private function getCacheKey() {
+		return md5(uri_string()) . ".html"; //category/1460001917
+	}
 }
