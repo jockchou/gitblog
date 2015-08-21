@@ -227,7 +227,7 @@ if ( ! function_exists('get_dir_file_info'))
 		static $_filedata = array();
 		$relative_path = $source_dir;
 
-		if ($fp = @opendir($source_dir))
+		if ($fp = opendir($source_dir))
 		{
 			// reset the array and make sure $source_dir has a trailing slash on the initial call
 			if ($_recursion === FALSE)
@@ -245,8 +245,8 @@ if ( ! function_exists('get_dir_file_info'))
 				}
 				elseif ($file[0] !== '.')
 				{
-					$_filedata[$file] = get_file_info($source_dir.$file);
-					$_filedata[$file]['relative_path'] = $relative_path;
+					$_filedata[$relative_path.$file] = get_file_info($source_dir.$file);
+					$_filedata[$relative_path.$file]['relative_path'] = $relative_path;
 				}
 			}
 

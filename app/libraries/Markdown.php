@@ -473,12 +473,13 @@ class Markdown {
 	
 	//读取所有博客的信息
 	private function readAllPostInfo($mdfiles) {
-		foreach ($mdfiles as $fileName => $fileProp) {
+		foreach ($mdfiles as $idx => $fileProp) {
 			
+            $fileName = $fileProp['name'];
+            
 			//非markdown文件，不处理，直接过滤
 			if (!$this->checkFileExt($fileName)) continue;
 			
-			$fileName = $fileProp['name'];
 			$mtime = date("Y-m-d H:i:s", $fileProp['date']);
 			$ctime = date("Y-m-d H:i:s", $fileProp['cdate']);
 			$serverPath = str_replace("\\", "/", $fileProp['server_path']);
