@@ -249,6 +249,8 @@ pre {
   white-space: pre-wrap; }
 
 pre code {
+  word-wrap: initial;
+  white-space: pre;
   padding: 0; }
 
 abbr, acronym, dfn {
