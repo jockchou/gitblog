@@ -6,6 +6,8 @@
 */cache/!README
 */cache/!index.html
 */cache/!.htaccess
+.project
+.settings
 /_site
 /tasklist.txt
 /wordpress.xml
