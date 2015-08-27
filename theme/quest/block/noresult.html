@@ -1,0 +1,18 @@
+<section class="no-results not-found">
+	<header class="page-header">
+		{% if pageName == "search" %}
+		<h1 class="page-title">没有搜索到相关博客</h1>
+		{% else %}
+		<h1 class="page-title">没有可展示的博客</h1>
+		{% endif %}
+	</header>
+	<!-- .page-header -->
+	<div class="page-content">
+		{% if pageName == "search" %}
+		<p>对不起，没有搜索到相关的博客项目，请尝试其他关键字。</p>
+		{% else %}
+		<p>对不起，没有发现可展示的博客，请检查blog目录下是否有正确的markdown文件。</p>
+		{% endif %}
+	</div>
+	<!-- .page-content -->
+</section>

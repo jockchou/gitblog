@@ -192,6 +192,8 @@ class Gitblog extends CI_Controller {
 		$this->load->library('Markdown');
 		$this->load->library('Pager');
 		
+		$blogPath = str_replace("\\", "/", dirname(APPPATH)) . '/blog/';
+		
 		//加载配置文件
 		$this->confObj = $this->yaml->getConfObject($this->configPath);
 		
@@ -205,7 +207,7 @@ class Gitblog extends CI_Controller {
 		$this->load->library('Twig', array("theme" => $this->confObj['theme']));
 		
 		//初始化博客信息
-		$this->markdown->initAllBlogData();
+		$this->markdown->initAllBlogData($blogPath);
 		
 		//所有博客
 		$allBlogsList = null;
@@ -383,6 +385,24 @@ class Gitblog extends CI_Controller {
 		$this->setData("pageNo", $pageNo);
 		$this->setData("pages", $pageData['pages']);
 		$this->setData("blogList", $pageData['blogList']);
+		
+		return $this->render('index.html');
+	}
+	
+	public function search() {
+		$keyword = $this->input->get_post("keyword", TRUE);
+		$keyword = trim($keyword);
+		$blogList = array();
+		
+		$this->init();
+		
+		if (!empty($keyword)) {
+			$blogList = $this->markdown->getBlogByTitle($keyword);
+		}
+		
+		$this->setData("pageName", "search");
+		$this->setData("keyword", $keyword);
+		$this->setData("blogList", $blogList);
 		
 		return $this->render('index.html');
 	}

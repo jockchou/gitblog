@@ -16,9 +16,6 @@ class Markdown {
 	//所有月份
 	private $yearMonths;
 	
-	//博客文件目录
-	private $postPath;
-	
 	//CI
 	private $CI;
 	
@@ -30,8 +27,6 @@ class Markdown {
 		$this->CI->load->helper('file');
 		$this->CI->load->helper('url');
 		$this->CI->load->driver('cache');
-		
-    	$this->postPath = str_replace("\\", "/", dirname(APPPATH)) . '/posts/';
 	}
 	
 	//按分类查找博客
@@ -102,18 +97,21 @@ class Markdown {
 	}
 	
 	//按标题关键字查找博客
-	public function getBlogByTitle($title) {
-		$cacheKey = "getBlogByTitle_" . (md5($title)) . ".gb";
+	public function getBlogByTitle($title, $max = 50) {
+		$cacheKey = "getBlogByTitle_" . (md5($title)) . "_" . $max . ".gb";
 		$blogList = $this->gbReadCache($cacheKey);
 		
 		if ($blogList === false) {
 			$blogList = array();
 			foreach ($this->blogs as $idx => $blog) {
-				$blogTitle = $blog['title'];
+				$blogTitle = strtolower($blog['title']);
+				$title = strtolower($title);
 				
-				if (strpos($blogTitle, $title) >= 0) {
+				if (strpos($blogTitle, $title) !== FALSE) {
 					array_push($blogList, $blog);
 				}
+				
+				if (count($blogList) >= $max) break;
 			}
 			$this->gbWriteCache($cacheKey, $blogList);
 		}
@@ -305,7 +303,7 @@ class Markdown {
 	}
 	
 	//加载所有的博客
-	public function initAllBlogData() {
+	public function initAllBlogData($postPath) {
 		$this->blogs = array();
 		$this->tags = array();
 		$this->categorys = array();
@@ -314,9 +312,9 @@ class Markdown {
 		//先读缓存
 		if (!$this->globalDataCacheRead()) {
 			//列出所有文件，可能包含非markdown文件
-			$mdfiles = get_dir_file_info($this->postPath, FALSE);
+			$mdfiles = get_dir_file_info($postPath, FALSE);
 			
-			$this->readAllPostInfo($mdfiles);
+			$this->readAllPostInfo($mdfiles, $postPath);
 		}
 	}
 	
@@ -472,7 +470,7 @@ class Markdown {
 	}
 	
 	//读取所有博客的信息
-	private function readAllPostInfo($mdfiles) {
+	private function readAllPostInfo($mdfiles, $postPath) {
 		foreach ($mdfiles as $idx => $fileProp) {
 			
 			$fileName = $fileProp['name'];
@@ -483,7 +481,7 @@ class Markdown {
 			$mtime = date("Y-m-d H:i:s", $fileProp['date']);
 			$ctime = date("Y-m-d H:i:s", $fileProp['cdate']);
 			$serverPath = str_replace("\\", "/", $fileProp['server_path']);
-			$relativePath = str_replace($this->postPath, "", $serverPath);
+			$relativePath = str_replace($postPath, "", $serverPath);
 			
 			$sitePath = $this->changeFileExt($relativePath);
 			$siteURL = "/blog/" . $this->changeFileExt($relativePath);
@@ -500,7 +498,7 @@ class Markdown {
 				"ctime" => $ctime,
 				"siteURL" => $siteURL
 			);
-            
+			
 			//读取自定义博客属性信息
 			$blogProp = $this->readPostBaseInfo($serverPath);
 			
@@ -540,7 +538,7 @@ class Markdown {
 	
 	//写缓存
 	private function gbWriteCache($key, $objdata) {
-		if (ENVIRONMENT != "development") {
+		if (ENVIRONMENT != "development" && !empty($objdata)) {
 			$this->CI->cache->file->save($key, serialize($objdata), GB_DATA_CACHE_TIME);
 		}
 	}
@@ -626,7 +624,7 @@ class Markdown {
 		$pics = explode('/' , $fileName);
 		$len = count($pics);
 		if ($len > 0) {
-			$pics[$len - 1] = urlencode($pics[$len - 1]);
+			$pics[$len - 1] = urlencode(urlencode($pics[$len - 1]));
 		}
 		return implode("/", $pics);
     }

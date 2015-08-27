@@ -65,6 +65,8 @@ $route['archive/(:num).html']				= 'gitblog/archive/$1';
 
 $route['blog/(.+).html'] 					= 'gitblog/blog';
 
+$route['search'] 							= 'gitblog/search';
+
 $route['export'] 							= 'gitblog/exportSite';
 $route['wp2gb'] 							= 'Wp2Gb';
 

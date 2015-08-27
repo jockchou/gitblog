@@ -2,12 +2,21 @@
 	<div class="container title-container">
 		<div class="row">
 			<div class="col-md-6">
+				{% if pageName == "search" %}
+				<h3>搜索：{{ keyword }}</h3>
+				{% else%}
 				<h3>{{ navObj.name }}</h3>
+				{% endif %}
 			</div>
 			<div class="col-md-6">
 				<ul class="breadcrumbs">
 					<li><a href="/">Home</a></li>
-					<li><a href="{{ navObj.url }}">{{ navObj.name }}</a></li></ul>
+					{% if pageName == "search" %}
+					<li>search</li>
+					{% else%}
+					<li>{{ navObj.name }}</li>
+					{% endif %}
+				</ul>
 				</div>
 		</div>
 	</div>
