@@ -529,8 +529,9 @@ class Markdown {
 			);
 			
 			if (!$this->checkObjInArr($monthObj, "yearMonths")) {
-				array_push($this->yearMonths, $monthObj);
+				array_unshift($this->yearMonths, $monthObj);
 			}
+			
 			$blog = array_merge($blog, $blogProp);
 			array_push($this->blogs, $blog);
 		}
