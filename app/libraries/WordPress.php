@@ -85,7 +85,7 @@ class WordPress {
 	}
 	
 	public static function writeMarkdown($wpObj) {
-		$wpmdPath = str_replace("\\", "/", dirname(APPPATH)) . '/posts/wp/';
+		$wpmdPath = str_replace("\\", "/", dirname(APPPATH)) . '/blog/wp/';
 		if (!file_exists($wpmdPath)) mkdir($wpmdPath);
 		
 		//创建文件
