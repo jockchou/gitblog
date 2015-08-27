@@ -157,13 +157,13 @@ class Gitblog extends CI_Controller {
 		
 		echo "\ncopy image\n";
 		//复制图片文件夹
-		$thfiles = get_dir_file_info("./img/", FALSE);
+		$thfiles = get_dir_file_info("./blog/img/", FALSE);
 		foreach ($thfiles as $fileName => $file) {
 			$serverPath = $file['server_path'];
 			$serverPath = str_replace("\\", "/", $serverPath);
 			
-			$targetPath = GB_SITE_DIR . "/img/";
-			$targetFile = GB_SITE_DIR . "/img/" . $file['name'];
+			$targetPath = GB_SITE_DIR . "/blog/img/";
+			$targetFile = GB_SITE_DIR . "/blog/img/" . $file['name'];
 			if (!file_exists($targetPath)) mkdir($targetPath, 0755, true);
 			copy($serverPath, $targetFile);
 		}
