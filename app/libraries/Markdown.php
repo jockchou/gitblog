@@ -16,6 +16,9 @@ class Markdown {
 	//所有月份
 	private $yearMonths;
 	
+	//是否开启缓存
+	private $enableCache = false;
+	
 	//CI
 	private $CI;
 	
@@ -303,11 +306,13 @@ class Markdown {
 	}
 	
 	//加载所有的博客
-	public function initAllBlogData($postPath) {
+	public function initAllBlogData($postPath, $enableCache=false) {
 		$this->blogs = array();
 		$this->tags = array();
 		$this->categorys = array();
 		$this->yearMonths = array();
+		
+		$this->enableCache = $enableCache;
 		
 		//先读缓存
 		if (!$this->globalDataCacheRead()) {
@@ -538,7 +543,7 @@ class Markdown {
 	
 	//写缓存
 	private function gbWriteCache($key, $objdata) {
-		if (ENVIRONMENT != "development" && !empty($objdata)) {
+		if (ENVIRONMENT != "development" && $this->enableCache && !empty($objdata)) {
 			$this->CI->cache->file->save($key, serialize($objdata), GB_DATA_CACHE_TIME);
 		}
 	}
@@ -554,7 +559,7 @@ class Markdown {
 	
 	//缓存全局数据
 	private function globalDataCacheWrite() {
-		if (ENVIRONMENT != "development") {
+		if (ENVIRONMENT != "development" && $this->enableCache) {
 			$this->gbWriteCache(GB_BLOG_CACHE, $this->blogs);
 			$this->gbWriteCache(GB_TAG_CACHE, $this->tags);
 			$this->gbWriteCache(GB_CATEGORY_CACHE, $this->categorys);

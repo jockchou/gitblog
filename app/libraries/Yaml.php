@@ -23,6 +23,7 @@ class Yaml {
     		"title" => "Your-GitBlog",
     		"subtitle" => "自豪地采用GitBlog",
     		"theme" => "simple",
+    		"enableCache" => true,
     		"highlight" => true,
     		"mathjax" => false,
     		"duoshuo" => "",

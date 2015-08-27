@@ -207,7 +207,7 @@ class Gitblog extends CI_Controller {
 		$this->load->library('Twig', array("theme" => $this->confObj['theme']));
 		
 		//初始化博客信息
-		$this->markdown->initAllBlogData($blogPath);
+		$this->markdown->initAllBlogData($blogPath, $this->confObj['enableCache']);
 		
 		//所有博客
 		$allBlogsList = null;
@@ -473,7 +473,7 @@ class Gitblog extends CI_Controller {
 		
 		if (!$this->export) {
 			//生产模式下才会缓存
-	 		if (ENVIRONMENT == "production") {
+	 		if (ENVIRONMENT == "production" && $this->confObj['enableCache']) {
 	 			$cacheKey = $this->getCacheKey();
 	 			$this->cache->file->save($cacheKey, $htmlPage, GB_PAGE_CACHE_TIME);
 	 		}
@@ -485,6 +485,6 @@ class Gitblog extends CI_Controller {
 	
 	//计算缓存Key
 	private function getCacheKey() {
-		return md5(uri_string()) . ".html"; //category/1460001917
+		return $this->confObj['theme'] . "_" . md5(uri_string()) . ".html"; //category/1460001917
 	}
 }
