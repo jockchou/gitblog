@@ -245,7 +245,7 @@ pre {
   overflow: auto;
   max-width: 100%;
   margin: 20px 0;
-  padding: 5px;
+  padding: 10px;
   white-space: pre-wrap; }
 
 pre code {
@@ -1395,7 +1395,7 @@ article {
   .entry-content .page-links {
     font-weight: bold; }
   .entry-content blockquote {
-    margin: 2em; }
+    margin: 0 0 10px 0; }
     .entry-content blockquote p {
       margin: 1em 0 0;
       font-size: 1em;
