@@ -181,6 +181,8 @@ article.post dl dd>:last-child {
 =============================================================================*/
 
 article.post pre, code, tt {
+  word-wrap: initial;
+  white-space: pre;
   font-size: 12px;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
 }
