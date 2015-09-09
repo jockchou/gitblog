@@ -63,7 +63,7 @@ GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，�
 - [jockchou][22]
 - [GitBlog Doc][23]
 - [zxy][24]  
-- [leo][25]
+- [ckeyer][25]
 - [江湖隐行客][26]
 - [liyu34][27]
 
@@ -97,7 +97,6 @@ QQ群：`84692078`
 [22]: http://jockchou.com
 [23]: http://gitblogdoc.sinaapp.com
 [24]: http://zxy.link
-[25]: http://mrleo.sinaapp.com
+[25]: http://blog.ckeyer.com
 [26]: http://wangzugang.net
 [27]: http://liyu34.xyz
-
