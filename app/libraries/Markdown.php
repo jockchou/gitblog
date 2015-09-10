@@ -373,7 +373,8 @@ class Markdown {
 								$blogProp['head'] = $propVal;
 								break;
 							case "date":
-								$blogProp['date'] = $propVal;
+								$time = strtotime($propVal);
+								$blogProp['date'] = ($time === FALSE)? "" : date("Y-m-d", $time);;
 								break;
 							case "title":
 								$blogProp['title'] = $propVal;
