@@ -1,8 +1,8 @@
 #GitBlog配置文件，使用4个空格代替Tab
 ---
 url: /
-title: Your-GitBlog
-subtitle: 自豪地采用GitBlog
+title: 漫漫爬坑路
+subtitle: 行走在作死的道路上
 theme: simple
 enableCache: true
 highlight: true
@@ -14,10 +14,10 @@ description: >
     GitBlog是一个简单易用的Markdown博客系统
 version: 2.2
 author:
-    name: your-name
-    email: your-email@example.com
-    github: your-github
-    weibo: your-weibo
+    name: Peikon
+    email: cz_dong@126.com
+    github: MuyePeikon
+    weibo:
     avatar:
 blog:
     recentSize: 5
