@@ -2,12 +2,12 @@
 author: Peikon
 head: http://pingodata.qiniudn.com/jockchou-avatar.jpg
 date: 
-title: Ubuntu下Apache2.4.7
-tags: GitBlog Blade
+title: Ubuntu + Apache2.4.7环境下搭建使用Gitblog
+tags: GitBlog Apache
 images: http://pingodata.qiniudn.com/cube2.jpg
-category: GitBl
+category: GitBlog
 status: publish
-summary: GitBlog是一个简单易用的Markdown博客系统，它不需要数据库，没有管理后台功能，更新博客只需要添加你写好的Markdown文件即可。
+summary: Ubuntu+Apache2.4.7环境下搭建使用Gitblog
 -->
 
 ## 一. 环境准备 ##
@@ -54,7 +54,5 @@ RewriteRule ^(.*)$ /index.php/$1 [L]
 到此时为止你的Gitblog应该就可以使用了。Have Fun!
 
 [1]: https://github.com/jockchou/gitblog/releases
-
-
 
 
