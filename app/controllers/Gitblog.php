@@ -413,7 +413,7 @@ class Gitblog extends CI_Controller {
 		
 		if (!$blogId) {
 			$openPage = "/" . uri_string();
-			$blogId = md5($openPage);
+			$blogId = md5(urldecode($openPage));
 		}
 		
 		$blog = $this->markdown->getBlogById($blogId);
