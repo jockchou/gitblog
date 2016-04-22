@@ -492,7 +492,7 @@ class Markdown {
 			$sitePath = $this->changeFileExt($relativePath);
 			$siteURL = "/blog/" . $this->changeFileExt($relativePath);
 			
-            $siteURL = $this->urlencodeFileName($siteURL);
+            //$siteURL = $this->urlencodeFileName($siteURL);
 			$blogId = md5($siteURL);
 			
 			$blog = array(
