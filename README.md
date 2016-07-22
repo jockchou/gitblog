@@ -80,26 +80,26 @@ QQ群：`84692078`
 作者邮箱：`164068300[AT]qq.com`    
 
 
-[1]:http://gitblogdoc.sinaapp.com/blog/gitblog/install.html
-[2]:http://gitblogdoc.sinaapp.com/blog/gitblog/struct.html
-[3]:http://gitblogdoc.sinaapp.com/blog/gitblog/config.html
-[4]:http://gitblogdoc.sinaapp.com/blog/gitblog/edit.html
-[5]:http://gitblogdoc.sinaapp.com/blog/gitblog/other-func.html
-[6]:http://gitblogdoc.sinaapp.com/blog/gitblog/cache.html
-[7]:http://gitblogdoc.sinaapp.com/blog/gitblog/export.html
-[8]:http://gitblogdoc.sinaapp.com/blog/gitblog/theme.html
-[9]:http://gitblogdoc.sinaapp.com/blog/gitblog/nginx.html
-[10]:http://gitblogdoc.sinaapp.com/blog/gitblog/apache.html
-[11]:http://gitblogdoc.sinaapp.com/blog/gitblog/sae.html
-[12]:http://gitblogdoc.sinaapp.com/blog/gitblog/github-pages.html
-[13]:http://gitblogdoc.sinaapp.com/blog/gitblog/update.html
-[14]:http://gitblogdoc.sinaapp.com/blog/gitblog/wordpress.html
+[1]:http://gitblogdoc.gitblog.cn/blog/gitblog/install.html
+[2]:http://gitblogdoc.gitblog.cn/blog/gitblog/struct.html
+[3]:http://gitblogdoc.gitblog.cn/blog/gitblog/config.html
+[4]:http://gitblogdoc.gitblog.cn/blog/gitblog/edit.html
+[5]:http://gitblogdoc.gitblog.cn/blog/gitblog/other-func.html
+[6]:http://gitblogdoc.gitblog.cn/blog/gitblog/cache.html
+[7]:http://gitblogdoc.gitblog.cn/blog/gitblog/export.html
+[8]:http://gitblogdoc.gitblog.cn/blog/gitblog/theme.html
+[9]:http://gitblogdoc.gitblog.cn/blog/gitblog/nginx.html
+[10]:http://gitblogdoc.gitblog.cn/blog/gitblog/apache.html
+[11]:http://gitblogdoc.gitblog.cn/blog/gitblog/sae.html
+[12]:http://gitblogdoc.gitblog.cn/blog/gitblog/github-pages.html
+[13]:http://gitblogdoc.gitblog.cn/blog/gitblog/update.html
+[14]:http://gitblogdoc.gitblog.cn/blog/gitblog/wordpress.html
 
 
 [20]: http://blog.hiweeds.net
-[21]: http://xiaochengzi.sinaapp.com
+[21]: http://xiaochengzi.gitblog.cn
 [22]: http://jockchou.com
-[23]: http://gitblogdoc.sinaapp.com
+[23]: http://gitblogdoc.gitblog.cn
 [24]: http://zxy.link
 [25]: http://blog.ckeyer.com
 [26]: http://wangzugang.net
