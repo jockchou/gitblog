@@ -333,7 +333,7 @@ class Markdown {
 		$noteBlockArr = array();
 		$noteTmpArr = array();
 		$pattern1 = '/<\!\-\-(.*?)\-\->/is';
-		$pattern2 = '/^\s*(author|head|date|title|summary|images|tags|category|status)\s*:(.*?)$/im';
+		$pattern2 = '/^\s*(author|head|date|title|top|summary|images|tags|category|status)\s*:(.*?)$/im';
 	    
 		$subject = file_get_contents($serverPath);
 	    
@@ -344,6 +344,7 @@ class Markdown {
 			"title" => "",
 			"summary" => "",
 			"keywords" => "",
+			"top" => "0",
 			"images" => array(),
 			"tags" => array(),
 			"category" => array(),
@@ -378,6 +379,9 @@ class Markdown {
 								break;
 							case "title":
 								$blogProp['title'] = $propVal;
+								break;
+							case "top":
+								$blogProp['top'] = $propVal;
 								break;
 							case "summary":
 								$blogProp['summary'] = $this->parseMarkdown($propVal);
@@ -494,7 +498,7 @@ class Markdown {
 			
             $siteURL = $this->urlencodeFileName($siteURL);
 			$blogId = md5($siteURL);
-			
+
 			$blog = array(
 				"blogId" => $blogId,
 				"fileName" => $fileName,
@@ -502,12 +506,12 @@ class Markdown {
 				"sitePath" => $sitePath,
 				"mtime" => $mtime,
 				"ctime" => $ctime,
-				"siteURL" => $siteURL
+				"siteURL" => $siteURL,
 			);
 			
 			//读取自定义博客属性信息
 			$blogProp = $this->readPostBaseInfo($serverPath);
-			
+
 			//没有title的博客不处理
 			if (empty($blogProp['title'])) continue;
 			
@@ -536,7 +540,6 @@ class Markdown {
 			$blog = array_merge($blog, $blogProp);
 			array_push($this->blogs, $blog);
 		}
-		
 		$this->sortBlogs($this->blogs, 'date');
 		
 		//缓存全局数据
@@ -593,14 +596,13 @@ class Markdown {
 		
 		$ctimeArr = null;
 		$dateArr = null;
-		
+		$topArr = null;
 		foreach ($blogArray as $key => $row) {
 			$dateArr[$key] = $row[$sortKey];
 			$ctimeArr[$key] = $row['mtime'];
+			$topArr[$key] = $row['top'];
 		}
-		
-		array_multisort($dateArr, SORT_DESC, $ctimeArr, SORT_DESC, $blogArray);
-		
+		array_multisort($topArr, SORT_DESC, $dateArr, SORT_DESC, $ctimeArr, SORT_DESC, $blogArray);
 		$this->blogs = $blogArray;
 	}
 	

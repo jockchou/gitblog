@@ -1,5 +1,5 @@
 <header class="entry-header">
-	<h1 class="post-title"><a href="{{ blog.siteURL}}" rel="bookmark">{{ blog.title}}</a></h1>
+	<h1 class="post-title"><a href="{{ blog.siteURL}}" rel="bookmark">{{ blog.title}} {% if blog.top != 0 %}<span class="top">[置顶]</span>{% endif %}</a></h1>
 	<div class="entry-meta">
 		<time class="post-date"><i class="fa fa-clock-o"></i>{{ blog.date}}</time>
 		{% if blog.author %}

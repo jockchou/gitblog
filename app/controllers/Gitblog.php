@@ -368,7 +368,6 @@ class Gitblog extends CI_Controller {
 		$pageBarSize = $this->confObj['blog']['pageBarSize'];
 		
 		$pages = $this->markdown->getTotalPages($pageSize);
-		
 		if ($pageNo <= 0) {
 			$pageNo = 1;
 		}
@@ -376,8 +375,8 @@ class Gitblog extends CI_Controller {
 		if ($pageNo > $pages) {
 			$pageNo = $pages;
 		}
-		
 		$pageData = $this->markdown->getBlogsByPage($pageNo, $pageSize);
+		
 		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize);
 		$this->setData("pagination", $pagination);
 		

@@ -9,7 +9,7 @@
 		{% if blog.title %}
 		<li>
 			<span class="post-meta">{{ blog.date | date("Y-m-d")}}</span>
-			<h2><a class="post-link" href="{{ blog.siteURL }}">{{ blog.title }}</a></h2>
+			<h2><a class="post-link" href="{{ blog.siteURL }}">{{ blog.title }} {% if blog.top != 0 %}<span class="top">[置顶]</span>{% endif %}</a></h2>
 		</li>
 		{% endif %}
 		{% endfor %}

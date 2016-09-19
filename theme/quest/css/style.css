@@ -53,6 +53,9 @@ body {
 span a:hover {
   color: #27ae60; }
 
+.top {
+  color: #00A2EB;
+}
 h1 {
   font-size: 22px;
   font-weight: 300;
