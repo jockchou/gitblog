@@ -3,7 +3,7 @@
 {% block content %}
 <div class="post">
 	<header class="post-header">
-		<h1 class="post-title">{{ blog.title }}</h1>
+		<h1 class="post-title">{{ blog.title }} {% if blog.top != 0 %}<span class="top">[置顶]</span>{% endif %}</h1>
 		<p class="post-meta">{{ blog.date | date('Y-m-d') }}{% if blog.author %} • {{ blog.author }}{% endif %}{% if blog.keywords %} • {{ blog.keywords | join(',') }}{% endif %}</p>
 	</header>
 	<article class="post-content">
