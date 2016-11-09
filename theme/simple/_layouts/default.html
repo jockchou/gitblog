@@ -20,5 +20,28 @@
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
 <script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
+
+{% if site.katex %}
+<link rel="stylesheet" href="http://cdn.bootcss.com/KaTeX/0.6.0/katex.min.css">
+<script src="https://cdn.bootcss.com/KaTeX/0.6.0/katex.min.js"></script>
+<script src="https://cdn.bootcss.com/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+<script type="text/javascript">
+render_option = {
+	delimiters: [
+	// 段落模式 $$...$$ \[...\]
+	{left: "$$", right: "$$", display: true},
+	{left: "\\[", right: "\\]", display: true},
+	// 行内模式 $...$ \(...\)
+	{left: "$", right: "$", display: false},
+	{left: "\\(", right: "\\)", display: false}
+	],
+	ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+}
+renderMathInElement(document.body, render_option);
+//var elems_content = document.getElementsByClassName('entry-content');
+//for ( var i = 0; i < elems_content.length; i++)
+//	renderMathInElement(elems_content[i], render_option);
+</script>
+{% endif %}
 </body>
 </html>
