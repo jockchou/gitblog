@@ -26,6 +26,7 @@ class Yaml {
     		"enableCache" => true,
     		"highlight" => true,
     		"mathjax" => false,
+    		"katex" => false,
     		"duoshuo" => "",
     		"baiduAnalytics" => "",
     		"keywords" => "GitBlog,博客,Markdown博客,jockchou",
