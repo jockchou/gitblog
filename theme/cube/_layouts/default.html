@@ -5,29 +5,29 @@
 {% block content %}{% endblock %}
 
 {% if site.highlight %}
-<link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css">
-<script src="http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js"></script>
+<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/8.6/styles/github.min.css">
+<script src="//cdn.bootcss.com/highlight.js/8.6/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 {% endif %}
 
 {% if site.mathjax %}
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
 
 {% if site.katex %}
-<link rel="stylesheet" href="http://cdn.bootcss.com/KaTeX/0.6.0/katex.min.css">
-<script src="https://cdn.bootcss.com/KaTeX/0.6.0/katex.min.js"></script>
-<script src="https://cdn.bootcss.com/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.6.0/katex.min.css">
+<script src="//cdn.bootcss.com/KaTeX/0.6.0/katex.min.js"></script>
+<script src="//cdn.bootcss.com/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
 <script type="text/javascript">
 render_option = {
 	delimiters: [
-	// 段落模式 $$...$$ \[...\]
-	{left: "$$", right: "$$", display: true},
-	{left: "\\[", right: "\\]", display: true},
-	// 行内模式 $...$ \(...\)
-	{left: "$", right: "$", display: false},
-	{left: "\\(", right: "\\)", display: false}
+		// 段落模式 $$...$$ \[...\]
+		{left: "$$", right: "$$", display: true},
+		{left: "\\[", right: "\\]", display: true},
+		// 行内模式 $...$ \(...\)
+		{left: "$", right: "$", display: false},
+		{left: "\\(", right: "\\)", display: false}
 	],
 	ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
 }
