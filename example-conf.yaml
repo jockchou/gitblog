@@ -6,7 +6,8 @@ subtitle        : 自豪地采用GitBlog            #博客副标题
 theme           : quest                        #主题名称
 enableCache     : true                         #是否开启缓存
 highlight       : on                           #是否开启代码高亮支持
-mathjax         : on                           #是否开启数学公式支持
+mathjax         : on                           #是否开启MathJax数学公式渲染支持，MathJax和KaTeX互斥
+katex           : on                           #是否开启KaTeX数学公式渲染支持，MathJax和KaTeX互斥
 duoshuo         : jockchou                     #多说评论框ID
 baiduAnalytics  : 732acc76ff6bd41343951a67cbfafe34  #百度统计ID
 keywords        : jockchou,markdown,blog,php,github #网站关键字
