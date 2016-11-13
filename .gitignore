@@ -8,6 +8,7 @@
 */cache/!.htaccess
 .project
 .settings
+.idea
 /_site
 /tasklist.txt
 /wordpress.xml
