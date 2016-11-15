@@ -293,7 +293,6 @@ class Markdown {
 
 	//获取所有月份
 	public function getAllYearMonths() {
-		$this->sortYearMonths();
 		return $this->yearMonths;
 	}
 
@@ -544,6 +543,8 @@ class Markdown {
 			array_push($this->blogs, $blog);
 		}
 		$this->sortBlogs($this->blogs, 'date');
+
+		$this->sortYearMonths();
 
 		//缓存全局数据
 		$this->globalDataCacheWrite();
