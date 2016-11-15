@@ -1,6 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
 require APPPATH . 'third_party/parsedown/Parsedown.php';
+require APPPATH . 'third_party/parsedown/ParsedownExtra.php';
 
 class Markdown {
 
@@ -303,7 +304,8 @@ class Markdown {
 
 	//解析markdown文件内容为html文本
 	private function parseMarkdown($text) {
-		return Parsedown::instance()->parse($text);
+		$Extra = new ParsedownExtra();
+		return $Extra->text($text);
 	}
 
 	//加载所有的博客

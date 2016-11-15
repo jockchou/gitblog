@@ -490,9 +490,6 @@ class Parsedown
                     'name' => 'h' . min(6, $level),
                     'text' => $text,
                     'handler' => 'line',
-                    'attributes' => array(
-                        'id' => $text,
-                    ),
                 ),
             );
 
