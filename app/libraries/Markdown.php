@@ -173,7 +173,7 @@ class Markdown {
 		return $tagObj;
 	}
 
-	//根据Id获取标签
+	//根据Id获取月份
 	public function getYearMonthById($yearMonthId) {
 		$cacheKey = "getYearMonthById_" . $yearMonthId . ".gb";
 		$yearMonthObj = $this->gbReadCache($cacheKey);
@@ -496,10 +496,11 @@ class Markdown {
 			$relativePath = str_replace($postPath, "", $serverPath);
 
 			$sitePath = $this->changeFileExt($relativePath);
-			$siteURL = "/blog/" . $this->changeFileExt($relativePath);
+			$siteURL = "blog/" . $this->changeFileExt($relativePath);
 
 			$siteURL = $this->urlencodeFileName($siteURL);
 			$blogId = md5($siteURL);
+			$siteURL = base_url($siteURL, "");
 
 			$blog = array(
 				"blogId" => $blogId,
@@ -532,7 +533,7 @@ class Markdown {
 			$monthObj = array(
 				"id" => $yearMonthId,
 				"name" => $month,
-				"url" => "/archive/" . $yearMonthId . ".html"
+				"url" => base_url("archive/" . $yearMonthId . ".html", "")
 			);
 
 			if (!$this->checkObjInArr($monthObj, "yearMonths")) {
@@ -666,7 +667,7 @@ class Markdown {
 			$tagObj = array(
 				"id" => $id,
 				"name" => $tag,
-				"url" => "/$type/" . $tag . ".html"
+				"url" => base_url("$type/" . $id . ".html", "")
 			);
 
 			array_push($tagsObjArr, $tagObj);

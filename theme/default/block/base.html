@@ -8,25 +8,25 @@
 	<meta name="description" content="{% block description %}{{ confObj.description }}{% endblock %}">
 
 	<!--[if lt IE 9]>
-	<script src="/theme/default/js/html5.js"></script>
+	<script src="{{site.url}}theme/default/js/html5.js"></script>
 	<![endif]-->
 	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 	
 	<title>{% block title %}{{ confObj.title }}{% endblock %}</title>
 	
-	<link rel="stylesheet" href="/theme/default/css/genericons.css?ver={{ confObj.version }}" type="text/css" media="all" />
-	<link rel="stylesheet" href="/theme/default/css/style.css?ver={{ confObj.version }}" type="text/css" media="all" />
-	<link rel="stylesheet" href="/theme/default/css/markdown.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{site.url}}theme/default/css/genericons.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{site.url}}theme/default/css/style.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{site.url}}theme/default/css/markdown.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	<link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
 	<!--[if lt IE 9]>
-	<link rel="stylesheet" href="/theme/default/css/ie.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{site.url}}theme/default/css/ie.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	<![endif]-->
 	<!--[if lt IE 8]>
-	<link rel="stylesheet" href="/theme/default/css/ie7.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{site.url}}theme/default/css/ie7.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	<![endif]-->
 	
-	<script type="text/javascript" src="/theme/default/js/jquery/jquery.js?ver={{ confObj.version }}"></script>
-	<script type="text/javascript" src="/theme/default/js/jquery/jquery-migrate.min.js?ver={{ confObj.version }}"></script>
+	<script type="text/javascript" src="{{site.url}}theme/default/js/jquery/jquery.js?ver={{ confObj.version }}"></script>
+	<script type="text/javascript" src="{{site.url}}theme/default/js/jquery/jquery-migrate.min.js?ver={{ confObj.version }}"></script>
 	
 	{% if confObj.baiduAnalytics %}<script>
 	var _hmt = _hmt || [];

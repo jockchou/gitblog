@@ -1,6 +1,5 @@
 #GitBlog配置文件，使用4个空格代替Tab
 ---
-url: /
 title: Your-GitBlog
 subtitle: 自豪地采用GitBlog
 theme: simple

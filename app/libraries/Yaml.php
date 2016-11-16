@@ -19,7 +19,7 @@ class Yaml {
     	}
     	
     	$defaultConf = array(
-    		"url" => "/",
+    		"url" => str_replace("index.php","",$_SERVER['PHP_SELF']),
     		"title" => "Your-GitBlog",
     		"subtitle" => "自豪地采用GitBlog",
     		"theme" => "simple",

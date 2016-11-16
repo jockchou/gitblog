@@ -8,8 +8,8 @@
     
     <meta name="keywords" content="{% if blog %}{{ blog.keywords}},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
 	<meta name="description" content="{% if blog %}{{ blog.summary | striptags | replace({'\n': ''}) | slice(0, 140) }}{% else %}{{ site.description }}{% endif %}">
-    <link rel="stylesheet" type="text/css" href="/theme/beach/css/style.css?ver={{ site.version }}">
-    <link rel="stylesheet" type="text/css" href="/theme/beach/css/markdown.css?ver={{ site.version }}">
+    <link rel="stylesheet" type="text/css" href="{{site.url}}theme/beach/css/style.css?ver={{ site.version }}">
+    <link rel="stylesheet" type="text/css" href="{{site.url}}theme/beach/css/markdown.css?ver={{ site.version }}">
     <link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
     
     <!--[if IE]>
@@ -17,7 +17,7 @@
 	<![endif]-->
 	
     <!--[if IE 6]>
-	<script src="/theme/beach/js/belatedPNG.js"></script>
+	<script src="{{site.url}}theme/beach/js/belatedPNG.js"></script>
 	<script>
     	DD_belatedPNG.fix('*');
 	</script>
