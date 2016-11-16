@@ -500,7 +500,7 @@ class Markdown {
 
 			$siteURL = $this->urlencodeFileName($siteURL);
 			$blogId = md5($siteURL);
-			$siteURL = base_url($siteURL, "");
+			$siteURL = trim(base_url($siteURL, ""),":");
 
 			$blog = array(
 				"blogId" => $blogId,
@@ -533,7 +533,7 @@ class Markdown {
 			$monthObj = array(
 				"id" => $yearMonthId,
 				"name" => $month,
-				"url" => base_url("archive/" . $yearMonthId . ".html", "")
+				"url" => trim(base_url("archive/" . $yearMonthId . ".html", ""),":")
 			);
 
 			if (!$this->checkObjInArr($monthObj, "yearMonths")) {
@@ -667,7 +667,7 @@ class Markdown {
 			$tagObj = array(
 				"id" => $id,
 				"name" => $tag,
-				"url" => base_url("$type/" . $id . ".html", "")
+				"url" => trim(base_url("$type/" . $id . ".html", ""),":")
 			);
 
 			array_push($tagsObjArr, $tagObj);

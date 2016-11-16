@@ -146,7 +146,7 @@ class Gitblog extends CI_Controller
         $blogList = $this->markdown->getAllBlogs();
         foreach ($blogList as $idx => $blog) {
             $blogId = $blog['blogId'];
-            $siteURL = '/' . str_replace(base_url("", ""), "", $blog['siteURL']);
+            $siteURL = '/' . str_replace(trim(base_url("", ""),":"), "", $blog['siteURL']);
             $fileName = $blog['fileName'];
             $fileName = $this->markdown->changeFileExt($fileName);
             $filePath = str_replace($fileName, "", $siteURL);
