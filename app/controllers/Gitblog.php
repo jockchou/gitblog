@@ -146,7 +146,7 @@ class Gitblog extends CI_Controller
         $blogList = $this->markdown->getAllBlogs();
         foreach ($blogList as $idx => $blog) {
             $blogId = $blog['blogId'];
-            $siteURL = $blog['siteURL'];
+            $siteURL = '/' . str_replace(trim(base_url("", ""),":"), "", $blog['siteURL']);
             $fileName = $blog['fileName'];
             $fileName = $this->markdown->changeFileExt($fileName);
             $filePath = str_replace($fileName, "", $siteURL);
@@ -313,7 +313,7 @@ class Gitblog extends CI_Controller
 
         $category = $this->markdown->getCategoryById($categoryId);
         $pageData = $this->markdown->getBlogsPageByCategory($categoryId, $pageNo, $pageSize);
-        $pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "/category/$categoryId/");
+        $pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "category/$categoryId/");
 
         $this->setData("pagination", $pagination);
         $this->setData("pageName", "category");
@@ -349,7 +349,7 @@ class Gitblog extends CI_Controller
 
         $yearMonth = $this->markdown->getYearMonthById($yearMonthId);
         $pageData = $this->markdown->getBlogsPageByYearMonth($yearMonthId, $pageNo, $pageSize);
-        $pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "/archive/$yearMonthId/");
+        $pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "archive/$yearMonthId/");
 
         $this->setData("pagination", $pagination);
         $this->setData("pageName", "archive");
@@ -460,8 +460,7 @@ class Gitblog extends CI_Controller
         }
 
         if (!$blogId) {
-            $openPage = "/" . uri_string();
-            $blogId = md5($openPage);
+            $blogId = md5(uri_string());
         }
 
         $blog = $this->markdown->getBlogById($blogId);
