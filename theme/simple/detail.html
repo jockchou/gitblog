@@ -15,7 +15,7 @@
 		<div id="disqus_thread"></div>
 		<script>
 var disqus_config = function () {
-	this.page.url = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '{{ blog.siteURL }}';
+	this.page.url = location.href;
 	this.page.identifier = '{{ blog.blogId }}';
 };
 (function() {
@@ -32,7 +32,7 @@ var disqus_config = function () {
 		<!-- 多说评论框 start -->
 		<div class="ds-thread" data-thread-key="{{ blog.blogId }}" data-title="{{ blog.title }}" data-url=""></div>
 		<script type="text/javascript">
-document.getElementsByClassName("ds-thread")[0].setAttribute('data-url', (document.location.protocol == 'https:' ? 'https:' : 'http:') + '{{ blog.siteURL }}');
+document.getElementsByClassName("ds-thread")[0].setAttribute('data-url', location.href);
 		</script>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
