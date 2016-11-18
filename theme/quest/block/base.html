@@ -4,22 +4,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% block title %}{{ confObj.title }}{% endblock %}</title>
-	<meta name="keywords" content="{% block keywords %}{{ confObj.keywords }},{{ confObj.title }}{% endblock %}">
-	<meta name="description" content="{% block description %}{{ confObj.description }}{% endblock %}">
+	<title>{% block title %}{{ site.title }}{% endblock %}</title>
+	<meta name="keywords" content="{% block keywords %}{{ site.keywords }},{{ site.title }}{% endblock %}">
+	<meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
 	
-	<link rel="stylesheet" href="{{site.url}}theme/quest/assets/plugins/bootstrap/css/bootstrap.min.css?ver={{ confObj.version }}" type="text/css" media="all" />
-	<link rel="stylesheet" href="{{site.url}}theme/quest/assets/plugins/font-awesome/css/font-awesome.min.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ site.url }}theme/quest/assets/plugins/bootstrap/css/bootstrap.min.css?ver={{ site.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ site.url }}theme/quest/assets/plugins/font-awesome/css/font-awesome.min.css?ver={{ site.version }}" type="text/css" media="all" />
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin,latin-ext">
-	<link rel="stylesheet" href="{{site.url}}theme/quest/css/style.css?ver={{ confObj.version }}" type="text/css" media="all" />
-	<link rel="stylesheet" href="{{site.url}}theme/quest/css/customizer.css?ver={{ confObj.version }}" type="text/css" media="all" />
-	<link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
+	<link rel="stylesheet" href="{{ site.url }}theme/quest/css/style.css?ver={{ site.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ site.url }}theme/quest/css/customizer.css?ver={{ site.version }}" type="text/css" media="all" />
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}feed.xml" />
 	
-	{% if confObj.baiduAnalytics %}<script>
+	{% if site.baiduAnalytics %}<script>
 	var _hmt = _hmt || [];
 	(function() {
 	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?{{ confObj.baiduAnalytics }}";
+	  hm.src = "//hm.baidu.com/hm.js?{{ site.baiduAnalytics }}";
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
@@ -37,24 +37,18 @@
 	</div><!-- #page -->
 	<a href="#0" class="cd-top"><i class="fa fa-angle-up"></i></a>
 
-
-<script type="text/javascript" src="{{site.url}}theme/quest/assets/plugins/modernizr/modernizr.custom.js?ver={{ confObj.version }}"></script>
-<script type="text/javascript" src="{{site.url}}theme/quest/js/jquery/jquery.js?ver=1.11.2"></script>
-<script type="text/javascript" src="{{site.url}}theme/quest/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script>
-<script type="text/javascript" src="{{site.url}}theme/quest/assets/plugins/bootstrap/js/bootstrap.min.js?ver={{ confObj.version }}"></script>
-<script type="text/javascript" src="{{site.url}}theme/quest/assets/plugins/wow/wow.js?ver={{ confObj.version }}"></script>
-<script type="text/javascript" src="{{site.url}}theme/quest/assets/plugins/colorbox/jquery.colorbox-min.js?ver={{ confObj.version }}"></script>
-<script type="text/javascript" src="{{site.url}}theme/quest/assets/js/quest.js?ver={{ confObj.version }}"></script>
+<script type="text/javascript" src="{{ site.url }}theme/quest/assets/plugins/modernizr/modernizr.custom.js?ver={{ site.version }}"></script>
+<script type="text/javascript" src="{{ site.url }}theme/quest/js/jquery/jquery.js?ver=1.11.2"></script>
+<script type="text/javascript" src="{{ site.url }}theme/quest/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script>
+<script type="text/javascript" src="{{ site.url }}theme/quest/assets/plugins/bootstrap/js/bootstrap.min.js?ver={{ site.version }}"></script>
+<script type="text/javascript" src="{{ site.url }}theme/quest/assets/plugins/wow/wow.js?ver={{ site.version }}"></script>
+<script type="text/javascript" src="{{ site.url }}theme/quest/assets/plugins/colorbox/jquery.colorbox-min.js?ver={{ site.version }}"></script>
+<script type="text/javascript" src="{{ site.url }}theme/quest/assets/js/quest.js?ver={{ site.version }}"></script>
 	
 {% if site.highlight %}
 <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/8.6/styles/default.min.css">
 <script src="//cdn.bootcss.com/highlight.js/8.6/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-{% endif %}
-
-{% if site.mathjax %}
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
 
 {% if site.katex %}
@@ -75,6 +69,10 @@ render_option = {
 }
 renderMathInElement(document.body, render_option);
 </script>
+{% elseif site.mathjax %}
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
+
 </body>
 </html>
