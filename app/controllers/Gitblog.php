@@ -445,7 +445,7 @@ class Gitblog extends CI_Controller
 		$this->init();
 
 		if (!empty($keyword)) {
-			$blogList = $this->markdown->getBlogByTitle($keyword);
+			$blogList = $this->markdown->getBlogByKeyword($keyword);
 		}
 
 		$this->setData("pageName", "search");
