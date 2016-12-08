@@ -1,8 +1,8 @@
 {% extends "block/base.html" %}
 
-{% block title %}{{ blog.title }}|{{ confObj.title }}{% endblock %}
+{% block title %}{{ blog.title }}|{{ site.title }}{% endblock %}
 
-{% block keywords %}{{ blog.keywords }},{{ confObj.title }}{% endblock %}
+{% block keywords %}{{ blog.keywords }},{{ site.title }}{% endblock %}
 
 {% block description %}{{ blog.summary | replace({'\n': ''}) | striptags | slice(0, 140) }}{% endblock %}
 

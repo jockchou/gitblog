@@ -1,12 +1,34 @@
-{% if confObj.duoshuo %}
+{% if site.disqus %}
+<div id="comments" class="clearfix">
+	<div id="respond" class="comment-respond">
+		<div id="disqus_thread"></div>
+		<script>
+		   var disqus_config = function () {
+		   this.page.url = location.href;
+		   this.page.identifier = '{{ blog.blogId }}';
+		   };
+		(function() {
+			var d = document, s = d.createElement('script');
+			s.src = '//{{ site.disqus }}.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	</div><!-- #respond -->
+</div>
+{% elseif site.duoshuo %}
 <div id="comments" class="clearfix">
 	<div id="respond" class="comment-respond">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="{{ blog.blogId }}" data-title="{{ blog.title }}" data-url="{{ site.url }}{{ blog.siteURL }}"></div>
+		<div class="ds-thread" data-thread-key="{{ blog.blogId }}" data-title="{{ blog.title }}" data-url=""></div>
+		<script type="text/javascript">
+		document.getElementsByClassName("ds-thread")[0].setAttribute('data-url', location.href);
+		</script>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">
-		var duoshuoQuery = {short_name:"{{ confObj.duoshuo }}"};
+		var duoshuoQuery = {short_name:"{{ site.duoshuo }}"};
 		(function() {
 			var ds = document.createElement('script');
 			ds.type = 'text/javascript';ds.async = true;

@@ -20,6 +20,9 @@ class Markdown {
 	//是否开启缓存
 	private $enableCache = false;
 
+	//域名根目录下的相对网址
+	private $baseurl = "/";
+
 	//CI
 	private $CI;
 
@@ -100,8 +103,45 @@ class Markdown {
 		return $blogList;
 	}
 
+	//按全文关键字查找博客
+	public function getBlogByKeyword($keyword, $max = 50) {
+		$keyword = strtolower($keyword);
+		$cacheKey = "getBlogByKeyword_" . (md5($keyword)) . "_" . $max . ".gb";
+		$blogList = $this->gbReadCache($cacheKey);
+
+		if ($blogList === false) {
+			$blogList = array();
+			foreach ($this->blogs as $idx => $blog) {
+				$blogTitle = strtolower($blog['title']);
+				$blogContent = strtolower(strip_tags($blog['content']));
+				$blogKeywords = strtolower($blog['keywords']);
+				$blogSummary = strtolower($blog['summary']);
+				$blogTags = '';
+				foreach ($blog['tags'] as $tag) $blogTags = $blogTags . ' ' . $tag['name'];
+				$blogCategory = '';
+				foreach ($blog['category'] as $category) $blogCategory = $blogCategory . ' ' . $category['name'];
+
+				if (
+					(strpos($blogTitle, $keyword) !== FALSE) ||
+					(strpos($blogContent, $keyword) !== FALSE) ||
+					(strpos($blogKeywords, $keyword) !== FALSE) ||
+					(strpos($blogTags, $keyword) !== FALSE) ||
+					(strpos($blogCategory, $keyword) !== FALSE) ||
+					(strpos($blogSummary, $keyword) !== FALSE) )
+				{
+					array_push($blogList, $blog);
+				}
+
+				if (count($blogList) >= $max) break;
+			}
+			$this->gbWriteCache($cacheKey, $blogList);
+		}
+		return $blogList;
+	}
+
 	//按标题关键字查找博客
 	public function getBlogByTitle($title, $max = 50) {
+		$title = strtolower($title);
 		$cacheKey = "getBlogByTitle_" . (md5($title)) . "_" . $max . ".gb";
 		$blogList = $this->gbReadCache($cacheKey);
 
@@ -109,7 +149,6 @@ class Markdown {
 			$blogList = array();
 			foreach ($this->blogs as $idx => $blog) {
 				$blogTitle = strtolower($blog['title']);
-				$title = strtolower($title);
 
 				if (strpos($blogTitle, $title) !== FALSE) {
 					array_push($blogList, $blog);
@@ -313,8 +352,8 @@ class Markdown {
 		$this->tags = array();
 		$this->categorys = array();
 		$this->yearMonths = array();
-
 		$this->enableCache = $enableCache;
+		$this->baseurl = preg_replace('/^(http|https):\/\/[^\/]*?(\/.*)$/', '\\2', base_url(""));
 
 		//先读缓存
 		if (!$this->globalDataCacheRead()) {
@@ -500,7 +539,7 @@ class Markdown {
 
 			$siteURL = $this->urlencodeFileName($siteURL);
 			$blogId = md5($siteURL);
-			$siteURL = trim(base_url($siteURL, ""),":");
+			$siteURL = $this->baseurl.$siteURL;
 
 			$blog = array(
 				"blogId" => $blogId,
@@ -533,7 +572,7 @@ class Markdown {
 			$monthObj = array(
 				"id" => $yearMonthId,
 				"name" => $month,
-				"url" => trim(base_url("archive/" . $yearMonthId . ".html", ""),":")
+				"url" => $this->baseurl . "archive/" . $yearMonthId . ".html"
 			);
 
 			if (!$this->checkObjInArr($monthObj, "yearMonths")) {
@@ -667,7 +706,7 @@ class Markdown {
 			$tagObj = array(
 				"id" => $id,
 				"name" => $tag,
-				"url" => trim(base_url("$type/" . $id . ".html", ""),":")
+				"url" => $this->baseurl . "$type/" . $id . ".html"
 			);
 
 			array_push($tagsObjArr, $tagObj);

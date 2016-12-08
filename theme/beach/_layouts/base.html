@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if blog %}{{ blog.title }}|{{ site.title }} {% else %}{{ site.title }}{% endif %}</title>
     
-    <meta name="keywords" content="{% if blog %}{{ blog.keywords}},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
+    <meta name="keywords" content="{% if blog %}{{ blog.keywords }},{{ site.keywords }}{% else %}{{ site.keywords }}{% endif %}">
 	<meta name="description" content="{% if blog %}{{ blog.summary | striptags | replace({'\n': ''}) | slice(0, 140) }}{% else %}{{ site.description }}{% endif %}">
-    <link rel="stylesheet" type="text/css" href="{{site.url}}theme/beach/css/style.css?ver={{ site.version }}">
-    <link rel="stylesheet" type="text/css" href="{{site.url}}theme/beach/css/markdown.css?ver={{ site.version }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
+    <link rel="stylesheet" type="text/css" href="{{ site.url }}theme/beach/css/style.css?ver={{ site.version }}">
+    <link rel="stylesheet" type="text/css" href="{{ site.url }}theme/beach/css/markdown.css?ver={{ site.version }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}feed.xml" />
     
     <!--[if IE]>
 	<script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<![endif]-->
 	
     <!--[if IE 6]>
-	<script src="{{site.url}}theme/beach/js/belatedPNG.js"></script>
+	<script src="{{ site.url }}theme/beach/js/belatedPNG.js"></script>
 	<script>
     	DD_belatedPNG.fix('*');
 	</script>
@@ -50,11 +50,6 @@
 <script>hljs.initHighlightingOnLoad();</script>
 {% endif %}
 
-{% if site.mathjax %}
-<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-{% endif %}
-
 {% if site.katex %}
 <link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.6.0/katex.min.css">
 <script src="//cdn.bootcss.com/KaTeX/0.6.0/katex.min.js"></script>
@@ -73,6 +68,10 @@ render_option = {
 }
 renderMathInElement(document.body, render_option);
 </script>
+{% elseif site.mathjax %}
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
+
 </body>
 </html>
