@@ -316,7 +316,7 @@ class Gitblog extends CI_Controller
 
 		$category = $this->markdown->getCategoryById($categoryId);
 		$pageData = $this->markdown->getBlogsPageByCategory($categoryId, $pageNo, $pageSize);
-		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "category/$categoryId/");
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, $this->confObj['url']."category/$categoryId/");
 
 		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "category");
@@ -352,7 +352,7 @@ class Gitblog extends CI_Controller
 
 		$yearMonth = $this->markdown->getYearMonthById($yearMonthId);
 		$pageData = $this->markdown->getBlogsPageByYearMonth($yearMonthId, $pageNo, $pageSize);
-		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "archive/$yearMonthId/");
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, $this->confObj['url']."archive/$yearMonthId/");
 
 		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "archive");
@@ -391,7 +391,7 @@ class Gitblog extends CI_Controller
 
 		$tag = $this->markdown->getTagById($tagId);
 		$pageData = $this->markdown->getBlogsPageByTag($tagId, $pageNo, $pageSize);
-		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, "/tags/$tagId/");
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, $this->confObj['rul']."tags/$tagId/");
 
 		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "tags");
@@ -425,7 +425,7 @@ class Gitblog extends CI_Controller
 		}
 		$pageData = $this->markdown->getBlogsByPage($pageNo, $pageSize);
 
-		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize);
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize,$this->confObj['url']);
 		$this->setData("pagination", $pagination);
 
 		$this->setData("pageName", "home");
