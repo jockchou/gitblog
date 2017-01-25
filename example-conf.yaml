@@ -5,11 +5,9 @@ title           : jockchou的博客               #博客标题
 subtitle        : 自豪地采用GitBlog            #博客副标题
 theme           : quest                        #主题名称
 enableCache     : true                         #是否开启缓存
-highlight       : true                           #是否开启代码高亮支持
-mathjax         : false                           #是否开启MathJax数学公式渲染支持，MathJax和KaTeX同时设置时，KaTeX优先
-katex           : false                           #是否开启KaTeX数学公式渲染支持，MathJax和KaTeX同时设置时，KaTeX优先
-duoshuo         : jockchou                     #多说评论框ID，duoshuo和disqus同时设置时，disqus优先
-disqus          : demo-site                    #DISQUS评论框 Short Site Name，XXX.disqus.com，duosuo和disqus同时设置时，disqus优先
+highlight       : on                           #是否开启代码高亮支持
+mathjax         : on                           #是否开启数学公式支持
+duoshuo         : jockchou                     #多说评论框ID
 baiduAnalytics  : 732acc76ff6bd41343951a67cbfafe34  #百度统计ID
 keywords        : jockchou,markdown,blog,php,github #网站关键字
 description     : GitBlog是一个简单易用的Markdown博客系统,这是我的第一个GitBlog博客. #网站描述

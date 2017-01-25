@@ -1,8 +1,8 @@
-{% if attribute(site.text, "intro") %}
+{% if attribute(confObj.text, "intro") %}
 <aside id="text" class="widget widget_text">
-    <h2 class="widget-title">{{ site.text.title }}</h2>	
+    <h2 class="widget-title">{{ confObj.text.title }}</h2>	
     <div class="textwidget">
-    	<p>{{ site.text.intro }}</p>
+    	<p>{{ confObj.text.intro }}</p>
     </div>
 </aside>
 {% endif %}

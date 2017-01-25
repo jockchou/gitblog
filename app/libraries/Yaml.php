@@ -28,7 +28,6 @@ class Yaml {
     		"mathjax" => false,
     		"katex" => false,
     		"duoshuo" => "",
-			"disqus" => "",
     		"baiduAnalytics" => "",
     		"keywords" => "GitBlog,博客,Markdown博客,jockchou",
     		"description" => "GitBlog是一个简单易用的Markdown博客系统",

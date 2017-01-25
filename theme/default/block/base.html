@@ -4,35 +4,35 @@
 {% block head %}
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-	<meta name="keywords" content="{% block keywords %}{{ site.keywords }},{{ site.title }}{% endblock %}">
-	<meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+	<meta name="keywords" content="{% block keywords %}{{ confObj.keywords }},{{ confObj.title }}{% endblock %}">
+	<meta name="description" content="{% block description %}{{ confObj.description }}{% endblock %}">
 
 	<!--[if lt IE 9]>
-	<script src="{{ site.url }}theme/default/js/html5.js"></script>
+	<script src="/theme/default/js/html5.js"></script>
 	<![endif]-->
 	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 	
-	<title>{% block title %}{{ site.title }}{% endblock %}</title>
+	<title>{% block title %}{{ confObj.title }}{% endblock %}</title>
 	
-	<link rel="stylesheet" href="{{ site.url }}theme/default/css/genericons.css?ver={{ site.version }}" type="text/css" media="all" />
-	<link rel="stylesheet" href="{{ site.url }}theme/default/css/style.css?ver={{ site.version }}" type="text/css" media="all" />
-	<link rel="stylesheet" href="{{ site.url }}theme/default/css/markdown.css?ver={{ site.version }}" type="text/css" media="all" />
-	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}feed.xml" />
+	<link rel="stylesheet" href="/theme/default/css/genericons.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="/theme/default/css/style.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="/theme/default/css/markdown.css?ver={{ confObj.version }}" type="text/css" media="all" />
+	<link rel="alternate" type="application/rss+xml" title="{{ confObj.title }}" href="{{ confObj.url }}/feed.xml" />
 	<!--[if lt IE 9]>
-	<link rel="stylesheet" href="{{ site.url }}theme/default/css/ie.css?ver={{ site.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="/theme/default/css/ie.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	<![endif]-->
 	<!--[if lt IE 8]>
-	<link rel="stylesheet" href="{{ site.url }}theme/default/css/ie7.css?ver={{ site.version }}" type="text/css" media="all" />
+	<link rel="stylesheet" href="/theme/default/css/ie7.css?ver={{ confObj.version }}" type="text/css" media="all" />
 	<![endif]-->
 	
-	<script type="text/javascript" src="{{ site.url }}theme/default/js/jquery/jquery.js?ver={{ site.version }}"></script>
-	<script type="text/javascript" src="{{ site.url }}theme/default/js/jquery/jquery-migrate.min.js?ver={{ site.version }}"></script>
+	<script type="text/javascript" src="/theme/default/js/jquery/jquery.js?ver={{ confObj.version }}"></script>
+	<script type="text/javascript" src="/theme/default/js/jquery/jquery-migrate.min.js?ver={{ confObj.version }}"></script>
 	
-	{% if site.baiduAnalytics %}<script>
+	{% if confObj.baiduAnalytics %}<script>
 	var _hmt = _hmt || [];
 	(function() {
 	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?{{ site.baiduAnalytics }}";
+	  hm.src = "//hm.baidu.com/hm.js?{{ confObj.baiduAnalytics }}";
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
@@ -54,33 +54,37 @@
 {% include "block/script.html" %}
 
 {% if site.highlight %}
-<link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/8.6/styles/github.min.css">
-<script src="//cdn.bootcss.com/highlight.js/8.6/highlight.min.js"></script>
+<link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css">
+<script src="http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 {% endif %}
 
-{% if site.katex %}
-<link rel="stylesheet" href="//cdn.bootcss.com/KaTeX/0.6.0/katex.min.css">
-<script src="//cdn.bootcss.com/KaTeX/0.6.0/katex.min.js"></script>
-<script src="//cdn.bootcss.com/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
-<script type="text/javascript">
-render_option = {
-	delimiters: [
-		// 段落模式 $$...$$ \[...\]
-		{left: "$$", right: "$$", display: true},
-		{left: "\\[", right: "\\]", display: true},
-		// 行内模式 $...$ \(...\)
-		{left: "$", right: "$", display: false},
-		{left: "\\(", right: "\\)", display: false}
-	],
-	ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
-}
-renderMathInElement(document.body, render_option);
-</script>
-{% elseif site.mathjax %}
+{% if site.mathjax %}
 <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
-<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {% endif %}
 
+{% if site.katex %}
+<link rel="stylesheet" href="http://cdn.bootcss.com/KaTeX/0.6.0/katex.min.css">
+<script src="https://cdn.bootcss.com/KaTeX/0.6.0/katex.min.js"></script>
+<script src="https://cdn.bootcss.com/KaTeX/0.6.0/contrib/auto-render.min.js"></script>
+<script type="text/javascript">
+render_option = {
+		delimiters: [
+					// 段落模式 $$...$$ \[...\]
+					{left: "$$", right: "$$", display: true},
+							{left: "\\[", right: "\\]", display: true},
+									// 行内模式 $...$ \(...\)
+									{left: "$", right: "$", display: false},
+											{left: "\\(", right: "\\)", display: false}
+			],
+				ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]
+}
+renderMathInElement(document.body, render_option);
+//var elems_content = document.getElementsByClassName('entry-content');
+//for ( var i = 0; i < elems_content.length; i++)
+//	renderMathInElement(elems_content[i], render_option);
+</script>
+{% endif %}
 </body>
 </html>
