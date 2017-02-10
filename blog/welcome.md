@@ -82,25 +82,25 @@ QQ群：`84692078`
 作者邮箱：`164068300[AT]qq.com`    
 
 
-[1]:http://gitblogdoc.sinaapp.com/blog/gitblog/install.html
-[2]:http://gitblogdoc.sinaapp.com/blog/gitblog/struct.html
-[3]:http://gitblogdoc.sinaapp.com/blog/gitblog/config.html
-[4]:http://gitblogdoc.sinaapp.com/blog/gitblog/edit.html
-[5]:http://gitblogdoc.sinaapp.com/blog/gitblog/other-func.html
-[6]:http://gitblogdoc.sinaapp.com/blog/gitblog/cache.html
-[7]:http://gitblogdoc.sinaapp.com/blog/gitblog/export.html
-[8]:http://gitblogdoc.sinaapp.com/blog/gitblog/theme.html
-[9]:http://gitblogdoc.sinaapp.com/blog/gitblog/nginx.html
-[10]:http://gitblogdoc.sinaapp.com/blog/gitblog/apache.html
-[11]:http://gitblogdoc.sinaapp.com/blog/gitblog/sae.html
-[12]:http://gitblogdoc.sinaapp.com/blog/gitblog/github-pages.html
-[13]:http://gitblogdoc.sinaapp.com/blog/gitblog/update.html
-[14]:http://gitblogdoc.sinaapp.com/blog/gitblog/wordpress.html
+[1]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/install.md
+[2]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/struct.md
+[3]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/config.md
+[4]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/edit.md
+[5]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/other-func.md
+[6]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/cache.md
+[7]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/export.md
+[8]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/theme.md
+[9]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/nginx.md
+[10]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/apache.md
+[11]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/sae.md
+[12]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/github-pages.md
+[13]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/update.md
+[14]:https://github.com/jockchou/gitblogdoc/tree/master/posts/gitblog/wordpress.md
 
 
 [20]: http://blog.hiweeds.net
 [21]: http://xiaochengzi.sinaapp.com
-[22]: http://jockchou.gitblog.cn
-[23]: http://gitblogdoc.sinaapp.com
+[22]: http://jockchou.com
+[23]: http://github.com/jockchou/gitblogdoc
 [24]: http://zxy.link
 
