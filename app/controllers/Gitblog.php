@@ -391,7 +391,7 @@ class Gitblog extends CI_Controller
 
 		$tag = $this->markdown->getTagById($tagId);
 		$pageData = $this->markdown->getBlogsPageByTag($tagId, $pageNo, $pageSize);
-		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, $this->confObj['rul']."tags/$tagId/");
+		$pagination = $this->pager->splitPage($pages, $pageNo, $pageBarSize, $this->confObj['url']."tags/$tagId/");
 
 		$this->setData("pagination", $pagination);
 		$this->setData("pageName", "tags");
