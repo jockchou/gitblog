@@ -54,11 +54,11 @@ $route['feed.xml'] 							= 'gitblog/feed';
 
 $route['page/(:num).html'] 					= 'gitblog/page/$1';
 
-$route['category/(:num)/page/(:num).html'] 	= 'gitblog/category/$1/$2';
-$route['category/(:num).html'] 				= 'gitblog/category/$1';
+$route['category/(:any)/page/(:num).html'] 	= 'gitblog/category/$1/$2';
+$route['category/(:any).html'] 				= 'gitblog/category/$1';
 
-$route['tags/(:num)/page/(:num).html'] 		= 'gitblog/tags/$1/$2';
-$route['tags/(:num).html'] 					= 'gitblog/tags/$1';
+$route['tags/(:any)/page/(:num).html'] 		= 'gitblog/tags/$1/$2';
+$route['tags/(:any).html'] 					= 'gitblog/tags/$1';
 
 $route['archive/(:any)/page/(:num).html'] 	= 'gitblog/archive/$1/$2';
 $route['archive/(:num).html']				= 'gitblog/archive/$1';
