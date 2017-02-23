@@ -70,18 +70,18 @@ class Gitblog extends CI_Controller
 		//分类下所有页面
 		$categoryList = $this->markdown->getAllCategorys();
 		foreach ($categoryList as $idx => $category) {
-			$categoryId = $category['id'];
+			$categoryId = $category['name'];
 			$pages = $this->markdown->getCategoryTotalPages($categoryId, $pageSize);
 
 			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
 				$fileContent = $this->category($categoryId, $pageNo);
-				$filePath = GB_SITE_DIR . "/category/$categoryId/page/";
+				$filePath = GB_SITE_DIR . "/category/".urlencode($categoryId)."/page/";
 				if (!file_exists($filePath)) {
 					mkdir($filePath, 0755, true);
 				}
 				write_file($filePath . $pageNo . ".html", $fileContent);
 				if ($pageNo == 1) {
-					$filePath = GB_SITE_DIR . "/category/$categoryId";
+					$filePath = GB_SITE_DIR . "/category/".urlencode($categoryId);
 					if (!file_exists($filePath)) {
 						mkdir($filePath, 0755, true);
 					}
@@ -95,18 +95,18 @@ class Gitblog extends CI_Controller
 		//标签下所有页面
 		$tagsList = $this->markdown->getAllTags();
 		foreach ($tagsList as $idx => $tag) {
-			$tagId = $tag['id'];
+			$tagId = $tag['name'];
 			$pages = $this->markdown->getTagTotalPages($tagId, $pageSize);
 
 			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
 				$fileContent = $this->tags($tagId, $pageNo);
-				$filePath = GB_SITE_DIR . "/tags/$tagId/page/";
+				$filePath = GB_SITE_DIR . "/tags/".urlencode($tagId)."/page/";
 				if (!file_exists($filePath)) {
 					mkdir($filePath, 0755, true);
 				}
 				write_file($filePath . $pageNo . ".html", $fileContent);
 				if ($pageNo == 1) {
-					$filePath = GB_SITE_DIR . "/tags/$tagId";
+					$filePath = GB_SITE_DIR . "/tags/".urlencode($tagId);
 					if (!file_exists($filePath)) {
 						mkdir($filePath, 0755, true);
 					}
@@ -299,7 +299,8 @@ class Gitblog extends CI_Controller
 			return;
 		}
 
-		$categoryId = (int)$categoryId;
+		//$categoryId = (int)$categoryId;
+		$categoryId = urldecode($categoryId);
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
 		$pageBarSize = $this->confObj['blog']['pageBarSize'];
@@ -374,7 +375,8 @@ class Gitblog extends CI_Controller
 
 		$this->pageName = "tags";
 
-		$tagId = (int)$tagId;
+		//$tagId = (int)$tagId;
+		$tagId = urldecode($tagId);
 		$pageNo = (int)$pageNo;
 		$pageSize = $this->confObj['blog']['pageSize'];
 		$pageBarSize = $this->confObj['blog']['pageBarSize'];

@@ -48,7 +48,7 @@ class Markdown {
 
 				if (count($categoryArr) > 0) {
 					foreach ($categoryArr as $idx => $cateObj) {
-						if ($cateObj['id'] == $categoryId) {
+						if ($cateObj['name'] == $categoryId) {
 							array_push($blogList, $blog);
 							continue;
 						}
@@ -72,7 +72,7 @@ class Markdown {
 
 				if (count($tagArr) > 0) {
 					foreach ($tagArr as $idx => $tagObj) {
-						if ($tagObj['id'] == $tagId) {
+						if ($tagObj['name'] == $tagId) {
 							array_push($blogList, $blog);
 							continue;
 						}
@@ -202,7 +202,7 @@ class Markdown {
 
 		if ($tagObj === false) {
 			foreach ($this->tags as $idx => $tag) {
-				if ($tag['id'] == $tagId) {
+				if ($tag['name'] == $tagId) {
 					$tagObj = $tag;
 					$this->gbWriteCache($cacheKey, $tagObj);
 					break;
@@ -706,7 +706,7 @@ class Markdown {
 			$tagObj = array(
 				"id" => $id,
 				"name" => $tag,
-				"url" => $this->baseurl . "$type/" . $id . ".html"
+				"url" => $this->baseurl . "$type/" . urlencode($tag) . ".html"
 			);
 
 			array_push($tagsObjArr, $tagObj);
