@@ -537,7 +537,7 @@ class Markdown {
 			$sitePath = $this->changeFileExt($relativePath);
 			$siteURL = "blog/" . $this->changeFileExt($relativePath);
 
-			$siteURL = $this->urlencodeFileName($siteURL);
+			$siteURL = $this->urlencodeURI($siteURL);
 			$blogId = md5($siteURL);
 			$siteURL = $this->baseurl.$siteURL;
 
@@ -684,11 +684,11 @@ class Markdown {
 	}
 
 	//对URL中的中文编码
-	private function urlencodeFileName($fileName) {
+	private function urlencodeURI($fileName) {
 		$pics = explode('/' , $fileName);
 		$len = count($pics);
-		if ($len > 0) {
-			$pics[$len - 1] = urlencode(urlencode($pics[$len - 1]));
+		for($i=0; $i<$len; $i++) {
+			$pics[$i] = urlencode($pics[$i]);
 		}
 		return implode("/", $pics);
 	}
