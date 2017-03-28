@@ -8,7 +8,7 @@ enableCache: true
 highlight: true
 mathjax: false
 katex: false
-duoshuo:
+youyan:
 baiduAnalytics:
 keywords: GitBlog,博客,Markdown博客,jockchou
 description: >

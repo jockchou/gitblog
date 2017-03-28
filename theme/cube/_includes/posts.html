@@ -21,9 +21,9 @@
 			<div class="meta">
 				<span>{{ blog.date | date("Y-m-d")}}</span>
 				<div class="share">
-					<a class="facebook fa fa-paper-plane" href="{{ blog.siteURL }}#{% if confObj.duoshuo %}
-					duoshuo
-					{% elseif confObj.disqus %}
+					<a class="facebook fa fa-paper-plane" href="{{ blog.siteURL }}#{% if blog.youyan %}
+					youyan
+					{% elseif blog.disqus %}
 					disqus
 					{% else %}
 					comment

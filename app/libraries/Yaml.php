@@ -27,7 +27,7 @@ class Yaml {
     		"highlight" => true,
     		"mathjax" => false,
     		"katex" => false,
-    		"duoshuo" => "",
+    		"youyan" => "",
 			"disqus" => "",
     		"baiduAnalytics" => "",
     		"keywords" => "GitBlog,博客,Markdown博客,jockchou",
