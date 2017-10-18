@@ -150,13 +150,13 @@ class Gitblog extends CI_Controller
 			$fileName = $blog['fileName'];
 			$fileName = $this->markdown->changeFileExt($fileName);
 			$filePath = str_replace($fileName, "", $siteURL);
-			$filePath = GB_SITE_DIR . $filePath;
+			$filePath = GB_SITE_DIR . '/' . $filePath;
 			if (!file_exists($filePath)) {
 				mkdir($filePath, 0755, true);
 			}
 
 			$fileContent = $this->blog($blogId);
-			write_file(GB_SITE_DIR . $siteURL, $fileContent);
+			write_file(GB_SITE_DIR . '/' . $siteURL, $fileContent);
 		}
 		echo "export detail page success\n";
 
