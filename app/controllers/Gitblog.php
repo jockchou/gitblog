@@ -55,22 +55,26 @@ class Gitblog extends CI_Controller
 
    }
 
-    private function AddAddressTwodots($fileContent){
+    private function AddAddressTwodots($filePath,$fileContent){
         
 	    $htmlContent=$fileContent;
+	    
+	    $htmlPath=preg_replace( '/\.\/_site\/blog\//is','../',$filePath);
+
+        //echo "path=".$htmlPath."\n"; 
 	    
 	    //处理 //开头的 href
 	    $htmlContent= preg_replace( '/href\s*=\s*\"\/\/|\'\/\//is','href="http://',$htmlContent);
 
         //处理href
-	    $htmlContent= preg_replace( '/href\s*=\s*\"\/|\'\//is','href="../',$htmlContent);
+	    $htmlContent= preg_replace( '/href\s*=\s*\"\/|\'\//is','href="'.$htmlPath,$htmlContent);
 	    
 
 	    //处理 //开头的 src
 	    $htmlContent= preg_replace( '/src\s*=\s*\"\/\/|\'\/\//is','src="http://',$htmlContent);
 	    
 	    //处理src
-	    $htmlContent= preg_replace( '/src\s*=\s*\"\/|\'\//is','src="../',$htmlContent);
+	    $htmlContent= preg_replace( '/src\s*=\s*\"\/|\'\//is','src="'.$htmlPath,$htmlContent);
 
  
 	    $fileContent=$htmlContent;
@@ -139,7 +143,7 @@ class Gitblog extends CI_Controller
 					if (!file_exists($filePath)) {
 						mkdir($filePath, 0755, true);
 					}
-					$fileContent=$this->AddAddressTwodots($fileContent);
+					$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
 					write_file($filePath . ".html", $fileContent);
 				}
 			}
@@ -159,14 +163,14 @@ class Gitblog extends CI_Controller
 				if (!file_exists($filePath)) {
 					mkdir($filePath, 0755, true);
 				}
-				$fileContent=$this->AddAddressTwodots($fileContent);
+				$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
 				write_file($filePath . $pageNo . ".html", $fileContent);
 				if ($pageNo == 1) {
 					$filePath = GB_SITE_DIR . "/tags/".urlencode($tagId);
 					if (!file_exists($filePath)) {
 						mkdir($filePath, 0755, true);
 					}
-					$fileContent=$this->AddAddressTwodots($fileContent);
+					$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
 					write_file($filePath . ".html", $fileContent);
 				}
 			}
@@ -186,14 +190,14 @@ class Gitblog extends CI_Controller
 				if (!file_exists($filePath)) {
 					mkdir($filePath, 0755, true);
 				}
-				$fileContent=$this->AddAddressTwodots($fileContent);
+				$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
 				write_file($filePath . $pageNo . ".html", $fileContent);
 				if ($pageNo == 1) {
 					$filePath = GB_SITE_DIR . "/archive/$yearMonthId";
 					if (!file_exists($filePath)) {
 						mkdir($filePath, 0755, true);
 					}
-					$fileContent=$this->AddAddressTwodots($fileContent);
+					$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
 					write_file($filePath . ".html", $fileContent);
 				}
 			}
@@ -213,9 +217,9 @@ class Gitblog extends CI_Controller
 			if (!file_exists($filePath)) {
 				mkdir($filePath, 0755, true);
 			}
-
+ 
 			$fileContent = $this->blog($blogId);
-			$fileContent=$this->AddAddressTwodots($fileContent);
+			$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
 			write_file(GB_SITE_DIR . '/' . $siteURL, $fileContent);
 		}
 		echo "export detail page success\n";
