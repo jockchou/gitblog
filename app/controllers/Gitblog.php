@@ -55,13 +55,18 @@ class Gitblog extends CI_Controller
 
    }
 
-    private function AddAddressTwodots($filePath,$fileContent){
+     private function AddAddressTwodots($filePath,$fileContent){
         
 	    $htmlContent=$fileContent;
-	    
-	    $htmlPath=preg_replace( '/\.\/_site\/blog\//is','../',$filePath);
-
-        //echo "path=".$htmlPath."\n"; 
+	     
+	    $htmlPath=$filePath; 
+	   
+	    $htmlPath=preg_replace( '/\.\/_site\//is','', $htmlPath);
+	    $htmlPath=preg_replace( '/([^\/]*)/is','.',$htmlPath);
+        $htmlPath=substr($htmlPath,0,strlen($htmlPath)-1);
+        if(substr($htmlPath,strlen($htmlPath)-1,1)==".") $htmlPath=substr($htmlPath,0,strlen($htmlPath)-1);    
+         
+         echo "path=".$filePath."|".$htmlPath."\n";
 	    
 	    //处理 //开头的 href
 	    $htmlContent= preg_replace( '/href\s*=\s*\"\/\/|\'\/\//is','href="http://',$htmlContent);
@@ -81,7 +86,18 @@ class Gitblog extends CI_Controller
 	    return $fileContent;       
 
    }
+ 
+      //修改 ../../../ 为　../
+     private function ModifyAddressThreeSlash2One($fileContent){
+		  
+	    $htmlContent=$fileContent;	    
+	    //处理  
+	    $htmlContent= preg_replace( '/\.\.\/\.\.\/\.\.\//is','../',$htmlContent);
+ 
+	    $fileContent=$htmlContent;
+	    return $fileContent;       
 
+   }
 
 
 	//导出网站
@@ -133,6 +149,7 @@ class Gitblog extends CI_Controller
 
 			for ($pageNo = 1; $pageNo <= $pages; $pageNo++) {
 				$fileContent = $this->category($categoryId, $pageNo);
+				//$filePath = GB_SITE_DIR . "/category/".urlencode($categoryId)."/page/";
 				$filePath = GB_SITE_DIR . "/category/".urlencode($categoryId)."/page/";
 				if (!file_exists($filePath)) {
 					mkdir($filePath, 0755, true);
@@ -143,7 +160,7 @@ class Gitblog extends CI_Controller
 					if (!file_exists($filePath)) {
 						mkdir($filePath, 0755, true);
 					}
-					$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
+					$fileContent=$this->ModifyAddressThreeSlash2One($fileContent);
 					write_file($filePath . ".html", $fileContent);
 				}
 			}
@@ -166,11 +183,11 @@ class Gitblog extends CI_Controller
 				$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
 				write_file($filePath . $pageNo . ".html", $fileContent);
 				if ($pageNo == 1) {
-					$filePath = GB_SITE_DIR . "/tags/".urlencode($tagId);
+					$filePath = GB_SITE_DIR . "/tags/".urlencode($tagId);				
 					if (!file_exists($filePath)) {
 						mkdir($filePath, 0755, true);
 					}
-					$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
+					$fileContent=$this->ModifyAddressThreeSlash2One($fileContent);
 					write_file($filePath . ".html", $fileContent);
 				}
 			}
@@ -197,7 +214,7 @@ class Gitblog extends CI_Controller
 					if (!file_exists($filePath)) {
 						mkdir($filePath, 0755, true);
 					}
-					$fileContent=$this->AddAddressTwodots($filePath,$fileContent);
+					$fileContent=$this->ModifyAddressThreeSlash2One($fileContent);
 					write_file($filePath . ".html", $fileContent);
 				}
 			}
@@ -269,6 +286,8 @@ class Gitblog extends CI_Controller
 		$feedXmlfilePath = GB_SITE_DIR . "/feed.xml";
 		$feedXmlfileContent = $this->feed();
 		write_file($feedXmlfilePath, $feedXmlfileContent);
+       
+        if(file_exists($serverPath."CNAME"))  copy($serverPath."CNAME", GB_SITE_DIR . "/CNAME");
 
 		copy("robots.txt", GB_SITE_DIR . "/robots.txt");
 		copy("favicon.ico", GB_SITE_DIR . "/favicon.ico");
